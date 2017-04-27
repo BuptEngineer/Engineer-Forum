@@ -1,0 +1,96 @@
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	background-color: #eff;
+}
+
+.r-add-body {
+	background: #fff;
+	width: 70%;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+	display: block;
+}
+
+.div1 {
+	width: 100%;
+	padding: 20px;
+}
+
+.div2 {
+	margin-top: 30px;
+}
+
+.cate-img {
+	float: left;
+}
+
+.cate-name {
+	float: left;
+	vertical-align: middle;
+	position: relative;
+	margin: 30px 0 0 4%;
+}
+
+.route-num {
+	color: #66CCCC;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.route-item {
+	margin: 20px 0;
+	padding-left: 3%;
+}
+
+.user-img {
+	width: 8%;
+	float: left;
+}
+
+.ru-info {
+	font-size: 16px;
+	margin-bottom: 2px;
+}
+
+.user-info {
+	font-size: 13px;
+}
+
+.route-name {
+	float: left;
+	color: #0033FF;
+	font-family:"Microsoft YaHei UI", "微软雅黑", "幼圆";
+}
+
+.agree {
+	float: right;
+}
+
+.route-desc {
+	padding: 4px 8%;
+	font-family: "Microsoft YaHei UI", "微软雅黑", "幼圆";
+	font-size: 14px;
+}
+
+.follow {
+	margin: 40px auto;
+}
+.btn-more {
+    font-size: 13px;
+    margin: 20px 0;
+    padding: 10px 1px;
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(225,225,225,.5);
+    background: linear-gradient(to bottom,#fef,#e6e6e8);
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 0 #fff inset,0 1px 0 rgba(0,0,0,.1);
+    border-radius: 3px;
+    cursor: pointer;
+}

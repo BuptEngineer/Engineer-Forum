@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>engineer</display-name>
+  <servlet>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <servlet-class>cn.itcast.vcode.servlet.VerifyCodeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.qust.engineer.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CategoryServlet</servlet-name>
+    <servlet-class>com.qust.engineer.servlet.CategoryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminAddCtgServlet</servlet-name>
+    <servlet-class>com.qust.engineer.admin.servlet.AdminAddCtgServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AdminCtgServlet</servlet-name>
+    <servlet-class>com.qust.engineer.admin.servlet.AdminCtgServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RouteServlet</servlet-name>
+    <servlet-class>com.qust.engineer.servlet.RouteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PersonalCenterServlet</servlet-name>
+    <servlet-class>com.qust.engineer.servlet.PersonalCenterServlet</servlet-class>
+  </servlet>
+  
+    <servlet>
+    <servlet-name>QuestionServlet</servlet-name>
+    <servlet-class>com.qust.engineer.servlet.QuestionServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <url-pattern>/VerifyCodeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CategoryServlet</servlet-name>
+    <url-pattern>/CategoryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminAddCtgServlet</servlet-name>
+    <url-pattern>/admin/AdminAddCtgServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminCtgServlet</servlet-name>
+    <url-pattern>/admin/AdminCtgServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RouteServlet</servlet-name>
+    <url-pattern>/RouteServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>PersonalCenterServlet</servlet-name>
+    <url-pattern>/PersonalCenterServlet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>QuestionServlet</servlet-name>
+    <url-pattern>/QuestionServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 以下是过滤器配置 -->
+  <filter>
+  	<filter-name>LoginFilter</filter-name>
+  	<filter-class>com.qust.engineer.filter.LoginFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<!-- 个人中心 -->
+  	<url-pattern>/jsps/personal/*</url-pattern>
+  	<url-pattern>/PersonalCenterServlet</url-pattern>
+  	
+  	<!-- 路线 -->
+  	<url-pattern>/jsps/route/add.jsp</url-pattern>
+  	<url-pattern>/jsps/route/detail.jsp</url-pattern>
+  	<url-pattern>/RouteServlet</url-pattern>
+  </filter-mapping>
+  
+   <error-page>
+       <error-code>404</error-code>
+       <location>/jsps/404page/404.html</location>
+       <!-- 表示当系统发生404就是不存在请求地址的错误的时候，页面跳转到404.html页面。 -->
+    </error-page>
+    <error-page>
+       <error-code>500</error-code>
+       <location>/jsps/404page/404.html</location>
+       <!-- 表示当系统发生500也就是操作异常错误的时候，页面跳转到error.jsp页面。 -->
+    </error-page>
+  
+</web-app>

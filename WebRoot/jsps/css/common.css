@@ -1,0 +1,35 @@
+*{ margin:0; padding:0; border:0}
+body{
+	font-family:"Microsoft YaHei UI", "华文行楷", "华文隶书", "华文宋体";
+    color:#111;
+    font-size:14px;
+	background-color:#FFF;
+	
+}
+
+a{ text-decoration:none; word-wrap: break-word; word-spacing:2px; letter-spacing:1px;}
+
+ul{ list-style:none;}
+/* 主体 */
+.content{
+	width:76%;
+	min-height:500px;
+	margin:0 auto;
+	padding: 25px 0 50px;
+}
+
+/* 标题 */
+.title-all{
+	font-size: 16px;
+    font-weight: 700;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* 按钮 */
+.bt-icon{
+    background-image: url(../images/bg.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+}

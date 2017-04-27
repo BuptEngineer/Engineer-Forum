@@ -1,0 +1,46 @@
+
+.all-cate-title{
+	border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+.title-img{
+	background-position: -50px -88px;
+	 width: 17px;
+    height: 17px;
+    margin-right: 8px;
+    vertical-align: -4px;
+}
+
+.cate-item{
+	position: relative;
+    float: left;
+    width: 30%;
+    list-style: none;
+    border-bottom: 1px dotted #eee;
+	padding:15px;
+	padding-left: 70px;
+    margin: 0px 15px 6px 0;
+}
+
+.cate-item img{
+	position: absolute;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+	left:15px;
+	top: 18px;
+}
+.cate-name{
+	display: inline-block;
+    height: 1.5em;
+    word-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cate-desc{
+	max-height: 60px;
+    overflow: hidden;
+	font-size:12px;
+}
