@@ -8,6 +8,8 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
+
+
 import com.qust.engineer.entity.Answer;
 import com.qust.engineer.entity.Question;
 import com.qust.engineer.entity.User;
@@ -18,11 +20,11 @@ public class AnswerDao {
 	private QueryRunner qr = new TxQueryRunner();
 	
 	
-	//已经添加过回复的用户不能再添加了
+	//宸茬粡娣诲姞杩囧洖澶嶇殑鐢ㄦ埛涓嶈兘鍐嶆坊鍔犱簡
 	
 	
 	/**
-	 * 添加回答
+	 * 娣诲姞鍥炵瓟
 	 * @param answer
 	 * @throws SQLException
 	 */
@@ -35,7 +37,7 @@ public class AnswerDao {
 	
 	/**
 	 * 
-	 * 检查用户是否已经添加过回复
+	 * 妫�鏌ョ敤鎴锋槸鍚﹀凡缁忔坊鍔犺繃鍥炲
 	 * 
 	 * @param answer
 	 * @return
@@ -50,7 +52,7 @@ public class AnswerDao {
 	
 	
 	/**
-	 * 根据问题id来查找回复
+	 * 鏍规嵁闂id鏉ユ煡鎵惧洖澶�
 	 * @param q_id
 	 * @return
 	 * @throws SQLException 
@@ -70,7 +72,7 @@ public class AnswerDao {
 	
 	
 	/**
-	 * 根据用户回答来查找用户
+	 * 鏍规嵁鐢ㄦ埛鍥炵瓟鏉ユ煡鎵剧敤鎴�
 	 * @param a_id
 	 * @return
 	 * @throws SQLException
@@ -81,7 +83,7 @@ public class AnswerDao {
 	}
 	
 	/**
-	 * 根据用户回答来查找问题
+	 * 鏍规嵁鐢ㄦ埛鍥炵瓟鏉ユ煡鎵鹃棶棰�
 	 * @param a_id
 	 * @return
 	 * @throws SQLException
@@ -93,7 +95,7 @@ public class AnswerDao {
 
 	
 	/**
-	 * 更新回答
+	 * 鏇存柊鍥炵瓟
 	 * @param a_id
 	 * @throws SQLException
 	 */
@@ -105,7 +107,7 @@ public class AnswerDao {
 	
 	
 	/**
-	 * 删除回答
+	 * 鍒犻櫎鍥炵瓟
 	 * @param a_id
 	 * @throws SQLException
 	 */

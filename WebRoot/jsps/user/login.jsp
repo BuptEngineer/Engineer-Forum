@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +23,8 @@
 
 <div class="login">
 	<div class="login-img"><img src="<c:url value='/jsps/images/1.png'/>"/ width="100%"></div>
-	<form id="submitBtn" class="login-form" action="<c:url value='/UserServlet'/>" method="post" target="_top">
+	<c:url var="post_url"  value="/UserServlet" />
+	<form id="submitBtn"  class="login-form"  action="${post_url}" method="post" target="_top">
 		<input type="hidden" name="method" value="login"/>
 	   	<div class="inputDiv">
 	   		<label class="form-label">邮箱</label>
