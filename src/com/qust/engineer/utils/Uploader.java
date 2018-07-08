@@ -11,35 +11,35 @@ import org.apache.commons.fileupload.servlet.*;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 
-import Decoder.BASE64Decoder;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.servlet.http.HttpServletRequest;
 /**
- * UEditor文件上传辅助类
+ * UEditor鏂囦欢涓婁紶杈呭姪绫�
  *
  */
 public class Uploader {
-	// 输出文件地址
+	// 杈撳嚭鏂囦欢鍦板潃
 	private String url = "";
-	// 上传文件名
+	// 涓婁紶鏂囦欢鍚�
 	private String fileName = "";
-	// 状态
+	// 鐘舵��
 	private String state = "";
-	// 文件类型
+	// 鏂囦欢绫诲瀷
 	private String type = "";
-	// 原始文件名
+	// 鍘熷鏂囦欢鍚�
 	private String originalName = "";
-	// 文件大小
+	// 鏂囦欢澶у皬
 	private long size = 0;
 
 	private HttpServletRequest request = null;
 	private String title = "";
 
-	// 保存路径
+	// 淇濆瓨璺緞
 	private String savePath = "upload";
-	// 文件允许格式
+	// 鏂囦欢鍏佽鏍煎紡
 	private String[] allowFiles = { ".rar", ".doc", ".docx", ".zip", ".pdf",".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp" };
-	// 文件大小限制，单位KB
+	// 鏂囦欢澶у皬闄愬埗锛屽崟浣岾B
 	private int maxSize = 10000;
 	
 	private HashMap<String, String> errorInfo = new HashMap<String, String>();
@@ -47,15 +47,15 @@ public class Uploader {
 	public Uploader(HttpServletRequest request) {
 		this.request = request;
 		HashMap<String, String> tmp = this.errorInfo;
-		tmp.put("SUCCESS", "SUCCESS"); //默认成功
-		tmp.put("NOFILE", "未包含文件上传域");
-		tmp.put("TYPE", "不允许的文件格式");
-		tmp.put("SIZE", "文件大小超出限制");
-		tmp.put("ENTYPE", "请求类型ENTYPE错误");
-		tmp.put("REQUEST", "上传请求异常");
-		tmp.put("IO", "IO异常");
-		tmp.put("DIR", "目录创建失败");
-		tmp.put("UNKNOWN", "未知错误");
+		tmp.put("SUCCESS", "SUCCESS"); //榛樿鎴愬姛
+		tmp.put("NOFILE", "鏈寘鍚枃浠朵笂浼犲煙");
+		tmp.put("TYPE", "涓嶅厑璁哥殑鏂囦欢鏍煎紡");
+		tmp.put("SIZE", "鏂囦欢澶у皬瓒呭嚭闄愬埗");
+		tmp.put("ENTYPE", "璇锋眰绫诲瀷ENTYPE閿欒");
+		tmp.put("REQUEST", "涓婁紶璇锋眰寮傚父");
+		tmp.put("IO", "IO寮傚父");
+		tmp.put("DIR", "鐩綍鍒涘缓澶辫触");
+		tmp.put("UNKNOWN", "鏈煡閿欒");
 		
 	}
 
@@ -91,11 +91,11 @@ public class Uploader {
 					Streams.copy(in, output, true);
 					this.state=this.errorInfo.get("SUCCESS");
 					this.size = file.length();
-					//UE中只会处理单张上传，完成后即退出
+					//UE涓彧浼氬鐞嗗崟寮犱笂浼狅紝瀹屾垚鍚庡嵆閫�鍑�
 					break;
 				} else {
 					String fname = fis.getFieldName();
-					//只处理title，其余表单请自行处理
+					//鍙鐞唗itle锛屽叾浣欒〃鍗曡鑷澶勭悊
 					if(!fname.equals("pictitle")){
 						continue;
 					}
@@ -122,7 +122,7 @@ public class Uploader {
 	}
 	
 	/**
-	 * 接受并保存以base64格式上传的文件
+	 * 鎺ュ彈骞朵繚瀛樹互base64鏍煎紡涓婁紶鐨勬枃浠�
 	 * @param fieldName
 	 */
 	public void uploadBase64(String fieldName){
@@ -130,11 +130,12 @@ public class Uploader {
 		String base64Data = this.request.getParameter(fieldName);
 		this.fileName = this.getName("test.png");
 		this.url = savePath + "/" + this.fileName;
-		BASE64Decoder decoder = new BASE64Decoder();
+//		BASE64Decoder decoder = new BASE64Decoder();
 		try {
 			File outFile = new File(this.getPhysicalPath(this.url));
 			OutputStream ro = new FileOutputStream(outFile);
-			byte[] b = decoder.decodeBuffer(base64Data);
+			byte[] b  = Base64.encodeBase64(base64Data.getBytes("UTF-8"));
+//			byte[] b = decoder.decodeBuffer(base64Data);
 			for (int i = 0; i < b.length; ++i) {
 				if (b[i] < 0) {
 					b[i] += 256;
@@ -150,7 +151,7 @@ public class Uploader {
 	}
 
 	/**
-	 * 文件类型判断
+	 * 鏂囦欢绫诲瀷鍒ゆ柇
 	 * 
 	 * @param fileName
 	 * @return
@@ -167,7 +168,7 @@ public class Uploader {
 	}
 
 	/**
-	 * 获取文件扩展名
+	 * 鑾峰彇鏂囦欢鎵╁睍鍚�
 	 * 
 	 * @return string
 	 */
@@ -176,7 +177,7 @@ public class Uploader {
 	}
 
 	/**
-	 * 依据原始文件名生成新文件名
+	 * 渚濇嵁鍘熷鏂囦欢鍚嶇敓鎴愭柊鏂囦欢鍚�
 	 * @return
 	 */
 	private String getName(String fileName) {
@@ -186,7 +187,7 @@ public class Uploader {
 	}
 
 	/**
-	 * 根据字符串创建本地目录 并按照日期建立子目录返回
+	 * 鏍规嵁瀛楃涓插垱寤烘湰鍦扮洰褰� 骞舵寜鐓ф棩鏈熷缓绔嬪瓙鐩綍杩斿洖
 	 * @param path 
 	 * @return 
 	 */
@@ -206,7 +207,7 @@ public class Uploader {
 	}
 
 	/**
-	 * 根据传入的虚拟路径获取物理路径
+	 * 鏍规嵁浼犲叆鐨勮櫄鎷熻矾寰勮幏鍙栫墿鐞嗚矾寰�
 	 * 
 	 * @param path
 	 * @return

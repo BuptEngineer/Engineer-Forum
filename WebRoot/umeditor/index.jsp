@@ -73,7 +73,8 @@
 				</button>
 			</td>
 			<td>
-				<form id="form" action="<c:url value='/GetContentServlet'/>" method="post">
+			
+				<form id="form" action = "<c:url value='/GetContentServlet'/>"  method="post">
 				<input type="text" id="content" style="display:none;" name="content" value=""/>
 				<input type="submit"  onclick="getContent()" value="提交" />
 				

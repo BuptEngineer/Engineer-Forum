@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qust.engineer.dao.SctCommentMapper">
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.SctComment">
+    <id column="sc_id" jdbcType="INTEGER" property="scId" />
+    <result column="sc_content" jdbcType="VARCHAR" property="scContent" />
+    <result column="sc_time" jdbcType="TIMESTAMP" property="scTime" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="s_id" jdbcType="INTEGER" property="sId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sc_id, sc_content, sc_time, u_id, s_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_sct_comment
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_sct_comment
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.engineer.pojo.SctComment">
+    insert into tbl_sct_comment (sc_id, sc_content, sc_time, 
+      u_id, s_id)
+    values (#{scId,jdbcType=INTEGER}, #{scContent,jdbcType=VARCHAR}, #{scTime,jdbcType=TIMESTAMP}, 
+      #{uId,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.SctComment">
+    insert into tbl_sct_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scId != null">
+        sc_id,
+      </if>
+      <if test="scContent != null">
+        sc_content,
+      </if>
+      <if test="scTime != null">
+        sc_time,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="sId != null">
+        s_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scId != null">
+        #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scContent != null">
+        #{scContent,jdbcType=VARCHAR},
+      </if>
+      <if test="scTime != null">
+        #{scTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null">
+        #{sId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.SctComment">
+    update tbl_sct_comment
+    <set>
+      <if test="scContent != null">
+        sc_content = #{scContent,jdbcType=VARCHAR},
+      </if>
+      <if test="scTime != null">
+        sc_time = #{scTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null">
+        s_id = #{sId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.SctComment">
+    update tbl_sct_comment
+    set sc_content = #{scContent,jdbcType=VARCHAR},
+      sc_time = #{scTime,jdbcType=TIMESTAMP},
+      u_id = #{uId,jdbcType=INTEGER},
+      s_id = #{sId,jdbcType=INTEGER}
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="pojo.SctComment">
+    <id column="sc_id" jdbcType="INTEGER" property="scId" />
+    <result column="sc_content" jdbcType="VARCHAR" property="scContent" />
+    <result column="sc_time" jdbcType="TIMESTAMP" property="scTime" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="s_id" jdbcType="INTEGER" property="sId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sc_id, sc_content, sc_time, u_id, s_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_sct_comment
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_sct_comment
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pojo.SctComment">
+    insert into tbl_sct_comment (sc_id, sc_content, sc_time, 
+      u_id, s_id)
+    values (#{scId,jdbcType=INTEGER}, #{scContent,jdbcType=VARCHAR}, #{scTime,jdbcType=TIMESTAMP}, 
+      #{uId,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.SctComment">
+    insert into tbl_sct_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scId != null">
+        sc_id,
+      </if>
+      <if test="scContent != null">
+        sc_content,
+      </if>
+      <if test="scTime != null">
+        sc_time,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="sId != null">
+        s_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scId != null">
+        #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scContent != null">
+        #{scContent,jdbcType=VARCHAR},
+      </if>
+      <if test="scTime != null">
+        #{scTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null">
+        #{sId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.SctComment">
+    update tbl_sct_comment
+    <set>
+      <if test="scContent != null">
+        sc_content = #{scContent,jdbcType=VARCHAR},
+      </if>
+      <if test="scTime != null">
+        sc_time = #{scTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null">
+        s_id = #{sId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.SctComment">
+    update tbl_sct_comment
+    set sc_content = #{scContent,jdbcType=VARCHAR},
+      sc_time = #{scTime,jdbcType=TIMESTAMP},
+      u_id = #{uId,jdbcType=INTEGER},
+      s_id = #{sId,jdbcType=INTEGER}
+    where sc_id = #{scId,jdbcType=INTEGER}
+  </update>
+</mapper>

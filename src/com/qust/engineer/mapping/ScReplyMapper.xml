@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qust.engineer.dao.ScReplyMapper">
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.ScReply">
+    <id column="scr_id" jdbcType="INTEGER" property="scrId" />
+    <result column="scr_content" jdbcType="VARCHAR" property="scrContent" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="sc_id" jdbcType="INTEGER" property="scId" />
+    <result column="scr_time" jdbcType="TIMESTAMP" property="scrTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    scr_id, scr_content, u_id, sc_id, scr_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_sc_reply
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_sc_reply
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.engineer.pojo.ScReply">
+    insert into tbl_sc_reply (scr_id, scr_content, u_id, 
+      sc_id, scr_time)
+    values (#{scrId,jdbcType=INTEGER}, #{scrContent,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}, 
+      #{scId,jdbcType=INTEGER}, #{scrTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.ScReply">
+    insert into tbl_sc_reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scrId != null">
+        scr_id,
+      </if>
+      <if test="scrContent != null">
+        scr_content,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="scId != null">
+        sc_id,
+      </if>
+      <if test="scrTime != null">
+        scr_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scrId != null">
+        #{scrId,jdbcType=INTEGER},
+      </if>
+      <if test="scrContent != null">
+        #{scrContent,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="scId != null">
+        #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scrTime != null">
+        #{scrTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.ScReply">
+    update tbl_sc_reply
+    <set>
+      <if test="scrContent != null">
+        scr_content = #{scrContent,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="scId != null">
+        sc_id = #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scrTime != null">
+        scr_time = #{scrTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.ScReply">
+    update tbl_sc_reply
+    set scr_content = #{scrContent,jdbcType=VARCHAR},
+      u_id = #{uId,jdbcType=INTEGER},
+      sc_id = #{scId,jdbcType=INTEGER},
+      scr_time = #{scrTime,jdbcType=TIMESTAMP}
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="pojo.ScReply">
+    <id column="scr_id" jdbcType="INTEGER" property="scrId" />
+    <result column="scr_content" jdbcType="VARCHAR" property="scrContent" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="sc_id" jdbcType="INTEGER" property="scId" />
+    <result column="scr_time" jdbcType="TIMESTAMP" property="scrTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    scr_id, scr_content, u_id, sc_id, scr_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_sc_reply
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_sc_reply
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pojo.ScReply">
+    insert into tbl_sc_reply (scr_id, scr_content, u_id, 
+      sc_id, scr_time)
+    values (#{scrId,jdbcType=INTEGER}, #{scrContent,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}, 
+      #{scId,jdbcType=INTEGER}, #{scrTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.ScReply">
+    insert into tbl_sc_reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scrId != null">
+        scr_id,
+      </if>
+      <if test="scrContent != null">
+        scr_content,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="scId != null">
+        sc_id,
+      </if>
+      <if test="scrTime != null">
+        scr_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scrId != null">
+        #{scrId,jdbcType=INTEGER},
+      </if>
+      <if test="scrContent != null">
+        #{scrContent,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="scId != null">
+        #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scrTime != null">
+        #{scrTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.ScReply">
+    update tbl_sc_reply
+    <set>
+      <if test="scrContent != null">
+        scr_content = #{scrContent,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="scId != null">
+        sc_id = #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scrTime != null">
+        scr_time = #{scrTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.ScReply">
+    update tbl_sc_reply
+    set scr_content = #{scrContent,jdbcType=VARCHAR},
+      u_id = #{uId,jdbcType=INTEGER},
+      sc_id = #{scId,jdbcType=INTEGER},
+      scr_time = #{scrTime,jdbcType=TIMESTAMP}
+    where scr_id = #{scrId,jdbcType=INTEGER}
+  </update>
+</mapper>

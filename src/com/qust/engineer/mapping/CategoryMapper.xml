@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qust.engineer.dao.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Category">
+    <id column="ctg_id" jdbcType="INTEGER" property="ctgId" />
+    <result column="ctg_name" jdbcType="VARCHAR" property="ctgName" />
+    <result column="pctg_id" jdbcType="INTEGER" property="pctgId" />
+    <result column="ctg_desc" jdbcType="VARCHAR" property="ctgDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ctg_id, ctg_name, pctg_id, ctg_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_category
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_category
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.engineer.pojo.Category">
+    insert into tbl_category (ctg_id, ctg_name, pctg_id, 
+      ctg_desc)
+    values (#{ctgId,jdbcType=INTEGER}, #{ctgName,jdbcType=VARCHAR}, #{pctgId,jdbcType=INTEGER}, 
+      #{ctgDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Category">
+    insert into tbl_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ctgId != null">
+        ctg_id,
+      </if>
+      <if test="ctgName != null">
+        ctg_name,
+      </if>
+      <if test="pctgId != null">
+        pctg_id,
+      </if>
+      <if test="ctgDesc != null">
+        ctg_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ctgId != null">
+        #{ctgId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgName != null">
+        #{ctgName,jdbcType=VARCHAR},
+      </if>
+      <if test="pctgId != null">
+        #{pctgId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgDesc != null">
+        #{ctgDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Category">
+    update tbl_category
+    <set>
+      <if test="ctgName != null">
+        ctg_name = #{ctgName,jdbcType=VARCHAR},
+      </if>
+      <if test="pctgId != null">
+        pctg_id = #{pctgId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgDesc != null">
+        ctg_desc = #{ctgDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Category">
+    update tbl_category
+    set ctg_name = #{ctgName,jdbcType=VARCHAR},
+      pctg_id = #{pctgId,jdbcType=INTEGER},
+      ctg_desc = #{ctgDesc,jdbcType=VARCHAR}
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="pojo.Category">
+    <id column="ctg_id" jdbcType="INTEGER" property="ctgId" />
+    <result column="ctg_name" jdbcType="VARCHAR" property="ctgName" />
+    <result column="pctg_id" jdbcType="INTEGER" property="pctgId" />
+    <result column="ctg_desc" jdbcType="VARCHAR" property="ctgDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ctg_id, ctg_name, pctg_id, ctg_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_category
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_category
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pojo.Category">
+    insert into tbl_category (ctg_id, ctg_name, pctg_id, 
+      ctg_desc)
+    values (#{ctgId,jdbcType=INTEGER}, #{ctgName,jdbcType=VARCHAR}, #{pctgId,jdbcType=INTEGER}, 
+      #{ctgDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Category">
+    insert into tbl_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ctgId != null">
+        ctg_id,
+      </if>
+      <if test="ctgName != null">
+        ctg_name,
+      </if>
+      <if test="pctgId != null">
+        pctg_id,
+      </if>
+      <if test="ctgDesc != null">
+        ctg_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ctgId != null">
+        #{ctgId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgName != null">
+        #{ctgName,jdbcType=VARCHAR},
+      </if>
+      <if test="pctgId != null">
+        #{pctgId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgDesc != null">
+        #{ctgDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Category">
+    update tbl_category
+    <set>
+      <if test="ctgName != null">
+        ctg_name = #{ctgName,jdbcType=VARCHAR},
+      </if>
+      <if test="pctgId != null">
+        pctg_id = #{pctgId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgDesc != null">
+        ctg_desc = #{ctgDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Category">
+    update tbl_category
+    set ctg_name = #{ctgName,jdbcType=VARCHAR},
+      pctg_id = #{pctgId,jdbcType=INTEGER},
+      ctg_desc = #{ctgDesc,jdbcType=VARCHAR}
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qust.engineer.dao.AnswerMapper">
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Answer">
+    <id column="a_id" jdbcType="INTEGER" property="aId" />
+    <result column="q_id" jdbcType="INTEGER" property="qId" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="a_time" jdbcType="TIMESTAMP" property="aTime" />
+    <result column="a_likeNum" jdbcType="INTEGER" property="aLikenum" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.qust.engineer.pojo.Answer">
+    <result column="a_content" jdbcType="LONGVARCHAR" property="aContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    a_id, q_id, u_id, a_time, a_likeNum
+  </sql>
+  <sql id="Blob_Column_List">
+    a_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_answer
+    where a_id = #{aId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_answer
+    where a_id = #{aId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.engineer.pojo.Answer">
+    insert into tbl_answer (a_id, q_id, u_id, 
+      a_time, a_likeNum, a_content
+      )
+    values (#{aId,jdbcType=INTEGER}, #{qId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, 
+      #{aTime,jdbcType=TIMESTAMP}, #{aLikenum,jdbcType=INTEGER}, #{aContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Answer">
+    insert into tbl_answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aId != null">
+        a_id,
+      </if>
+      <if test="qId != null">
+        q_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="aTime != null">
+        a_time,
+      </if>
+      <if test="aLikenum != null">
+        a_likeNum,
+      </if>
+      <if test="aContent != null">
+        a_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aId != null">
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="qId != null">
+        #{qId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="aTime != null">
+        #{aTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aLikenum != null">
+        #{aLikenum,jdbcType=INTEGER},
+      </if>
+      <if test="aContent != null">
+        #{aContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Answer">
+    update tbl_answer
+    <set>
+      <if test="qId != null">
+        q_id = #{qId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="aTime != null">
+        a_time = #{aTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aLikenum != null">
+        a_likeNum = #{aLikenum,jdbcType=INTEGER},
+      </if>
+      <if test="aContent != null">
+        a_content = #{aContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.qust.engineer.pojo.Answer">
+    update tbl_answer
+    set q_id = #{qId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
+      a_time = #{aTime,jdbcType=TIMESTAMP},
+      a_likeNum = #{aLikenum,jdbcType=INTEGER},
+      a_content = #{aContent,jdbcType=LONGVARCHAR}
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Answer">
+    update tbl_answer
+    set q_id = #{qId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
+      a_time = #{aTime,jdbcType=TIMESTAMP},
+      a_likeNum = #{aLikenum,jdbcType=INTEGER}
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="pojo.Answer">
+    <id column="a_id" jdbcType="INTEGER" property="aId" />
+    <result column="q_id" jdbcType="INTEGER" property="qId" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="a_time" jdbcType="TIMESTAMP" property="aTime" />
+    <result column="a_likeNum" jdbcType="INTEGER" property="aLikenum" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="pojo.Answer">
+    <result column="a_content" jdbcType="LONGVARCHAR" property="aContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    a_id, q_id, u_id, a_time, a_likeNum
+  </sql>
+  <sql id="Blob_Column_List">
+    a_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_answer
+    where a_id = #{aId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_answer
+    where a_id = #{aId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pojo.Answer">
+    insert into tbl_answer (a_id, q_id, u_id, 
+      a_time, a_likeNum, a_content
+      )
+    values (#{aId,jdbcType=INTEGER}, #{qId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, 
+      #{aTime,jdbcType=TIMESTAMP}, #{aLikenum,jdbcType=INTEGER}, #{aContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pojo.Answer">
+    insert into tbl_answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aId != null">
+        a_id,
+      </if>
+      <if test="qId != null">
+        q_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="aTime != null">
+        a_time,
+      </if>
+      <if test="aLikenum != null">
+        a_likeNum,
+      </if>
+      <if test="aContent != null">
+        a_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aId != null">
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="qId != null">
+        #{qId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="aTime != null">
+        #{aTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aLikenum != null">
+        #{aLikenum,jdbcType=INTEGER},
+      </if>
+      <if test="aContent != null">
+        #{aContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pojo.Answer">
+    update tbl_answer
+    <set>
+      <if test="qId != null">
+        q_id = #{qId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="aTime != null">
+        a_time = #{aTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aLikenum != null">
+        a_likeNum = #{aLikenum,jdbcType=INTEGER},
+      </if>
+      <if test="aContent != null">
+        a_content = #{aContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="pojo.Answer">
+    update tbl_answer
+    set q_id = #{qId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
+      a_time = #{aTime,jdbcType=TIMESTAMP},
+      a_likeNum = #{aLikenum,jdbcType=INTEGER},
+      a_content = #{aContent,jdbcType=LONGVARCHAR}
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pojo.Answer">
+    update tbl_answer
+    set q_id = #{qId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
+      a_time = #{aTime,jdbcType=TIMESTAMP},
+      a_likeNum = #{aLikenum,jdbcType=INTEGER}
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+</mapper>
