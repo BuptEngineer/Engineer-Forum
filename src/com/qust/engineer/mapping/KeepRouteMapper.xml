@@ -1,66 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qust.engineer.dao.KeepRouteMapper">
-  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.KeepRouteKey">
-    <id column="rt_id" jdbcType="INTEGER" property="rtId" />
-    <id column="u_id" jdbcType="INTEGER" property="uId" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qust.engineer.dao.KeepRouteMapper" >
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.KeepRouteKey" >
+    <id column="rt_id" property="rtId" jdbcType="INTEGER" />
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="com.qust.engineer.pojo.KeepRouteKey">
+  <delete id="deleteByPrimaryKey" parameterType="com.qust.engineer.pojo.KeepRouteKey" >
     delete from tbl_keep_route
     where rt_id = #{rtId,jdbcType=INTEGER}
       and u_id = #{uId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qust.engineer.pojo.KeepRouteKey">
+  <insert id="insert" parameterType="com.qust.engineer.pojo.KeepRouteKey" >
     insert into tbl_keep_route (rt_id, u_id)
     values (#{rtId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.KeepRouteKey">
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.KeepRouteKey" >
     insert into tbl_keep_route
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rtId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rtId != null" >
         rt_id,
       </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         u_id,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rtId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rtId != null" >
         #{rtId,jdbcType=INTEGER},
       </if>
-      <if test="uId != null">
-        #{uId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="pojo.KeepRouteKey">
-    <id column="rt_id" jdbcType="INTEGER" property="rtId" />
-    <id column="u_id" jdbcType="INTEGER" property="uId" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="pojo.KeepRouteKey">
-    delete from tbl_keep_route
-    where rt_id = #{rtId,jdbcType=INTEGER}
-      and u_id = #{uId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="pojo.KeepRouteKey">
-    insert into tbl_keep_route (rt_id, u_id)
-    values (#{rtId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="pojo.KeepRouteKey">
-    insert into tbl_keep_route
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="rtId != null">
-        rt_id,
-      </if>
-      <if test="uId != null">
-        u_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="rtId != null">
-        #{rtId,jdbcType=INTEGER},
-      </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         #{uId,jdbcType=INTEGER},
       </if>
     </trim>

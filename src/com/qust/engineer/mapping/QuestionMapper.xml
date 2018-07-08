@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qust.engineer.dao.QuestionMapper">
-  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Question">
-    <id column="q_id" jdbcType="INTEGER" property="qId" />
-    <result column="q_name" jdbcType="VARCHAR" property="qName" />
-    <result column="q_desc" jdbcType="VARCHAR" property="qDesc" />
-    <result column="u_id" jdbcType="INTEGER" property="uId" />
-    <result column="ctg_id" jdbcType="INTEGER" property="ctgId" />
-    <result column="q_time" jdbcType="TIMESTAMP" property="qTime" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qust.engineer.dao.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Question" >
+    <id column="q_id" property="qId" jdbcType="INTEGER" />
+    <result column="q_name" property="qName" jdbcType="VARCHAR" />
+    <result column="q_desc" property="qDesc" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="ctg_id" property="ctgId" jdbcType="INTEGER" />
+    <result column="q_time" property="qTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     q_id, q_name, q_desc, u_id, ctg_id, q_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from tbl_question
     where q_id = #{qId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tbl_question
     where q_id = #{qId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qust.engineer.pojo.Question">
+  <insert id="insert" parameterType="com.qust.engineer.pojo.Question" >
     insert into tbl_question (q_id, q_name, q_desc, 
       u_id, ctg_id, q_time
       )
@@ -30,173 +30,71 @@
       #{uId,jdbcType=INTEGER}, #{ctgId,jdbcType=INTEGER}, #{qTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Question">
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Question" >
     insert into tbl_question
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="qId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
         q_id,
       </if>
-      <if test="qName != null">
+      <if test="qName != null" >
         q_name,
       </if>
-      <if test="qDesc != null">
+      <if test="qDesc != null" >
         q_desc,
       </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         u_id,
       </if>
-      <if test="ctgId != null">
+      <if test="ctgId != null" >
         ctg_id,
       </if>
-      <if test="qTime != null">
+      <if test="qTime != null" >
         q_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="qId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qId != null" >
         #{qId,jdbcType=INTEGER},
       </if>
-      <if test="qName != null">
+      <if test="qName != null" >
         #{qName,jdbcType=VARCHAR},
       </if>
-      <if test="qDesc != null">
+      <if test="qDesc != null" >
         #{qDesc,jdbcType=VARCHAR},
       </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         #{uId,jdbcType=INTEGER},
       </if>
-      <if test="ctgId != null">
+      <if test="ctgId != null" >
         #{ctgId,jdbcType=INTEGER},
       </if>
-      <if test="qTime != null">
+      <if test="qTime != null" >
         #{qTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Question">
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Question" >
     update tbl_question
-    <set>
-      <if test="qName != null">
+    <set >
+      <if test="qName != null" >
         q_name = #{qName,jdbcType=VARCHAR},
       </if>
-      <if test="qDesc != null">
+      <if test="qDesc != null" >
         q_desc = #{qDesc,jdbcType=VARCHAR},
       </if>
-      <if test="uId != null">
+      <if test="uId != null" >
         u_id = #{uId,jdbcType=INTEGER},
       </if>
-      <if test="ctgId != null">
+      <if test="ctgId != null" >
         ctg_id = #{ctgId,jdbcType=INTEGER},
       </if>
-      <if test="qTime != null">
+      <if test="qTime != null" >
         q_time = #{qTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where q_id = #{qId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Question">
-    update tbl_question
-    set q_name = #{qName,jdbcType=VARCHAR},
-      q_desc = #{qDesc,jdbcType=VARCHAR},
-      u_id = #{uId,jdbcType=INTEGER},
-      ctg_id = #{ctgId,jdbcType=INTEGER},
-      q_time = #{qTime,jdbcType=TIMESTAMP}
-    where q_id = #{qId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="pojo.Question">
-    <id column="q_id" jdbcType="INTEGER" property="qId" />
-    <result column="q_name" jdbcType="VARCHAR" property="qName" />
-    <result column="q_desc" jdbcType="VARCHAR" property="qDesc" />
-    <result column="u_id" jdbcType="INTEGER" property="uId" />
-    <result column="ctg_id" jdbcType="INTEGER" property="ctgId" />
-    <result column="q_time" jdbcType="TIMESTAMP" property="qTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    q_id, q_name, q_desc, u_id, ctg_id, q_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from tbl_question
-    where q_id = #{qId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tbl_question
-    where q_id = #{qId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="pojo.Question">
-    insert into tbl_question (q_id, q_name, q_desc, 
-      u_id, ctg_id, q_time
-      )
-    values (#{qId,jdbcType=INTEGER}, #{qName,jdbcType=VARCHAR}, #{qDesc,jdbcType=VARCHAR}, 
-      #{uId,jdbcType=INTEGER}, #{ctgId,jdbcType=INTEGER}, #{qTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="pojo.Question">
-    insert into tbl_question
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="qId != null">
-        q_id,
-      </if>
-      <if test="qName != null">
-        q_name,
-      </if>
-      <if test="qDesc != null">
-        q_desc,
-      </if>
-      <if test="uId != null">
-        u_id,
-      </if>
-      <if test="ctgId != null">
-        ctg_id,
-      </if>
-      <if test="qTime != null">
-        q_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="qId != null">
-        #{qId,jdbcType=INTEGER},
-      </if>
-      <if test="qName != null">
-        #{qName,jdbcType=VARCHAR},
-      </if>
-      <if test="qDesc != null">
-        #{qDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="uId != null">
-        #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="ctgId != null">
-        #{ctgId,jdbcType=INTEGER},
-      </if>
-      <if test="qTime != null">
-        #{qTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.Question">
-    update tbl_question
-    <set>
-      <if test="qName != null">
-        q_name = #{qName,jdbcType=VARCHAR},
-      </if>
-      <if test="qDesc != null">
-        q_desc = #{qDesc,jdbcType=VARCHAR},
-      </if>
-      <if test="uId != null">
-        u_id = #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="ctgId != null">
-        ctg_id = #{ctgId,jdbcType=INTEGER},
-      </if>
-      <if test="qTime != null">
-        q_time = #{qTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where q_id = #{qId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.Question">
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Question" >
     update tbl_question
     set q_name = #{qName,jdbcType=VARCHAR},
       q_desc = #{qDesc,jdbcType=VARCHAR},

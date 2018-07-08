@@ -1,156 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qust.engineer.dao.ReportAnswerMapper">
-  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.ReportAnswer">
-    <id column="ra_id" jdbcType="INTEGER" property="raId" />
-    <result column="a_id" jdbcType="INTEGER" property="aId" />
-    <result column="from_u_id" jdbcType="INTEGER" property="fromUId" />
-    <result column="ra_time" jdbcType="TIMESTAMP" property="raTime" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qust.engineer.dao.ReportAnswerMapper" >
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.ReportAnswer" >
+    <id column="ra_id" property="raId" jdbcType="INTEGER" />
+    <result column="a_id" property="aId" jdbcType="INTEGER" />
+    <result column="from_u_id" property="fromUId" jdbcType="INTEGER" />
+    <result column="ra_time" property="raTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     ra_id, a_id, from_u_id, ra_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from tbl_report_answer
     where ra_id = #{raId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tbl_report_answer
     where ra_id = #{raId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qust.engineer.pojo.ReportAnswer">
+  <insert id="insert" parameterType="com.qust.engineer.pojo.ReportAnswer" >
     insert into tbl_report_answer (ra_id, a_id, from_u_id, 
       ra_time)
     values (#{raId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, #{fromUId,jdbcType=INTEGER}, 
       #{raTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.ReportAnswer">
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.ReportAnswer" >
     insert into tbl_report_answer
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="raId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="raId != null" >
         ra_id,
       </if>
-      <if test="aId != null">
+      <if test="aId != null" >
         a_id,
       </if>
-      <if test="fromUId != null">
+      <if test="fromUId != null" >
         from_u_id,
       </if>
-      <if test="raTime != null">
+      <if test="raTime != null" >
         ra_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="raId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="raId != null" >
         #{raId,jdbcType=INTEGER},
       </if>
-      <if test="aId != null">
+      <if test="aId != null" >
         #{aId,jdbcType=INTEGER},
       </if>
-      <if test="fromUId != null">
+      <if test="fromUId != null" >
         #{fromUId,jdbcType=INTEGER},
       </if>
-      <if test="raTime != null">
+      <if test="raTime != null" >
         #{raTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.ReportAnswer">
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.ReportAnswer" >
     update tbl_report_answer
-    <set>
-      <if test="aId != null">
+    <set >
+      <if test="aId != null" >
         a_id = #{aId,jdbcType=INTEGER},
       </if>
-      <if test="fromUId != null">
+      <if test="fromUId != null" >
         from_u_id = #{fromUId,jdbcType=INTEGER},
       </if>
-      <if test="raTime != null">
+      <if test="raTime != null" >
         ra_time = #{raTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where ra_id = #{raId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.ReportAnswer">
-    update tbl_report_answer
-    set a_id = #{aId,jdbcType=INTEGER},
-      from_u_id = #{fromUId,jdbcType=INTEGER},
-      ra_time = #{raTime,jdbcType=TIMESTAMP}
-    where ra_id = #{raId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="pojo.ReportAnswer">
-    <id column="ra_id" jdbcType="INTEGER" property="raId" />
-    <result column="a_id" jdbcType="INTEGER" property="aId" />
-    <result column="from_u_id" jdbcType="INTEGER" property="fromUId" />
-    <result column="ra_time" jdbcType="TIMESTAMP" property="raTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    ra_id, a_id, from_u_id, ra_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from tbl_report_answer
-    where ra_id = #{raId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tbl_report_answer
-    where ra_id = #{raId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="pojo.ReportAnswer">
-    insert into tbl_report_answer (ra_id, a_id, from_u_id, 
-      ra_time)
-    values (#{raId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, #{fromUId,jdbcType=INTEGER}, 
-      #{raTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="pojo.ReportAnswer">
-    insert into tbl_report_answer
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="raId != null">
-        ra_id,
-      </if>
-      <if test="aId != null">
-        a_id,
-      </if>
-      <if test="fromUId != null">
-        from_u_id,
-      </if>
-      <if test="raTime != null">
-        ra_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="raId != null">
-        #{raId,jdbcType=INTEGER},
-      </if>
-      <if test="aId != null">
-        #{aId,jdbcType=INTEGER},
-      </if>
-      <if test="fromUId != null">
-        #{fromUId,jdbcType=INTEGER},
-      </if>
-      <if test="raTime != null">
-        #{raTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.ReportAnswer">
-    update tbl_report_answer
-    <set>
-      <if test="aId != null">
-        a_id = #{aId,jdbcType=INTEGER},
-      </if>
-      <if test="fromUId != null">
-        from_u_id = #{fromUId,jdbcType=INTEGER},
-      </if>
-      <if test="raTime != null">
-        ra_time = #{raTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where ra_id = #{raId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.ReportAnswer">
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.ReportAnswer" >
     update tbl_report_answer
     set a_id = #{aId,jdbcType=INTEGER},
       from_u_id = #{fromUId,jdbcType=INTEGER},

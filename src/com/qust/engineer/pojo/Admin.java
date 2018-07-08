@@ -40,4 +40,11 @@ public class Admin {
     public void setAdmIssuper(Boolean admIssuper) {
         this.admIssuper = admIssuper;
     }
+
+	@Override
+	public String toString() {
+		return "Admin [admId=" + admId + ", admName=" + admName + ", admPwd=" + admPwd + ", admIssuper=" + admIssuper
+				+ "]";
+	}
+    
 }

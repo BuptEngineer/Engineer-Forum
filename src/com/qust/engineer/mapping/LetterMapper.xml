@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qust.engineer.dao.LetterMapper">
-  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Letter">
-    <id column="l_id" jdbcType="INTEGER" property="lId" />
-    <result column="l_content" jdbcType="VARCHAR" property="lContent" />
-    <result column="from_u_id" jdbcType="INTEGER" property="fromUId" />
-    <result column="to_u_id" jdbcType="INTEGER" property="toUId" />
-    <result column="ul_time" jdbcType="TIMESTAMP" property="ulTime" />
-    <result column="l_isread" jdbcType="BIT" property="lIsread" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qust.engineer.dao.LetterMapper" >
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Letter" >
+    <id column="l_id" property="lId" jdbcType="INTEGER" />
+    <result column="l_content" property="lContent" jdbcType="VARCHAR" />
+    <result column="from_u_id" property="fromUId" jdbcType="INTEGER" />
+    <result column="to_u_id" property="toUId" jdbcType="INTEGER" />
+    <result column="ul_time" property="ulTime" jdbcType="TIMESTAMP" />
+    <result column="l_isread" property="lIsread" jdbcType="BIT" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     l_id, l_content, from_u_id, to_u_id, ul_time, l_isread
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from tbl_letter
     where l_id = #{lId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tbl_letter
     where l_id = #{lId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qust.engineer.pojo.Letter">
+  <insert id="insert" parameterType="com.qust.engineer.pojo.Letter" >
     insert into tbl_letter (l_id, l_content, from_u_id, 
       to_u_id, ul_time, l_isread
       )
@@ -30,173 +30,71 @@
       #{toUId,jdbcType=INTEGER}, #{ulTime,jdbcType=TIMESTAMP}, #{lIsread,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Letter">
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Letter" >
     insert into tbl_letter
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="lId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
         l_id,
       </if>
-      <if test="lContent != null">
+      <if test="lContent != null" >
         l_content,
       </if>
-      <if test="fromUId != null">
+      <if test="fromUId != null" >
         from_u_id,
       </if>
-      <if test="toUId != null">
+      <if test="toUId != null" >
         to_u_id,
       </if>
-      <if test="ulTime != null">
+      <if test="ulTime != null" >
         ul_time,
       </if>
-      <if test="lIsread != null">
+      <if test="lIsread != null" >
         l_isread,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="lId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lId != null" >
         #{lId,jdbcType=INTEGER},
       </if>
-      <if test="lContent != null">
+      <if test="lContent != null" >
         #{lContent,jdbcType=VARCHAR},
       </if>
-      <if test="fromUId != null">
+      <if test="fromUId != null" >
         #{fromUId,jdbcType=INTEGER},
       </if>
-      <if test="toUId != null">
+      <if test="toUId != null" >
         #{toUId,jdbcType=INTEGER},
       </if>
-      <if test="ulTime != null">
+      <if test="ulTime != null" >
         #{ulTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lIsread != null">
+      <if test="lIsread != null" >
         #{lIsread,jdbcType=BIT},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Letter">
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Letter" >
     update tbl_letter
-    <set>
-      <if test="lContent != null">
+    <set >
+      <if test="lContent != null" >
         l_content = #{lContent,jdbcType=VARCHAR},
       </if>
-      <if test="fromUId != null">
+      <if test="fromUId != null" >
         from_u_id = #{fromUId,jdbcType=INTEGER},
       </if>
-      <if test="toUId != null">
+      <if test="toUId != null" >
         to_u_id = #{toUId,jdbcType=INTEGER},
       </if>
-      <if test="ulTime != null">
+      <if test="ulTime != null" >
         ul_time = #{ulTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lIsread != null">
+      <if test="lIsread != null" >
         l_isread = #{lIsread,jdbcType=BIT},
       </if>
     </set>
     where l_id = #{lId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Letter">
-    update tbl_letter
-    set l_content = #{lContent,jdbcType=VARCHAR},
-      from_u_id = #{fromUId,jdbcType=INTEGER},
-      to_u_id = #{toUId,jdbcType=INTEGER},
-      ul_time = #{ulTime,jdbcType=TIMESTAMP},
-      l_isread = #{lIsread,jdbcType=BIT}
-    where l_id = #{lId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="pojo.Letter">
-    <id column="l_id" jdbcType="INTEGER" property="lId" />
-    <result column="l_content" jdbcType="VARCHAR" property="lContent" />
-    <result column="from_u_id" jdbcType="INTEGER" property="fromUId" />
-    <result column="to_u_id" jdbcType="INTEGER" property="toUId" />
-    <result column="ul_time" jdbcType="TIMESTAMP" property="ulTime" />
-    <result column="l_isread" jdbcType="BIT" property="lIsread" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    l_id, l_content, from_u_id, to_u_id, ul_time, l_isread
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from tbl_letter
-    where l_id = #{lId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from tbl_letter
-    where l_id = #{lId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="pojo.Letter">
-    insert into tbl_letter (l_id, l_content, from_u_id, 
-      to_u_id, ul_time, l_isread
-      )
-    values (#{lId,jdbcType=INTEGER}, #{lContent,jdbcType=VARCHAR}, #{fromUId,jdbcType=INTEGER}, 
-      #{toUId,jdbcType=INTEGER}, #{ulTime,jdbcType=TIMESTAMP}, #{lIsread,jdbcType=BIT}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="pojo.Letter">
-    insert into tbl_letter
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="lId != null">
-        l_id,
-      </if>
-      <if test="lContent != null">
-        l_content,
-      </if>
-      <if test="fromUId != null">
-        from_u_id,
-      </if>
-      <if test="toUId != null">
-        to_u_id,
-      </if>
-      <if test="ulTime != null">
-        ul_time,
-      </if>
-      <if test="lIsread != null">
-        l_isread,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="lId != null">
-        #{lId,jdbcType=INTEGER},
-      </if>
-      <if test="lContent != null">
-        #{lContent,jdbcType=VARCHAR},
-      </if>
-      <if test="fromUId != null">
-        #{fromUId,jdbcType=INTEGER},
-      </if>
-      <if test="toUId != null">
-        #{toUId,jdbcType=INTEGER},
-      </if>
-      <if test="ulTime != null">
-        #{ulTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lIsread != null">
-        #{lIsread,jdbcType=BIT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="pojo.Letter">
-    update tbl_letter
-    <set>
-      <if test="lContent != null">
-        l_content = #{lContent,jdbcType=VARCHAR},
-      </if>
-      <if test="fromUId != null">
-        from_u_id = #{fromUId,jdbcType=INTEGER},
-      </if>
-      <if test="toUId != null">
-        to_u_id = #{toUId,jdbcType=INTEGER},
-      </if>
-      <if test="ulTime != null">
-        ul_time = #{ulTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lIsread != null">
-        l_isread = #{lIsread,jdbcType=BIT},
-      </if>
-    </set>
-    where l_id = #{lId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="pojo.Letter">
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Letter" >
     update tbl_letter
     set l_content = #{lContent,jdbcType=VARCHAR},
       from_u_id = #{fromUId,jdbcType=INTEGER},
