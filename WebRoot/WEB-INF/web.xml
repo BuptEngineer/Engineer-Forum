@@ -174,7 +174,7 @@
     </welcome-file-list>  
    <error-page>
        <error-code>404</error-code>
-       <location>/jsps/404page/404.html</location>
+       <location>/WebRoot/jsps/404page/404.html</location>
        <!-- 表示当系统发生404就是不存在请求地址的错误的时候，页面跳转到404.html页面。 -->
     </error-page>
     <error-page>
