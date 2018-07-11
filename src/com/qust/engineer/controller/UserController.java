@@ -12,10 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @RequestMapping("/userShow")
-    public String toIndex(HttpServletRequest request, Model model){
+    public String userShow(HttpServletRequest request, Model model){
 
         model.addAttribute("user", "sgy");
         return "test"; // 返回页面可以带有文件夹
     }
+    
+    @RequestMapping("/login")
+    public String login(HttpServletRequest request, Model model){
+    	
+        return "login"; // 返回页面可以带有文件夹
+    }
+
 
 }
