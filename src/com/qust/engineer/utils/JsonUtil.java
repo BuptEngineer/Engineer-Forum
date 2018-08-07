@@ -10,6 +10,12 @@ import java.util.Map;
 import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+/**
+ * what about this class?
+ * I don't know its effect.
+ * @author sgy
+ *
+ */
 public class JsonUtil {
 private static Log log = LogFactory.getLog(JsonUtil.class);
 public static String object2json(Object obj) {

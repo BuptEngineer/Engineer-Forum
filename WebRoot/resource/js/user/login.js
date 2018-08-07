@@ -1,7 +1,7 @@
 function _change() {
-	$("#vCode").attr("src", "/engineer/VerifyCodeServlet?a=" + new Date().getTime());
+	$("#vCode").attr("src", "verifyCode?time = "+new Date());
 }
-$(function() {	
+$(function() {
 	/*
 	 * 1. 给登录按钮添加submit()事件，完成表单校验
 	 */

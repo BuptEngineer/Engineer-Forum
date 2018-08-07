@@ -3,27 +3,73 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<!-- <display-name>engineer</display-name> <servlet> <servlet-name>VerifyCodeServlet</servlet-name> 
-		<servlet-class>cn.itcast.vcode.servlet.VerifyCodeServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>UserServlet</servlet-name> <servlet-class>com.qust.engineer.servlet.UserServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>CategoryServlet</servlet-name> <servlet-class>com.qust.engineer.servlet.CategoryServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>AdminAddCtgServlet</servlet-name> <servlet-class>com.qust.engineer.admin.servlet.AdminAddCtgServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>AdminCtgServlet</servlet-name> <servlet-class>com.qust.engineer.admin.servlet.AdminCtgServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>RouteServlet</servlet-name> <servlet-class>com.qust.engineer.servlet.RouteServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>PersonalCenterServlet</servlet-name> <servlet-class>com.qust.engineer.servlet.PersonalCenterServlet</servlet-class> 
-		</servlet> <servlet> <servlet-name>QuestionServlet</servlet-name> <servlet-class>com.qust.engineer.servlet.QuestionServlet</servlet-class> 
-		</servlet> <servlet-mapping> <servlet-name>VerifyCodeServlet</servlet-name> 
-		<url-pattern>/VerifyCodeServlet</url-pattern> </servlet-mapping> <servlet-mapping> 
-		<servlet-name>UserServlet</servlet-name> <url-pattern>/UserServlet</url-pattern> 
-		</servlet-mapping> <servlet-mapping> <servlet-name>CategoryServlet</servlet-name> 
-		<url-pattern>/CategoryServlet</url-pattern> </servlet-mapping> <servlet-mapping> 
-		<servlet-name>AdminAddCtgServlet</servlet-name> <url-pattern>/admin/AdminAddCtgServlet</url-pattern> 
-		</servlet-mapping> <servlet-mapping> <servlet-name>AdminCtgServlet</servlet-name> 
-		<url-pattern>/admin/AdminCtgServlet</url-pattern> </servlet-mapping> <servlet-mapping> 
-		<servlet-name>RouteServlet</servlet-name> <url-pattern>/RouteServlet</url-pattern> 
-		</servlet-mapping> <servlet-mapping> <servlet-name>PersonalCenterServlet</servlet-name> 
-		<url-pattern>/PersonalCenterServlet</url-pattern> </servlet-mapping> <servlet-mapping> 
-		<servlet-name>QuestionServlet</servlet-name> <url-pattern>/QuestionServlet</url-pattern> 
+	<!-- <display-name>engineer</display-name> 
+		<servlet> 
+			<servlet-name>VerifyCodeServlet</servlet-name> 
+			<servlet-class>cn.itcast.vcode.servlet.VerifyCodeServlet</servlet-class>
+			VerifyCodeServlet is included in itcast package.
+			I am removing itcast package and I find a alternative for it.
+			I also want to learn how to write a verification code. It seems funny.
+		</servlet> 
+		<servlet> 
+			<servlet-name>UserServlet</servlet-name> 
+			<servlet-class>com.qust.engineer.servlet.UserServlet</servlet-class> 
+		</servlet> 
+		<servlet> 
+			<servlet-name>CategoryServlet</servlet-name> 
+			<servlet-class>com.qust.engineer.servlet.CategoryServlet</servlet-class> 
+		</servlet> 
+		<servlet> 
+			<servlet-name>AdminAddCtgServlet</servlet-name> 
+			<servlet-class>com.qust.engineer.admin.servlet.AdminAddCtgServlet</servlet-class> 
+		</servlet> 
+		<servlet> 
+			<servlet-name>AdminCtgServlet</servlet-name> 
+			<servlet-class>com.qust.engineer.admin.servlet.AdminCtgServlet</servlet-class> 
+		</servlet> 
+		<servlet> 
+			<servlet-name>RouteServlet</servlet-name> 
+			<servlet-class>com.qust.engineer.servlet.RouteServlet</servlet-class> 
+		</servlet> 
+		<servlet> 
+			<servlet-name>PersonalCenterServlet</servlet-name> 
+			<servlet-class>com.qust.engineer.servlet.PersonalCenterServlet</servlet-class> 
+		</servlet> 
+		<servlet> 
+			<servlet-name>QuestionServlet</servlet-name> 
+			<servlet-class>com.qust.engineer.servlet.QuestionServlet</servlet-class> 
+		</servlet>
+		<servlet-mapping> 
+			<servlet-name>VerifyCodeServlet</servlet-name> 
+			<url-pattern>/VerifyCodeServlet</url-pattern> 
+		</servlet-mapping> 
+		<servlet-mapping> 
+			<servlet-name>UserServlet</servlet-name> 
+			<url-pattern>/UserServlet</url-pattern> 
+		</servlet-mapping> 
+		<servlet-mapping> 
+			<servlet-name>CategoryServlet</servlet-name> 
+			<url-pattern>/CategoryServlet</url-pattern> 
+		</servlet-mapping> 
+		<servlet-mapping> 
+			<servlet-name>AdminAddCtgServlet</servlet-name> 
+			<url-pattern>/admin/AdminAddCtgServlet</url-pattern> 
+		</servlet-mapping> 
+		<servlet-mapping> 
+			<servlet-name>AdminCtgServlet</servlet-name> 
+			<url-pattern>/admin/AdminCtgServlet</url-pattern> 
+		</servlet-mapping> 
+		<servlet-mapping> 
+			<servlet-name>RouteServlet</servlet-name> 
+			<url-pattern>/RouteServlet</url-pattern> 
+		</servlet-mapping> 
+		<servlet-mapping> 
+			<servlet-name>PersonalCenterServlet</servlet-name> 
+			<url-pattern>/PersonalCenterServlet</url-pattern> 
+		</servlet-mapping> 
+		<servlet-mapping> 
+			<servlet-name>QuestionServlet</servlet-name> 
+			<url-pattern>/QuestionServlet</url-pattern> 
 		</servlet-mapping> -->
 
 	<!-- 以下是过滤器配置 -->
@@ -74,42 +120,38 @@
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
 		<!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<!-- the configuration for providing access to ".png" -->
 	<servlet-mapping>
-
 		<servlet-name>default</servlet-name>
+		<url-pattern>*.png</url-pattern>
+	</servlet-mapping>
 
+	<!-- the configuration for providing access to ".jpg" -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
 		<url-pattern>*.jpg</url-pattern>
-
 	</servlet-mapping>
-
+	<!-- like last comment -->
 	<servlet-mapping>
-
 		<servlet-name>default</servlet-name>
-
 		<url-pattern>*.js</url-pattern>
-
 	</servlet-mapping>
 
 	<servlet-mapping>
-
 		<servlet-name>default</servlet-name>
-
 		<url-pattern>*.css</url-pattern>
-
 	</servlet-mapping>
+
 	<servlet-mapping>
-
 		<servlet-name>default</servlet-name>
-
 		<url-pattern>*.gif</url-pattern>
-
 	</servlet-mapping>
 
 	<welcome-file-list>

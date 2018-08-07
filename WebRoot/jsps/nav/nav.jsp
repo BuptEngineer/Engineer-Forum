@@ -12,99 +12,105 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="title" content="LayoutIt! - Bootstrap可视化布局系统">
-<meta name="description" content="LayoutIt! 可拖放排序在线编辑的Bootstrap可视化布局系统">
-<meta name="keywords" content="可视化,布局,系统">
 <title>Engineer</title>
 
 <!-- Le styles -->
+<!-- 
 <link
 	href="<c:url value='/jsps/mainPage/css/bootstrap-combined.min.css" rel="stylesheet'/>">
 <link
 	href="<c:url value='/jsps/mainPage/css/layoutit.css" rel="stylesheet'/>">
-
+ -->
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 		<script src="<c:url value='/jsps/mainPage/js/html5shiv.js'/>"></script>
 	<![endif]-->
 
 <!-- Fav and touch icons -->
+<!-- 
 <link rel="shortcut icon"
 	href="<c:url value='/jsps/mainPage/img/favicon.png'/>">
-
+ -->
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<![endif]-->
-
-
-
+<link
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script
+	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<!--导航-->
-
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<button data-target=".nav-collapse" data-toggle="collapse"
-					class="btn btn-navbar" type="button">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<!-- class：navbar-header 表示向导航栏添加一个标题-->
+			<div class="active navbar-header">
+				<!-- data-toggle = collapse，表示添加响应式布局 -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#example-navbar-collapse">
+					<span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="brand" href="<c:url value='/jsps/mainPage/mainPage.jsp'/>"><img
-					src="<c:url value='/jsps/mainPage/img/favicon.png'/>">Engineer<span
-					class="label"></span></a>
-				<div class="nav-collapse collapse">
+				<!-- a 元素标签会让文本看起来跟大写-->
+				<a class="navbar-brand" href="#">Engineer</a>
+			</div>
+			<!--向 div 添加一个标题 class.nav, class.navbar-nav 无序列表即可-->
+			<div class="collapse navbar-collapse" id="example-navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li ><a
+						href="<c:url value='/CategoryServlet?method=findHotTapic'/>">热门路线</a></li>
+					<li><a href="<c:url value='/CategoryServlet?method=findAll'/>">标签</a></li>
+					<li><a
+						href="<c:url value='/QuestionServlet?method=findQForMainPlate'/>">有问有答</a></li>
+					<li><a
+						href="<c:url value='/PersonalCenterServlet?method=findUserInforById'/>">个人中心</a></li>
+					<li>
+					<li>
+						<!-- 添加一个搜索框 -->
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+							<button type="submit" class="btn btn-default">提交</button>
+						</form>
+					</li>
+					<!-- dropdown 二级列表 -->
+					<li class="dropdown">
+						<!--二级列表的标题--> <a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> Java <b class="caret"></b>
+					</a> <!--二级列表元素-->
+						<ul class="dropdown-menu">
+							<li><a href="#">个人中心</a></li>
+							<li><a href="#">有问有答</a></li>
+							<li><a href="#">Jasper Report</a></li>
+							<!--添加分割线-->
+							<li class="divider"></li>
+							<li><a href="#">分离的链接</a></li>
+							<li class="divider"></li>
+							<li><a href="#">另一个分离的链接</a></li>
+						</ul>
+					</li>
 
-
-					<ul class="nav" id="menu-layoutit">
-						<li class="divider-vertical"></li>
-						<li style=" height: 45px;">
-							<form class="form-search">
-								<input class="input-medium search-query"
-									style="height:20px;width:150px" type="text" />
-								<button class="btn btn-primary" contenteditable="true"
-									type="submit">搜索</button>
-							</form>
-						</li>
-						<li><a href="<c:url value='/CategoryServlet?method=findHotTapic'/>" style="color:#ffffff;" target="_blank">热门路线</a></li>
-						<li><a href="<c:url value='/CategoryServlet?method=findAll'/>" style="color:#ffffff;" target="_blank">标签</a></li>
-						<li><a href="<c:url value='/QuestionServlet?method=findQForMainPlate'/>"
-							style="color:#ffffff;">有问有答</a></li>
-						<li><a href="<c:url value='/PersonalCenterServlet?method=findUserInforById'/>"
-							style="color:#ffffff;">个人中心</a></li>
-						<li>
-					</ul>
-
-
-					 <c:choose>
-					<c:when test="${session_user==null}">
-					<ul class="nav pull-right">
-						<li><a href="<c:url value='/jsps/user/login.jsp'/>"
-							style="color:#ffffff;">登录</a></li>
-						<li>
-						<li><a href="<c:url value='/jsps/user/regist.jsp'/>"
-							style="color:#ffffff;">注册</a></li>
-						<li></li>
-					</ul>
-					</c:when>
-					<c:otherwise>
-					<ul class="nav pull-right">
-						<li><a href="<c:url value='/jsps/personal/personal.jsp'/>"
-							style="color:#ffffff;">${session_user.u_name }</a></li>
-						<li>
-					</ul>
-					
-					</c:otherwise>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<c:choose>
+						<c:when test="${session_user==null}">
+							<li><a href="<c:url value='/jsps/user/login.jsp'/>">登录</a></li>
+							<li>
+							<li><a href="<c:url value='/jsps/user/regist.jsp'/>">注册</a></li>
+							<li></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="<c:url value='/jsps/personal/personal.jsp'/>">${session_user.u_name }</a></li>
+							<li>
+						</c:otherwise>
 					</c:choose>
-
-				</div>
-				<!--/.nav-collapse -->
+				</ul>
 			</div>
 		</div>
-	</div>
+	</nav>
 
 
 	<!--导航-->

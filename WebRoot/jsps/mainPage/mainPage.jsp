@@ -17,9 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Engineer</title>
 
 <!-- Le styles -->
+<!-- 
 <link href="<c:url value='/jsps/mainPage/css/bootstrap-combined.min.css" rel="stylesheet'/>">
 <link href="<c:url value='/jsps/mainPage/css/layoutit.css" rel="stylesheet'/>">
-
+ -->
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 
 <!--[if lt IE 9]>

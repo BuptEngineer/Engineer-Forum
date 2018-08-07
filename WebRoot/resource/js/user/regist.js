@@ -1,6 +1,7 @@
 	function _change(){
-		$("#vCode").attr("src", "/engineer/VerifyCodeServlet?a=" + new Date().getTime());
+		$("#vCode").attr("src", "verifyCode?time = "+new Date());
 	}
+	
 	$(function() {
 		//1.遍历所有错误信息集合，调用showError方法确定是否显示作物信息
 		$(".spanError").each(function(){
@@ -69,7 +70,7 @@
 					showError($("#"+id+"Error"));
 					return false;
 				}
-			}		
+			}
 		});
 		//通过校验，返回true
 		return true;

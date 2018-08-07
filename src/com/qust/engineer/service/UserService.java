@@ -20,7 +20,7 @@ import com.qust.engineer.service.exception.UserException;
 
 public class UserService {
 	private UserDao userDao = new UserDao();
-	//注册时ajax检测邮箱是否已经注册过
+	// validate email after registered through ajax 
 	public boolean ajaxValidateEmail(String email){
 		try {
 			return userDao.ajaxValidateEmail(email);

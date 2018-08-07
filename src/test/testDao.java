@@ -16,7 +16,7 @@ import com.qust.engineer.pojo.User;
  
 
   
-@RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类  
+@RunWith(SpringJUnit4ClassRunner.class)       
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})  
   
 public class testDao {  
@@ -31,8 +31,8 @@ public class testDao {
     @Test
     public void testUserMapper() {
         Admin a = adminMapper.selectByPrimaryKey(1);
+        // if database connection works
+        // there will be information of admin user whose id is 1
         System.out.println(a.toString());
-//        u.setuEmail("4");
-//        userMapper.updateByPrimaryKeySelective(u);
     }
 }  

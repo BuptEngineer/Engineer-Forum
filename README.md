@@ -8,7 +8,9 @@
 ## 技术依赖
 * bootstrap
 * jQuery
-* ssm 框架
+* spring
+* spring MVC
+* Mybatis
 * c3p0
 * MySQL
 
