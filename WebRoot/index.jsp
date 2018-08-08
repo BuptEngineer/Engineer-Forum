@@ -13,60 +13,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="shortcut icon" href="<c:url value='/jsps/mainPage/img/favicon.png'/>">
 </head>
 
-
 <jsp:include page="nav/nav.jsp">
 <jsp:param value="${categorys}" name="categorys"/>
 </jsp:include>
 
-	<div class="row-fluid"  >
-		<div class="span12">
-			<div class="carousel slide" id="carousel-561128">
-				<ol class="carousel-indicators">
-					<li data-slide-to="0" data-target="#carousel-561128">
-					</li>
-					<li data-slide-to="1" data-target="#carousel-561128">
-					</li>
-					<li data-slide-to="2" data-target="#carousel-561128" class="active">
-					</li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="item">
-						<img alt="" src="img/1.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								棒球
-							</h4>
-							<p>
-								棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。
-							</p>
-						</div>
-					</div>
-					<div class="item">
-						<img alt="" src="img/2.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								冲浪
-							</h4>
-							<p>
-								冲浪是以海浪为动力，利用自身的高超技巧和平衡能力，搏击海浪的一项运动。运动员站立在冲浪板上，或利用腹板、跪板、充气的橡皮垫、划艇、皮艇等驾驭海浪的一项水上运动。
-							</p>
-						</div>
-					</div>
-					<div class="item active">
-						<img alt="" src="img/3.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								自行车
-							</h4>
-							<p>
-								以自行车为工具比赛骑行速度的体育运动。1896年第一届奥林匹克运动会上被列为正式比赛项目。环法赛为最著名的世界自行车锦标赛。
-							</p>
-						</div>
-					</div>
-				</div> <a data-slide="prev" href="#carousel-561128" class="left carousel-control">‹</a> <a data-slide="next" href="#carousel-561128" class="right carousel-control">›</a>
-			</div>
-		</div>
-	</div>
+	<!-- 最热插图 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!--轮播图-->
+                <div id="myCarousel" class="carousel slide">
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- 轮播（Carousel）项目 -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="resource/imgs/chemical.jpg " class="img-rounded" alt="First slide">
+                        </div>
+                        <div class="item">
+                            <img src="resource/imgs/computer.jpg" class="img-rounded" alt="Second slide">
+                        </div>
+                        <div class="item">
+                            <img src="resource/imgs/mechanical.jpg" class="img-rounded" alt="Third slide">
+                        </div>
+                    </div>
+                    <!-- 轮播（Carousel）导航 -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!--添加两列图-->
+                <div class="row top">
+                    <img src="resource/imgs/right-1.jpg" class="img-responsive img-rounded" alt="Cinque Terre">
+                </div>
+                <!-- 清除浮动，并且添加 margin-bottom -->
+                <!-- 清除浮动 -->
+                <div class="clearfix" style="margin-bottom: 10px;"></div>
+                <div class="row bottom">
+                    <img src="resource/imgs/right-2.jpg" class="img-responsive img-rounded" alt="Cinque Terre">
+                </div>
+            </div>
+        </div>
+    </div>
+	
 	<div class="row-fluid">
 		<div class="span12">
 			<h3 class="text-center">

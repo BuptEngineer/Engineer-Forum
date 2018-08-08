@@ -16,7 +16,11 @@
 <script	src="<c:url value='/resource/js/lib/jquery.min.js'/>"></script>
 <link  href="<c:url value='/resource/css/lib/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 <script src="<c:url value='/resource/js/lib/bootstrap.min.js'/>"></script>
-
+<style>
+	body{
+	padding-top:55px;
+	}
+</style>
 </head>
 
 <body>
@@ -61,7 +65,10 @@
 							<li><a href="#">另一个分离的链接</a></li>
 						</ul>
 					</li>
-					<li>
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				<li>
 						<!-- 添加一个搜索框 -->
 						<form class="navbar-form navbar-left" role="search">
 							<div class="form-group">
@@ -70,13 +77,11 @@
 							<button type="submit" class="btn btn-default">搜索</button>
 						</form>
 					</li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
 						<c:when test="${session_user==null}">
-							<li><a href="<c:url value='/jsps/user/login.jsp'/>">登录</a></li>
+							<li><a href="<c:url value='/user/login'/>">登录</a></li>
 							<li>
-							<li><a href="<c:url value='/jsps/user/regist.jsp'/>">注册</a></li>
+							<li><a href="<c:url value='/user/register'/>">注册</a></li>
 							<li></li>
 						</c:when>
 						<c:otherwise>
