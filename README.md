@@ -15,5 +15,5 @@
 * MySQL
 
 ## 效果
-!()[pic/mainPage.gif]
+![](pic/mainPage.gif)
 
