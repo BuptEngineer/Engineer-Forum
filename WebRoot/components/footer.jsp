@@ -10,60 +10,60 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- footer -->
-<hr>
-<div class="container">
-	<div class="row-fluid">
-		<div class="col-md-6">
-			<div class="span6">
-				<img src="<c:url value='/jsps/mainPage/img/favicon.png'/>">
-				<dl>
-					<dt>Engineer</dt>
-					<dd>工程师之路，改变你的未来</dd>
+	<!-- footer -->
+	<hr>
+	<div class="container">
+		<div class="row-fluid">
+			<div class="col-md-6">
+				<div class="span6">
+					<img src="<c:url value='/jsps/mainPage/img/favicon.png'/>">
+					<dl>
+						<dt>Engineer</dt>
+						<dd>工程师之路，改变你的未来</dd>
 
-				</dl>
+					</dl>
+				</div>
 			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="span6">
-				<div class="row-fluid">
-					<div class="col-md-4">
-						<div class="span4">
-							<h4>关于</h4>
-							<ul>
-								<li><a href="#">我们的历史</a></li>
-							</ul>
+			<div class="col-md-6">
+				<div class="span6">
+					<div class="row-fluid">
+						<div class="col-md-4">
+							<div class="span4">
+								<h4>关于</h4>
+								<ul>
+									<li><a href="#">我们的历史</a></li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="span4">
-							<h4>联系方式</h4>
-							<ul>
-								<li>电话:89767223</li>
-							</ul>
+						<div class="col-md-4">
+							<div class="span4">
+								<h4>联系方式</h4>
+								<ul>
+									<li>电话:89767223</li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="span4">
-							<h4>地址</h4>
-							<ul>
-								<li>北京</li>
-								<li>海淀区</li>
-								<li>元大都遗址</li>
-							</ul>
+						<div class="col-md-4">
+							<div class="span4">
+								<h4>地址</h4>
+								<ul>
+									<li>北京</li>
+									<li>海淀区</li>
+									<li>元大都遗址</li>
+								</ul>
+							</div>
 						</div>
-					</div>
 
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<hr>
+	<hr>
 
-<div contenteditable="true" class="text-center">版权所有 | Copyright
-	by Engineer</div>
+	<div contenteditable="true" class="text-center">版权所有 | Copyright
+		by Engineer</div>
 
-<!-- footer -->
+	<!-- footer -->
 </body>
 </html>

@@ -14,3 +14,6 @@
 * c3p0
 * MySQL
 
+## 效果
+!()[pic/mainPage.gif]
+

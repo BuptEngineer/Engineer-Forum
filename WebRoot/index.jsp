@@ -12,6 +12,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Engineer</title>
 <link rel="shortcut icon"
 	href="<c:url value='/jsps/mainPage/img/favicon.png'/>">
+<style>
+.img-caption-h3 {
+	/* h3 18.72px, 100 - 18.72 = 81.28 */
+	margin-top: -80px;
+	margin-bottom: 55px;
+	margin-left: 10%;
+	color: white;
+}
+</style>
 </head>
 
 <jsp:include page="components/navbar.jsp">
@@ -33,16 +42,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- 轮播（Carousel）项目 -->
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="resource/imgs/chemical.jpg " class="img-rounded"
-							alt="First slide">
+						<img src="resource/imgs/chemical.jpg "
+							class="img-responsive img-rounded" alt="First slide">
+						<div class="carousel-caption">
+							<h3>教你如何成为一名高级的化学工程师</h3>
+						</div>
 					</div>
 					<div class="item">
-						<img src="resource/imgs/computer.jpg" class="img-rounded"
-							alt="Second slide">
+						<img src="resource/imgs/computer.jpg"
+							class="img-responsive img-rounded" alt="Second slide">
+						<div class="carousel-caption">
+							<h3>教你如何成为一名高级的计算机工程师</h3>
+						</div>
 					</div>
 					<div class="item">
-						<img src="resource/imgs/mechanical.jpg" class="img-rounded"
-							alt="Third slide">
+						<img src="resource/imgs/mechanical.jpg"
+							class="img-responsive img-rounded" alt="Third slide">
+						<div class="carousel-caption">
+							<h3>教你如何成为一名高级的机械工程师</h3>
+						</div>
 					</div>
 				</div>
 				<!-- 轮播（Carousel）导航 -->
@@ -60,15 +78,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-4">
 			<!--添加两列图-->
 			<div class="row top">
-				<img src="resource/imgs/right-1.jpg"
+				<!-- style = "background-image: url(imgs/right-1.jpg);background-size:100% 100%;" -->
+				<a href="#"> <img src="resource/imgs/right-1.jpg"
 					class="img-responsive img-rounded" alt="Cinque Terre">
+
+				</a>
+				<h3 class="img-caption-h3">成为建筑师</h3>
+
+
 			</div>
 			<!-- 清除浮动，并且添加 margin-bottom -->
-			<!-- 清除浮动 -->
 			<div class="clearfix" style="margin-bottom: 10px;"></div>
 			<div class="row bottom">
-				<img src="resource/imgs/right-2.jpg"
+				<a href="#"> <img src="resource/imgs/right-2.jpg"
 					class="img-responsive img-rounded" alt="Cinque Terre">
+				</a>
+				<h3 class="img-caption-h3">成为航天工程师</h3>
 			</div>
 		</div>
 	</div>
@@ -79,12 +104,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="container">
 	<div class="row">
 		<div class="col-md-2 ">
-			<h3 class="text-center">最热路线</h3>
+			<h3>最热路线</h3>
 		</div>
 	</div>
 </div>
-<!-- 抄 https://www.csdn.net/ 的首页就行 -->
-<!-- 图从 http://science.sciencemag.org/ 找就行-->
+<!-- 看 https://www.csdn.net/ 的首页就行 -->
+<!-- 图从 http://science.sciencemag.org/-->
 
 <div class="container">
 	<div class="row">
@@ -105,7 +130,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img alt="300x200" src="resource/imgs/title-1.jpg" />
+				<a href="#"> <img alt="300x200" src="resource/imgs/title-1.jpg" />
+				</a>
 				<div class="caption">
 					<h3>冯诺尔曼结构</h3>
 					<p>
@@ -119,7 +145,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img alt="300x200" src="resource/imgs/title-1.jpg" />
+				<a href="#"> <img alt="300x200" src="resource/imgs/title-1.jpg" />
+				</a>
 				<div class="caption">
 					<h3>冯诺尔曼结构</h3>
 					<p>
@@ -166,7 +193,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img alt="300x200" src="resource/imgs/title-1.jpg" />
+				<a href="#"> <img alt="300x200" src="resource/imgs/title-1.jpg" />
+				</a>
 				<div class="caption">
 					<h3>冯诺尔曼结构</h3>
 					<p>
@@ -180,7 +208,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img alt="300x200" src="resource/imgs/title-1.jpg" />
+				<a href="#"> <img alt="300x200" src="resource/imgs/title-1.jpg" />
+				</a>
 				<div class="caption">
 					<h3>冯诺尔曼结构</h3>
 					<p>
@@ -199,4 +228,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <jsp:include page="components/footer.jsp">
 	<jsp:param value="${categorys}" name="categorys" />
 </jsp:include>
-</div>

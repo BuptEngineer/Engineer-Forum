@@ -38,8 +38,7 @@
 			method="post" target="_top">
 			<input type="hidden" name="method" value="login" />
 			<div class="inputDiv">
-				<label class="form-label">邮箱</label> 
-				<input id="email" type="text"
+				<label class="form-label">邮箱</label> <input id="email" type="text"
 					name="u_email" class="input" value="${form.u_email }"
 					placeholder="邮箱:" />
 				<div class="errorDiv">
@@ -48,8 +47,7 @@
 			</div>
 
 			<div class="inputDiv">
-				<label class="form-label">密码</label> 
-				<input id="password"
+				<label class="form-label">密码</label> <input id="password"
 					type="password" name="u_pwd" class="input" value="${form.u_pwd }"
 					placeholder="密码:" />
 				<div class="errorDiv">
@@ -67,7 +65,7 @@
 
 			<div class="img-div">
 				<img id="vCode" src="<c:url value='verifyCode'/>" />
-				<!-- "ajax" the code --> 
+				<!-- "ajax" the code -->
 				<a class="change" href="javascript:_change()">看不清，换一张</a>
 			</div>
 
@@ -75,8 +73,7 @@
 				<input class="form-submit" type="submit" value="登录"></input>
 			</p>
 			<p class="more">
-				<a href="<c:url value='register'/>">免费注册></a><br/> 
-				<a href="#">忘记密码？</a>
+				<a href="<c:url value='register'/>">免费注册></a><br /> <a href="#">忘记密码？</a>
 			</p>
 		</form>
 
