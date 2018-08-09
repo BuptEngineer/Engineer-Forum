@@ -13,19 +13,21 @@
 <head>
 <meta charset="utf-8">
 <title>Engineer</title>
+<!-- 实际上破坏了目录结构 -->
 <script	src="<c:url value='/resource/js/lib/jquery.min.js'/>"></script>
 <link  href="<c:url value='/resource/css/lib/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 <script src="<c:url value='/resource/js/lib/bootstrap.min.js'/>"></script>
 <style>
 	body{
 	padding-top:55px;
+	background-color: floralwhite;
 	}
 </style>
 </head>
 
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
+		<div class="container">
 			<!-- class：navbar-header 表示向导航栏添加一个标题-->
 			<div class="active navbar-header">
 				<!-- data-toggle = collapse，表示添加响应式布局 -->
