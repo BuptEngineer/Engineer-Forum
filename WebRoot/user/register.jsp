@@ -12,79 +12,118 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resource/css/user/regist.css'/>" />
+<!--js css-->
+<!-- <link rel="stylesheet" type="text/css"
+	href="<c:url value='/resource/css/user/login.css'/>"> -->
+<script src="<c:url value='/resource/js/lib/jquery.min.js'/>"></script>
+<link href="<c:url value='/resource/css/lib/bootstrap.min.css'/>"
+	rel="stylesheet" type="text/css">
+<script src="<c:url value='/resource/js/lib/bootstrap.min.js'/>"></script>
 <script type="text/javascript"
-	src="<c:url value='/resource/js/lib/jquery.min.js'/>"></script>
+	src="<c:url value='/resource/js/user/login.js'/>"></script>
+
+<script type="text/javascript">
+	// alert notice about login
+	var msg = "${msg}";
+	if (msg != "") {
+		alert(msg);
+	}
+</script>
+<style>
+body {
+	padding-top: 7%;
+	background: #f0f0f0;
+}
+</style>
 <script type="text/javascript"
 	src="<c:url value='/resource/js/user/regist.js'/>"></script>
 
 </head>
 <body>
-	<div class="whole">
-		<form id="submitBtn" action="<c:url value='/UserServlet'/>"
-			method="post">
-			
-			<!--可让用户输入的表单-->
-			<input type="hidden" name="method" value="regist" />
-			
-			<div id="email-element">
-				<label for="email">电子邮箱:</label> <input id="email" class="input"
-					type="text" name="u_email" value="${form.u_email }"
-					placeholder="请输入您常用的邮箱地址" /> <span class="spanError"
-					id="emailError">${errors.email }</span>
-			</div>
-			
-			<div id="uname-element">
-				<label for="uname">昵称:</label>
-				<!--为input元素定义标签-->
-				<input id="username" class="input" type="text" name="u_name"
-					value="${form.u_name }" placeholder="起一个响亮的名字吧" />
-				<!--规定用户可输入数据的输入字段-->
-				<span class="spanError" id="usernameError">${errors.username }</span>
-			</div>
-			
-			<div id="upass-element">
-				<label for="upass">密码:</label>
-				<!--for是属性标签顾名思义是为了实现什么-->
-				<input id="password" class="input" type="password" name="u_pwd"
-					value="${form.u_pwd }" placeholder="6-20位英文字母、数字或字符" /> <span
-					class="spanError" id="passwordError">${errors.password }</span>
-			</div>
-			
-			<div id="repass-element">
-				<label for="repass">重复密码:</label>
-				<!--for是属性标签顾名思义是为了实现什么-->
-				<input id="confirmpass" class="input" type="password"
-					name="confirmpass" value="${form.confirmpass }"
-					placeholder="请再次输入密码" /> <span class="spanError"
-					id="confirmpassError">${errors.confirmpass }</span>
-			</div>
-			
-			<div class="sex-element">
-				<label>性别：</label> <input class="gender" id="male" type="radio"
-					name="u_sex" value="男" checked="checked"></input>
-				<!--checked="checked"是默认第一个选项。-->
-				<label class="gender" for="male">男</label> <input class="gender"
-					id="female" type="radio" name="u_sex" value="女"></input> <label
-					class="gender" for="female">女</label>
-			</div>
 
-			<div class="check">
-				<label for="check">验证码:</label> <input id="verifyCode" class="input"
-					type="text" name="verifyCode"> <span class="verifyCodeImg">
-					<img id="vCode" width="100px" height="40px"
-					src="<c:url value='verifyCode'/>" />
-				</span> <span class="spanError" id="verifyCodeError">${errors.verifyCode }</span>
-				<a href="javascript:_change()">看不清，换一张</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8 ">
+				<div class="panel panel-default ">
+					<!-- <div class="panel-heading text-center span20">
+									注册(面板标题)
+							</div> -->
+					<div class="panel-body">
+						<!-- 调节间距 -->
+						<div class="clearfix" style="margin-bottom: 7%;"></div>
+						<form class="form-horizontal col-md-offset-2 col-md-8" role="form"
+							action="<c:url value='registerVerification'/>" method="post">
+							<div class="form-group">
+								<!--has-error，当出错，其中的所有文字都变成红色-->
+								<label for="email" class="col-md-2 control-label">邮箱</label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" id="email"
+										name="u_email" placeholder="邮箱" value="${form.u_email }">
+									<!--当需要提示的时候，class 去掉 hidden-->
+									<!--可以通过 id 来找到每个输入标签对应的提示文本框-->
+									<span class="help-block hidden">一个较长的帮助文本块，超过一行，
+										需要扩展到下一行。本实例中的帮助文本总共有两行。 </span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="nickname" class="col-sm-2 control-label">昵称</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="lastname"
+										placeholder="昵称" name="u_name" id="u_name"
+										value="${form.u_name }">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">密码</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="lastname"
+										placeholder="密码" name="u_pwd" id="password"
+										value="${form.u_pwd }">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">重复密码</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="lastname"
+										placeholder="密码" name="confirmpass" id="confirmpass"
+										value="${form.confirmpass }">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="name" class="col-sm-2 control-label">性别</label>
+								<div class="col-sm-10">
+									<label class="radio-inline"> <!-- inline：在同一行--> <input
+										type="radio" name="u_sex" id="male" value="male"> 男
+									</label> <label class="radio-inline"> <input type="radio"
+										name="u_sex" id="female" value="female"> 女
+									</label> <label class="radio-inline"> <input type="radio"
+										name="u_sex" id="undefined" value="undefined" checked>
+										不确定
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="lastname" class="col-md-2 control-label">验证</label>
+								<div class="col-md-5">
+									<input type="text" class="form-control" id="verifyCode"
+										name="verifyCode" placeholder="验证码">
+								</div>
+								<div class="col-md-5">
+									<img id="vCode" src="<c:url value='verifyCode'/>" width="100%" />
+									<a for="lastname" href="javascript:_change()"
+										style="margin-top: -100px">看不清，换一张</a>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary btn-lg btn-block">注册</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-			
-			<div id="btn-element">
-				<input id="submitButton" class="btn-success" type="submit"
-					value="注册"></input>
-			</div>
-			
-		</form>
+		</div>
 	</div>
 </body>
 </html>
