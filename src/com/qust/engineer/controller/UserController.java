@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,7 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qust.engineer.dao.UserMapper;
+import com.qust.engineer.pojo.User;
 import com.qust.engineer.service.UserService;
 import com.qust.engineer.utils.VerifyCodeUtils;
 
@@ -24,6 +29,9 @@ public class UserController {
 //	@Autowired // register a bean in spring
 //	private UserService userService; // UserService is not ready.
 	
+	@Resource
+	private UserMapper userMapper;
+	
     @RequestMapping("/userShow") // the second filter key of url
     public String userShow(HttpServletRequest request, Model model){
         model.addAttribute("user", "sgy");
@@ -31,15 +39,32 @@ public class UserController {
     }
     
     @RequestMapping("/login")//login page
-    public String login(HttpServletRequest request, Model model){
-    	
+    public String login(){
         return "login";
     }
     
     @RequestMapping("/loginVerification")
-    public String loginVerification(HttpServletRequest request, Model model){
-    	
-        return "register"; 
+    public String loginVerification(HttpServletRequest request, User user){
+    	int n = userMapper.selectByEmailPwd(user);
+    	if(n == 1){
+	    	HttpSession session = request.getSession();
+	    	user.setuName(userMapper.selectNameByEmail(user.getuEmail()));
+	    	user.setuPwd(""); // 清除密码
+	    	session.setAttribute("session_user", user);
+    	}else{
+    		request.setAttribute("msg", "用户名或密码不正确");
+    		return "login";
+    	}
+        return "redirect:/"; 
+    }
+    
+    @RequestMapping("/registerVerification")
+    public String registerVerification(HttpServletRequest request, User user){
+    	userMapper.insert(user);
+    	// 怎样捕捉问题？
+    	HttpSession session = request.getSession();
+    	session.setAttribute("session_user", user);
+        return "redirect:/"; 
     }
     
     @RequestMapping("/register")
@@ -48,19 +73,38 @@ public class UserController {
         return "register";
     }
     
+    
+    @RequestMapping(value = "/ajaxValidateEmail",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	@ResponseBody
+    public String ajaxValidateEmail(HttpServletRequest request){
+    	// 验证邮箱
+    	// 如果邮箱存在那么就返回 ""
+    	// 如果邮箱不存在那么就返回 "false"
+    	
+    	String email = (String)request.getParameter("u_email");
+    	System.out.println(email);
+    	if(userMapper.selectByEmail(email) > 0)
+    		return "";
+    	else
+    		return "true";
+    }
+    
     /**
      * @param request
      * @param model
      * @return
      */
-    @RequestMapping("/registerVerification")
-    public String registerVerification(HttpServletRequest request, Model model){
-    	// construct a user
-    	// get attributes from request
-    	// verify it
-    	// then redirect to another page, like index page.
-    	request.getAttribute("");
-        return "register"; 
+    @RequestMapping(value = "/verifyCode",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+	@ResponseBody
+    public String verifyCode(HttpServletRequest request){
+    	String verifyCode = (String)request.getParameter("verifyCode");
+    	HttpSession  session = request.getSession();
+    	String rightCode = (String)session.getAttribute("verifyCode");
+    	
+    	if(verifyCode.toLowerCase().equals(rightCode.toLowerCase()))
+    		return "true";
+    	else
+    		return "";
     }
     
     @RequestMapping("/verifyCode")

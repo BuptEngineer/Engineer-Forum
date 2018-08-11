@@ -40,4 +40,11 @@ public class Category {
     public void setCtgDesc(String ctgDesc) {
         this.ctgDesc = ctgDesc == null ? null : ctgDesc.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Category [ctgId=" + ctgId + ", ctgName=" + ctgName
+				+ ", pctgId=" + pctgId + ", ctgDesc=" + ctgDesc + "]";
+	}
+    
 }

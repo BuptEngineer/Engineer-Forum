@@ -88,7 +88,7 @@ body {
 							<li></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="<c:url value='/jsps/personal/personal.jsp'/>">${session_user.u_name }</a></li>
+							<li><a href="<c:url value='/jsps/personal/personal.jsp'/>">${session_user.uName }</a></li>
 							<li>
 						</c:otherwise>
 					</c:choose>

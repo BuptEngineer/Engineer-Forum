@@ -1,6 +1,6 @@
 function _change() {
 	$("#vCode").attr("src", "verifyCode?time = " + new Date()); // change
-																// verifyCode
+	// verifyCode
 }
 // 1. submit form after confirming everything is right
 // 2. when input label lose focus, check out content of input label
@@ -78,9 +78,8 @@ function validateEmail() {
 	}
 	// ajax异步通信
 	$.ajax({// 7大参数
-		url : "/engineer/UserServlet",// 要请求的Servlet
+		url : "ajaxValidateEmail",// 要请求的Servlet
 		data : {
-			method : "ajaxValidateEmail",
 			u_email : value
 		},// 请求的方法，及传递的参数
 		type : "post",
@@ -88,7 +87,7 @@ function validateEmail() {
 		async : false,// 是否异步请求，若是，则函数不等服务器返回就直接向下进行
 		cache : false,
 		success : function(result) {
-			if (!result) {// 返回false，则邮箱已经被注册
+			if (!result) {// 返回""，则邮箱已经被注册
 				$("#" + id + "Error").text("该邮箱已被注册！");
 				showError($("#" + id + "Error"));
 				return false;
@@ -175,9 +174,8 @@ function validateVerifyCode() {
 	// ajax验证码校验
 	$.ajax({
 		// 7大参数
-		url : "/engineer/UserServlet",// 要请求的servlet
+		url : "verifyCode",// 要请求的servlet
 		data : {
-			method : "ajaxValidateVerifyCode",
 			verifyCode : value
 		},// 给服务器的参数
 		type : "POST",

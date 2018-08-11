@@ -53,13 +53,13 @@ body {
 						<div class="clearfix" style="margin-bottom: 7%;"></div>
 						<form id="register-form"
 							class="form-horizontal col-md-offset-2 col-md-8" role="form"
-							action="<c:url value='registerVerification'/>" method="post">
+							action="registerVerification" method="post">
 							<div class="form-group">
 								<!--has-error，当出错，其中的所有文字都变成红色-->
 								<label for="email" class="col-md-2 control-label">邮箱</label>
 								<div class="col-md-10">
 									<input type="text" class="form-control" id="email"
-										name="u_email" placeholder="邮箱" value="${form.u_email }">
+										name="uEmail" placeholder="邮箱" value="${form.u_email }">
 									<!--当需要提示的时候，class 去掉 hidden-->
 									<!--可以通过 id 来找到每个输入标签对应的提示文本框-->
 									<span id="emailError" class="help-block  "></span>
@@ -69,7 +69,7 @@ body {
 								<label for="nickname" class="col-sm-2 control-label">昵称</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" placeholder="昵称"
-										name="u_name" id="username" value="${form.u_name }"> <span
+										name="uName" id="username" value="${form.u_name }"> <span
 										id="usernameError" class="help-block  "></span>
 								</div>
 							</div>
@@ -77,7 +77,7 @@ body {
 								<label for="password" class="col-sm-2 control-label">密码</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" placeholder="密码"
-										name="u_pwd" id="password" value="${form.u_pwd }"> <span
+										name="uPwd" id="password" value="${form.u_pwd }"> <span
 										id="passwordError" class="help-block  "></span>
 								</div>
 							</div>
@@ -94,11 +94,11 @@ body {
 								<label for="name" class="col-sm-2 control-label">性别</label>
 								<div class="col-sm-10">
 									<label class="radio-inline"> <!-- inline：在同一行--> <input
-										type="radio" name="u_sex" id="male" value="male"> 男
+										type="radio" name="uSex" id="male" value="m"> 男
 									</label> <label class="radio-inline"> <input type="radio"
-										name="u_sex" id="female" value="female"> 女
+										name="uSex" id="female" value="w"> 女
 									</label> <label class="radio-inline"> <input type="radio"
-										name="u_sex" id="undefined" value="undefined" checked>
+										name="uSex" id="undefined" value="u" checked>
 										不确定
 									</label>
 								</div>
