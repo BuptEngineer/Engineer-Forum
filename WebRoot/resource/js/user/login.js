@@ -1,13 +1,14 @@
 function _change() {
-	$("#vCode").attr("src", "verifyCode?time = "+new Date());
+	$("#vCode").attr("src", "verifyCode?time = "+new Date()); // change verifyCode
 }
-$(function() {
+
+$(document).ready(function(){
 	/*
 	 * 1. 给登录按钮添加submit()事件，完成表单校验
 	 */
-	$("#submitBtn").submit(function(){
+	$("#login-form").submit(function(){
 		var bool = true;
-		$(".input").each(function() {
+		$("input").each(function() {
 			var inputName = $(this).attr("id");
 			if(!invokeValidateFunction(inputName)) {
 				bool = false;
@@ -19,15 +20,16 @@ $(function() {
 	/*
 	 * 2. 输入框得到焦点时隐藏错误信息
 	 */
-	$(".input").focus(function() {
+	$("input").focus(function() {
 		var inputName = $(this).attr("id");
 		$("#" + inputName + "Error").css("display", "none");
+		$("#" + inputName + "Error").parent().removeClass("has-error");
 	});
 	
 	/*
 	 * 3. 输入框失去焦点时进行校验
 	 */
-	$(".input").blur(function() {
+	$("input").blur(function() {
 		var inputName = $(this).attr("id");
 		invokeValidateFunction(inputName);
 	});
@@ -40,7 +42,7 @@ $(function() {
 function invokeValidateFunction(inputName) {
 	inputName = inputName.substring(0, 1).toUpperCase() + inputName.substring(1);
 	var functionName = "validate" + inputName;
-	return eval(functionName + "()");	
+	return eval(functionName + "()"); 
 }
 
 /*
@@ -49,14 +51,17 @@ function invokeValidateFunction(inputName) {
 function validateEmail() {
 	var bool = true;
 	$("#emailError").css("display", "none");
+	$("#emailError").parent().removeClass("has-error");
 	var value = $("#email").val();
 	if(!value) {// 非空校验
 		$("#emailError").css("display", "");
 		$("#emailError").text("邮箱不能为空！");
+		$("#emailError").parent().addClass("has-error");
 		bool = false;
 	}else if(!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(value)){//email格式校验
 		$("#emailError").css("display", "");
 		$("#emailError").text("邮箱格式错误！");
+		$("#emailError").parent().addClass("has-error");
 		bool=false;
 	}else{
 	//ajax注册校验
@@ -73,6 +78,7 @@ function validateEmail() {
 					{
 						$("#emailError").css("display", "");
 						$("#emailError").text("该用户不存在！");
+						$("#emailError").parent().addClass("has-error");
 						bool=false;
 					}
 			}
@@ -88,14 +94,17 @@ function validateEmail() {
 function validatePassword() {
 	var bool = true;
 	$("#passwordError").css("display", "none");
+	$("#passwordError").parent().removeClass("has-error");
 	var value = $("#password").val();
 	if(!value) {// 非空校验
 		$("#passwordError").css("display", "");
 		$("#passwordError").text("密码不能为空！");
+		$("#passwordError").parent().addClass("has-error");
 		bool = false;
 	} else if(value.length < 6 || value.length > 20) {//长度校验
 		$("#passwordError").css("display", "");
 		$("#passwordError").text("密码长度必须在6 ~ 20之间！");
+		$("#passwordError").parent().addClass("has-error");
 		bool = false;
 	}
 	return bool;
@@ -107,14 +116,17 @@ function validatePassword() {
 function validateVerifyCode() {
 	var bool = true;
 	$("#verifyCodeError").css("display", "none");
+	$("#verifyCodeError").parent().removeClass("has-error");
 	var value = $("#verifyCode").val();
 	if(!value) {//非空校验
 		$("#verifyCodeError").css("display", "");
 		$("#verifyCodeError").text("验证码不能为空！");
+		$("#verifyCodeError").parent().addClass("has-error");
 		bool = true;
 	} else if(value.length != 4) {//长度不为4就是错误的
 		$("#verifyCodeError").css("display", "");
 		$("#verifyCodeError").text("错误的验证码！");
+		$("#verifyCodeError").parent().addClass("has-error");
 		bool = true;
 	} else {//验证码是否正确
 		$.ajax({
@@ -128,6 +140,7 @@ function validateVerifyCode() {
 				if(!flag) {
 					$("#verifyCodeError").css("display", "");
 					$("#verifyCodeError").text("验证码错误！");
+					$("#verifyCodeError").parent().addClass("has-error");
 					bool = true;					
 				}
 			}

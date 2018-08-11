@@ -51,7 +51,8 @@ body {
 					<div class="panel-body">
 						<!-- 调节间距 -->
 						<div class="clearfix" style="margin-bottom: 7%;"></div>
-						<form class="form-horizontal col-md-offset-2 col-md-8" role="form"
+						<form id="register-form"
+							class="form-horizontal col-md-offset-2 col-md-8" role="form"
 							action="<c:url value='registerVerification'/>" method="post">
 							<div class="form-group">
 								<!--has-error，当出错，其中的所有文字都变成红色-->
@@ -61,32 +62,32 @@ body {
 										name="u_email" placeholder="邮箱" value="${form.u_email }">
 									<!--当需要提示的时候，class 去掉 hidden-->
 									<!--可以通过 id 来找到每个输入标签对应的提示文本框-->
-									<span class="help-block hidden">一个较长的帮助文本块，超过一行，
-										需要扩展到下一行。本实例中的帮助文本总共有两行。 </span>
+									<span id="emailError" class="help-block  "></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="nickname" class="col-sm-2 control-label">昵称</label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control" id="lastname"
-										placeholder="昵称" name="u_name" id="u_name"
-										value="${form.u_name }">
+									<input type="text" class="form-control" placeholder="昵称"
+										name="u_name" id="username" value="${form.u_name }"> <span
+										id="usernameError" class="help-block  "></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">密码</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="lastname"
-										placeholder="密码" name="u_pwd" id="password"
-										value="${form.u_pwd }">
+									<input type="password" class="form-control" placeholder="密码"
+										name="u_pwd" id="password" value="${form.u_pwd }"> <span
+										id="passwordError" class="help-block  "></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">重复密码</label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control" id="lastname"
-										placeholder="密码" name="confirmpass" id="confirmpass"
-										value="${form.confirmpass }">
+									<input type="password" class="form-control" placeholder="密码"
+										name="confirmpass" id="confirmpass"
+										value="${form.confirmpass }"> <span
+										id="confirmpassError" class="help-block  "></span>
 								</div>
 							</div>
 							<div class="form-group">
@@ -106,7 +107,8 @@ body {
 								<label for="lastname" class="col-md-2 control-label">验证</label>
 								<div class="col-md-5">
 									<input type="text" class="form-control" id="verifyCode"
-										name="verifyCode" placeholder="验证码">
+										name="verifyCode" placeholder="验证码"> <span
+										id="verifyCodeError" class="help-block  "></span>
 								</div>
 								<div class="col-md-5">
 									<img id="vCode" src="<c:url value='verifyCode'/>" width="100%" />

@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<META HTTP-EQUIV="expires" CONTENT="0">
 <title>登录</title>
 
 <!--js css-->
@@ -44,7 +47,8 @@
 				<img src="<c:url value='/resource/imgs/login-show.png'/>" width="100%">
 			</div>
 			<div class="col-md-4" style="padding-top:10%">
-				<form class="form-horizontal" role="form" 
+				<form id = "login-form" 
+				class="form-horizontal" role="form" 
 				action = "<c:url var="post_url" value="loginVerification" />"
 				method="post">
 							<!-- 当出错时，为 form-group div 添加 has-error class，并且添加 下面的 span 元素 -->
@@ -57,6 +61,7 @@
 						<div class="col-md-10">
 							<input type="text" id = "email" name = "u_email" value = "${form.u_email}"
 							 class="form-control" id="firstname" placeholder="邮箱">
+							 <span id = "emailError" class="help-block"></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -64,6 +69,7 @@
 						<div class="col-sm-10">
 							<input type="password" id = "password" name = "u_pwd" value = "${form.u_pwd}"
 							class="form-control" id="lastname" placeholder="密码">
+							<span id = "passwordError" class="help-block"> </span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -71,6 +77,7 @@
 							<div class="col-md-10">
 								<input type="text" id = "verifyCode" name = "verifyCode"
 								class="form-control" id="lastname" placeholder="验证码">
+								<span id = "verifyCodeError" class="help-block"> </span>
 							</div>
 						</div>
 					<div class="form-group">
@@ -79,18 +86,21 @@
 								</div>
 								<a for="lastname" href="javascript:_change()" class="col-md-5 control-label text-left">看不清，换一张</a>
 					</div>
+					<!-- 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox">请记住我
+									<input id = "请记住我" type="checkbox">请记住我
 								</label>
 							</div>
 						</div>
 					</div>
+					-->
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+							<button id = "submitBtn"
+							type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -104,64 +114,5 @@
 		</div>
 	</div>
 </div>
-
-
-
-<!-- 
-	<div class="login">
-		<div class="login-img">
-			<img src="<c:url value='/resource/imgs/login-show.png'/>"
-				width="100%">
-		</div>
-		
-		<form id="submitBtn" class="login-form" action="<c:url var="post_url" value="loginVerification" />"
-			method="post" target="_top">
-			<input type="hidden" name="method" value="login" />
-			<div class="inputDiv">
-				<label class="form-label">邮箱</label> 
-				<input id="email" type="text"
-					name="u_email" class="input" value="${form.u_email }"
-					placeholder="邮箱:" />
-				<div class="errorDiv">
-					<span id="emailError" class="error">${errors.email }</span>
-				</div>
-			</div>
-
-			<div class="inputDiv">
-				<label class="form-label">密码</label> <input id="password"
-					type="password" name="u_pwd" class="input" value="${form.u_pwd }"
-					placeholder="密码:" />
-				<div class="errorDiv">
-					<span id="passwordError" class="error">${errors.password }</span>
-				</div>
-			</div>
-
-			<div class="inputDiv">
-				<label class="form-label">验证</label> 
-				<input id="verifyCode"
-					type="text" name="verifyCode" class="input" placeholder="验证码:" />
-				<div class="errorDiv">
-					<span id="verifyCodeError" class="error">${errors.verifyCode }</span>
-				</div>
-			</div>
-
-			<div class="img-div">
-				<img id="vCode" src="<c:url value='verifyCode'/>" />
-				
-				<a class="change" href="javascript:_change()">看不清，换一张</a>
-			</div>
-
-			<p>
-				<input class="form-submit" type="submit" value="登录"></input>
-			</p>
-			<p class="more">
-				<a href="<c:url value='register'/>">免费注册></a><br /> <a href="#">忘记密码？</a>
-			</p>
-		</form>
-
-	</div>
-	<h3 style="text-align: right">${msg}</h3>
-	
-	 -->
 </body>
 </html>
