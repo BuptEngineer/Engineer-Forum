@@ -1,6 +1,4 @@
 eclipse.preferences.version=1
 encoding//WebRoot/components/footer.jsp=UTF-8
-encoding//src/com/qust/engineer/admin/servlet/AdminAddCtgServlet.java=UTF-8
 encoding//src/com/qust/engineer/controller/UserController.java=UTF-8
-encoding//src/com/qust/engineer/dao/AnswerDao.java=UTF-8
 encoding//src/com/qust/engineer/utils/Uploader.java=UTF-8

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qust.engineer.dao.UserMapper;
 import com.qust.engineer.pojo.User;
-import com.qust.engineer.service.UserService;
 import com.qust.engineer.utils.VerifyCodeUtils;
 
 
