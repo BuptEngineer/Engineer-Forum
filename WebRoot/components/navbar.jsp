@@ -1,8 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 
@@ -18,17 +17,12 @@
 <link href="<c:url value='/resource/css/lib/bootstrap.min.css'/>"
 	rel="stylesheet" type="text/css">
 <script src="<c:url value='/resource/js/lib/bootstrap.min.js'/>"></script>
-<style>
-body {
-	padding-top: 55px;
-	background-color: floralwhite;
-}
-</style>
+<link href = "<c:url value='/resource/css/components/navbar.css'/>"
+	rel="stylesheet" type="text/css">
 </head>
-
 <body>
-	<!-- 导航栏--start -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<!-- 导航栏--start navbar-inverse navbar-fixed-top -->
+	<nav class="navbar navbar-default " role="navigation">
 		<div class="container">
 			<!-- class：navbar-header 表示向导航栏添加一个标题-->
 			<div class="active navbar-header">
@@ -44,31 +38,38 @@ body {
 			<!--向 div 添加一个标题 class.nav, class.navbar-nav 无序列表即可-->
 			<div class="collapse navbar-collapse" id="example-navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a
-						href="<c:url value='/CategoryServlet?method=findHotTapic'/>">热门路线</a></li>
-					<li><a href="<c:url value='/CategoryServlet?method=findAll'/>">标签</a></li>
-					<li><a
-						href="<c:url value='/QuestionServlet?method=findQForMainPlate'/>">有问有答</a></li>
-					<li><a
-						href="<c:url value='/PersonalCenterServlet?method=findUserInforById'/>">个人中心</a></li>
-					<li>
-						<!-- dropdown 二级列表 -->
+					<li><a href="#">首页</a></li>
+					<li class="active"><a
+						href="<c:url value='/CategoryServlet?method=findAll'/>">最近</a></li>
+					<!-- 只有登录用户可见 -->
+					<li><a href="<c:url value='/posts/add'/>">发布新帖</a></li>
+					
 					<li class="dropdown">
-						<!--二级列表的标题--> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> Java <b class="caret"></b>
+			                <!--二级列表的标题--> <a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> 分类 <b class="caret"></b>
 					</a> <!--二级列表元素-->
-						<ul class="dropdown-menu">
-							<li><a href="#">个人中心</a></li>
-							<li><a href="#">有问有答</a></li>
-							<li><a href="#">Jasper Report</a></li>
-							<!--添加分割线-->
-							<li class="divider"></li>
-							<li><a href="#">分离的链接</a></li>
-							<li class="divider"></li>
-							<li><a href="#">另一个分离的链接</a></li>
-						</ul>
+			            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+			                <li><a href="javascript:;">c++</a></li>
+			                <li><a href="javascript:;">python</a></li>
+			                
+			                <li class="dropdown-submenu">
+			                    <a tabindex="-1" href="javascript:;">java</a>
+			                    <ul class="dropdown-menu">
+			                        <li><a tabindex="-1" href="javascript:;">服务器</a></li>
+			                        <li class="dropdown-submenu">
+			                            <a href="javascript:;">Android</a>
+			                            <ul class="dropdown-menu">
+			                                <li><a href="javascript:;">三级菜单</a></li>
+			                            </ul>
+			                        </li>
+			                        <li class="divider"></li>
+			                		<li><a href = "<c:url value='/categories/add'/>">+ 添加分类</a></li>
+			                    </ul>
+			                </li>
+			                <li class="divider"></li>
+			                <li><a href = "<c:url value='/categories/add'/>">+ 添加分类</a></li>
+			            </ul>
 					</li>
-
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>

@@ -29,28 +29,34 @@
 		alert(msg);
 	}
 </script>
+<!-- 
 <style>
 body {
 	padding-top: 7%;
 	background: #f0f0f0;
 }
 </style>
+ -->
 <script type="text/javascript"
 	src="<c:url value='/resource/js/user/regist.js'/>"></script>
 
 </head>
 <body>
+	<jsp:include page="../components/navbar.jsp">
+		<jsp:param value="${categorys}" name="categorys" />
+	</jsp:include>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-offset-2 col-md-8 ">
+			<div class="col-md-9 ">
 				<div class="panel panel-default ">
-					<!-- <div class="panel-heading text-center span20">
-									注册(面板标题)
-							</div> -->
+				<div class = "panel-head">
+						<h3 class = "text-center">注册</h3>
+						<hr>
+					</div>
 					<div class="panel-body">
 						<!-- 调节间距 -->
-						<div class="clearfix" style="margin-bottom: 7%;"></div>
+						<div class="clearfix" style="margin-bottom: 0%;"></div>
 						<form id="register-form"
 							class="form-horizontal col-md-offset-2 col-md-8" role="form"
 							action="registerVerification" method="post">
@@ -98,8 +104,7 @@ body {
 									</label> <label class="radio-inline"> <input type="radio"
 										name="uSex" id="female" value="w"> 女
 									</label> <label class="radio-inline"> <input type="radio"
-										name="uSex" id="undefined" value="u" checked>
-										不确定
+										name="uSex" id="undefined" value="u" checked> 不确定
 									</label>
 								</div>
 							</div>
@@ -125,8 +130,16 @@ body {
 					</div>
 				</div>
 			</div>
+			<div class="col-md-3">
+				<jsp:include page="../components/right.jsp">
+					<jsp:param value="${categorys}" name="categorys" />
+				</jsp:include>
+			</div>
 		</div>
 	</div>
+	<jsp:include page="../components/footer.jsp">
+	<jsp:param value="${categorys}" name="categorys" />
+</jsp:include>
 </body>
 </html>
 

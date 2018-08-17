@@ -14,9 +14,9 @@ function _change() {
 $(document).ready(
 		function() {
 			// 1.遍历所有错误信息集合，调用showError方法确定是否显示作物信息
-			// $("input").each(function(){
-			// showError($(this).next());//遍历每一个元素，判断装载错误信息的span是否显示
-			// });
+//			 $("input").each(function(){
+//			 showError($(this).next());//遍历每一个元素，判断装载错误信息的span是否显示
+//			 });
 			// 1. Input labels get focus, remove error
 			$("input").focus(function() {
 				var spanId = $(this).attr("id") + "Error";// 得到显示错误信息的span的id

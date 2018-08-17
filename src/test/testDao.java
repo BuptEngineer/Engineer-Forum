@@ -23,7 +23,6 @@ import com.qust.engineer.pojo.User;
   
 public class testDao{
     private static Logger logger = Logger.getLogger(testDao.class);  
-    private ApplicationContext ac = null;
     @Resource
     public UserMapper userMapper;
     @Resource
@@ -34,11 +33,6 @@ public class testDao{
     
     @Test
     public void testUserMapper() {
-        int k = 0;
-        User user = new User();
-        user.setuEmail("s@q.com");
-        user.setuPwd("123123");
-        k = userMapper.selectByEmailPwd(user);
-        System.out.println("数量" + k);
+        System.out.println(userMapper.selectByPrimaryKey(1));
     }
 }

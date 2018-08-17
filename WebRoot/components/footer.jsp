@@ -11,8 +11,10 @@
 </head>
 <body>
 	<!-- footer -->
+		<div style = "background:white">
 	<hr>
-	<div class="container">
+
+	<div class="container" >
 		<div class="row-fluid">
 			<div class="col-md-6">
 				<div class="span6">
@@ -63,7 +65,8 @@
 
 	<div contenteditable="true" class="text-center">版权所有 | Copyright
 		by Engineer</div>
-
+</div>
 	<!-- footer -->
+	
 </body>
 </html>

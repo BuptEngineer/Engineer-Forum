@@ -42,6 +42,10 @@ public class UserController {
     public String login(){
         return "login";
     }
+    @RequestMapping("/personal")
+    public String personal(){
+        return "personal";
+    }
     
     @RequestMapping("/loginVerification")
     public String loginVerification(HttpServletRequest request, User user){
@@ -49,10 +53,10 @@ public class UserController {
     	if(n == 1){
 	    	HttpSession session = request.getSession();
 	    	user.setuName(userMapper.selectNameByEmail(user.getuEmail()));
-	    	user.setuPwd(""); // 清除密码
+	    	user.setuPwd(""); // 娓呴櫎瀵嗙爜
 	    	session.setAttribute("session_user", user);
     	}else{
-    		request.setAttribute("msg", "用户名或密码不正确");
+    		request.setAttribute("msg", "鐢ㄦ埛鍚嶆垨瀵嗙爜涓嶆纭�");
     		return "login";
     	}
         return "redirect:/"; 
@@ -61,7 +65,7 @@ public class UserController {
     @RequestMapping("/registerVerification")
     public String registerVerification(HttpServletRequest request, User user){
     	userMapper.insert(user);
-    	// 怎样捕捉问题？
+    	// 鎬庢牱鎹曟崏闂锛�
     	HttpSession session = request.getSession();
     	session.setAttribute("session_user", user);
         return "redirect:/"; 
@@ -77,9 +81,9 @@ public class UserController {
     @RequestMapping(value = "/ajaxValidateEmail",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
     public String ajaxValidateEmail(HttpServletRequest request){
-    	// 验证邮箱
-    	// 如果邮箱存在那么就返回 ""
-    	// 如果邮箱不存在那么就返回 "false"
+    	// 楠岃瘉閭
+    	// 濡傛灉閭瀛樺湪閭ｄ箞灏辫繑鍥� ""
+    	// 濡傛灉閭涓嶅瓨鍦ㄩ偅涔堝氨杩斿洖 "false"
     	
     	String email = (String)request.getParameter("u_email");
     	System.out.println(email);
