@@ -7,10 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/categories") // the first filter key of url
+@RequestMapping("/categories")
 public class CtgController {
-	@RequestMapping("/add") // the second filter key of url
+	@RequestMapping("/add")
     public String userShow(HttpServletRequest request, Model model){
-        return "addctg"; // 
+        return "addctg";
     }
 }

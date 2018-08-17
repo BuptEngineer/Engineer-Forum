@@ -14,15 +14,16 @@
 		<div class="raw">
 			<div class=" col-md-9">
 				<div class="panel panel-default ">
-					<div class = "panel-head">
-						<h3 class = "text-center">添加分类</h3>
+					<div class="panel-head">
+						<h3 class="text-center">添加分类</h3>
 						<hr>
 					</div>
 					<div class="panel-body">
 						<!-- 调节间距 -->
 						<div class="clearfix" style="margin-bottom: 0%;"></div>
 
-						<form id="addCtg-form" class="form-horizontal col-md-offset-2 col-md-8"
+						<form id="addCtg-form"
+							class="form-horizontal col-md-offset-2 col-md-8"
 							action="loginVerification" method="post">
 							<!-- 当出错时，为 form-group div 添加 has-error class，并且添加 下面的 span 元素 -->
 							<!--当需要提示的时候，class 去掉 hidden-->
@@ -60,8 +61,8 @@
 		</div>
 	</div>
 	<jsp:include page="../components/footer.jsp">
-	<jsp:param value="${categorys}" name="categorys" />
-</jsp:include>
-	
+		<jsp:param value="${categorys}" name="categorys" />
+	</jsp:include>
+
 </body>
 </html>

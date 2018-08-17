@@ -23,9 +23,9 @@
 						</div>
 						<div class="col-md-10" style="border-left: 1px solid #ccc;">
 							<div class="clearfix" style="margin-bottom: 4%;"></div>
-							<p class="text-left text-muted">V2EX 第 158258 号会员， 加入于
-								2016-02-06 15:11:53 +08:00</p>
-							<p class="text-muted">活跃度排名：2000</p>
+							<p class="text-left text-muted">Engineer 第 3 号会员， 加入于
+								2018-08-06 15:11:53 +08:00</p>
+							<p class="text-muted">活跃度排名：1</p>
 						</div>
 					</div>
 				</div>

@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-12">
 			<div class="thumbnail">
 				<div class="caption ">
-					<a href="#"><h4>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h4></a>
+					<a href="posts/show"><h4>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h4></a>
 					<p>
 						按照正常的操作习惯，不是应该在最右侧吗? <a href="#">...更多</a>
 					</p>

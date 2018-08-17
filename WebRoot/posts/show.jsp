@@ -22,6 +22,7 @@
 								<li><a href="#">Engineer</a></li>
 								<li class="active"><a href="#">程序员</a></li>
 							</ol>
+							
 							<h2>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h2>
 							<p>
 								作者：<a href="#">babedoll</a> | 上次回复时间：<a class="text-muted">2
@@ -59,7 +60,7 @@
 					<div class="thumbnail">
 						<div class="caption ">
 							<p>
-								回复数：<span class="badge">150</span> | <a href="#">添加回复</a>
+								回复数：<span class="badge">150</span> | <a href="#replyAnchor">添加回复</a>
 							</p>
 							<hr>
 							<!-- 单个评论 开始 -->
@@ -104,9 +105,10 @@
 									<div class="col-md-2">
 										<button id="submitBtn" type="submit"
 											class="btn btn-primary btn-lg btn-block btn-sm">回复</button>
+											<a name="replyAnchor"></a> <!-- 锚点 -->
 									</div>
 									<div class = "col-md-10">
-										<p class = "text-right "> <a href = "#">返回顶部 ></a> </p>
+										<p class = "text-right "> <a href = "#topAnchor">返回顶部 ></a> </p>
 									</div>
 								<hr>
 							</form>

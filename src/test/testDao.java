@@ -22,8 +22,7 @@ import com.qust.engineer.pojo.User;
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})  
   
 public class testDao{
-    private static Logger logger = Logger.getLogger(testDao.class);  
-    @Resource
+	@Resource
     public UserMapper userMapper;
     @Resource
     public AdminMapper adminMapper;

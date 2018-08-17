@@ -75,7 +75,7 @@ body {
 								<label for="lastname" class="col-md-2 control-label">验证</label>
 								<div class="col-md-10">
 									<input type="text" id="verifyCode" name="verifyCode"
-										class="form-control" placeholder="验证码"> <span
+										class="form-control" placeholder="验证码" autocomplete="off"> <span
 										id="verifyCodeError" class="help-block"> </span>
 								</div>
 							</div>

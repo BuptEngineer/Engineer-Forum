@@ -21,6 +21,7 @@
 	rel="stylesheet" type="text/css">
 </head>
 <body>
+	<a name="topAnchor"></a> <!-- 头部锚点 -->
 	<!-- 导航栏--start navbar-inverse navbar-fixed-top -->
 	<nav class="navbar navbar-default " role="navigation">
 		<div class="container">
@@ -33,14 +34,14 @@
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 				<!-- a 元素标签会让文本看起来跟大写-->
-				<a class="navbar-brand" href="#">Engineer</a>
+				<a class="navbar-brand" href="<c:url value='/'/>">Engineer</a>
 			</div>
 			<!--向 div 添加一个标题 class.nav, class.navbar-nav 无序列表即可-->
 			<div class="collapse navbar-collapse" id="example-navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#">首页</a></li>
-					<li class="active"><a
-						href="<c:url value='/CategoryServlet?method=findAll'/>">最近</a></li>
+					<li><a href="<c:url value='/'/>">首页</a></li>
+					<!-- class="active" -->
+					<li ><a	href="<c:url value='/'/>">最近</a></li>
 					<!-- 只有登录用户可见 -->
 					<li><a href="<c:url value='/posts/add'/>">发布新帖</a></li>
 					
@@ -84,13 +85,11 @@
 					<c:choose>
 						<c:when test="${session_user==null}">
 							<li><a href="<c:url value='/user/login'/>">登录</a></li>
-							<li>
 							<li><a href="<c:url value='/user/register'/>">注册</a></li>
-							<li></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="<c:url value='/jsps/personal/personal.jsp'/>">${session_user.uName }</a></li>
-							<li>
+							<li><a href="<c:url value='/user/personal'/>">${session_user.uName }</a></li>
+							<li><a href = "<c:url value = '/user/quit'/>"> 退出 </a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

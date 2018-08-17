@@ -31,12 +31,6 @@ public class UserController {
 	
 	@Resource
 	private UserMapper userMapper;
-	
-    @RequestMapping("/userShow") // the second filter key of url
-    public String userShow(HttpServletRequest request, Model model){
-        model.addAttribute("user", "sgy");
-        return "test"; // 
-    }
     
     @RequestMapping("/login")//login page
     public String login(){
@@ -45,6 +39,12 @@ public class UserController {
     @RequestMapping("/personal")
     public String personal(){
         return "personal";
+    }
+    @RequestMapping("/quit")
+    public String quit(HttpServletRequest request){
+    	HttpSession session = request.getSession();
+    	session.setAttribute("session_user", null);
+        return "redirect:/";
     }
     
     @RequestMapping("/loginVerification")
@@ -56,7 +56,7 @@ public class UserController {
 	    	user.setuPwd(""); // 娓呴櫎瀵嗙爜
 	    	session.setAttribute("session_user", user);
     	}else{
-    		request.setAttribute("msg", "鐢ㄦ埛鍚嶆垨瀵嗙爜涓嶆纭�");
+    		request.setAttribute("msg", "wrong email or wrong password");
     		return "login";
     	}
         return "redirect:/"; 
@@ -65,7 +65,6 @@ public class UserController {
     @RequestMapping("/registerVerification")
     public String registerVerification(HttpServletRequest request, User user){
     	userMapper.insert(user);
-    	// 鎬庢牱鎹曟崏闂锛�
     	HttpSession session = request.getSession();
     	session.setAttribute("session_user", user);
         return "redirect:/"; 
@@ -80,11 +79,7 @@ public class UserController {
     
     @RequestMapping(value = "/ajaxValidateEmail",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
-    public String ajaxValidateEmail(HttpServletRequest request){
-    	// 楠岃瘉閭
-    	// 濡傛灉閭瀛樺湪閭ｄ箞灏辫繑鍥� ""
-    	// 濡傛灉閭涓嶅瓨鍦ㄩ偅涔堝氨杩斿洖 "false"
-    	
+    public String ajaxValidateEmail(HttpServletRequest request){    	
     	String email = (String)request.getParameter("u_email");
     	System.out.println(email);
     	if(userMapper.selectByEmail(email) > 0)
