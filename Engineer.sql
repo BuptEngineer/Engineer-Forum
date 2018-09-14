@@ -1,5 +1,5 @@
-CREATE DATABASE db_experience
-USE db_experience
+CREATE DATABASE db_experience;
+USE db_experience;
 -- DROP DATABASE mooc;
 
 -- 用户表
