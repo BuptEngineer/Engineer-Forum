@@ -17,11 +17,12 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
-    // 简单的sql 语句可以使用注解来实现
-    //@Select("select count(*) from tbl_user WHERE u_email = #{email}")
-    int selectByEmail(String email);
-//    @Select("select count(*) from tbl_user WHERE u_email = #{uEmail} AND u_pwd = #{uPwd}")
+    @Select("SELECT COUNT(*) FROM tbl_user where u_email = #{uEmail} and u_pwd = #{uPwd}") // 直接使用属性名即可，不必再引用参数对象名
     int selectByEmailPwd(User user);
-    @Select("select u_name from tbl_user where u_email = #{email}")
+    
+    @Select("SELECT u_name FROM tbl_user where u_email = #{email}")
     String selectNameByEmail(String email);
+    
+    @Select("SELECT count(*) FROM tbl_user where u_email = #{email}")
+    int selectByEmail(String email);
 }

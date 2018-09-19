@@ -21,23 +21,6 @@
     from tbl_user
     where u_id = #{uId,jdbcType=INTEGER}
   </select>
-  
-  <!-- 问题：是否所有的属性都要设置， id 是必需属性-->
-  <select id="selectByEmail" resultType = "Integer"  parameterType="String"> 
-  	select count(*)
-  	from tbl_user
-  	where u_email = #{uEmail,jdbcType = VARCHAR}
-  </select>
-  
-  <!-- 直接使用属性名 -->
-  <select id="selectByEmailPwd" resultType = "Integer" parameterType="com.qust.engineer.pojo.User"> 
-  	select count(*)
-  	from tbl_user
-  	<where>
-  	u_email = #{uEmail} and u_pwd = #{uPwd}
-  	</where>
-  </select>
-  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tbl_user
     where u_id = #{uId,jdbcType=INTEGER}

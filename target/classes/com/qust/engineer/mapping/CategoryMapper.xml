@@ -14,10 +14,8 @@
     select 
     <include refid="Base_Column_List" />
     from tbl_category
-    where ctg_id = #{ctg_id,jdbcType=INTEGER}
+    where ctg_id = #{ctgId,jdbcType=INTEGER}
   </select>
-  
-  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tbl_category
     where ctg_id = #{ctgId,jdbcType=INTEGER}

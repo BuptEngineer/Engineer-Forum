@@ -8,15 +8,12 @@ public class Category {
     private Integer pctgId;
 
     private String ctgDesc;
-    
-    
 
+    
     public Category(String ctgName, String ctgDesc) {
 		super();
-		this.ctgId = null;
 		this.ctgName = ctgName;
 		this.ctgDesc = ctgDesc;
-		this.pctgId = null;
 	}
 
 	public Integer getCtgId() {
@@ -50,11 +47,4 @@ public class Category {
     public void setCtgDesc(String ctgDesc) {
         this.ctgDesc = ctgDesc == null ? null : ctgDesc.trim();
     }
-
-	@Override
-	public String toString() {
-		return "Category [ctgId=" + ctgId + ", ctgName=" + ctgName
-				+ ", pctgId=" + pctgId + ", ctgDesc=" + ctgDesc + "]";
-	}
-    
 }
