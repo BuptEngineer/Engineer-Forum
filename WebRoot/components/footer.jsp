@@ -8,10 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 	<!-- footer -->
-		<div style = "background:white">
+		<div style = "background:white;">
 	<hr>
 
 	<div class="container" >
@@ -65,6 +66,7 @@
 
 	<div contenteditable="true" class="text-center">版权所有 | Copyright
 		by Engineer</div>
+	
 </div>
 	<!-- footer -->
 	

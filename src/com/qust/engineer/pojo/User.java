@@ -90,11 +90,4 @@ public class User {
     public void setuActncode(String uActncode) {
         this.uActncode = uActncode == null ? null : uActncode.trim();
     }
-
-	@Override
-	public String toString() {
-		return "User [uId=" + uId + ", uEmail=" + uEmail + ", uName=" + uName + ", uPwd=" + uPwd + ", uSex=" + uSex
-				+ ", uDesc=" + uDesc + ", uImg=" + uImg + ", uStatus=" + uStatus + ", uActncode=" + uActncode + "]";
-	}
-    
 }

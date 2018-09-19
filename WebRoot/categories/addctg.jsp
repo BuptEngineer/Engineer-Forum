@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加分类</title>
 </head>
 <body>
@@ -24,12 +24,7 @@
 
 						<form id="addCtg-form"
 							class="form-horizontal col-md-offset-2 col-md-8"
-							action="loginVerification" method="post">
-							<!-- 当出错时，为 form-group div 添加 has-error class，并且添加 下面的 span 元素 -->
-							<!--当需要提示的时候，class 去掉 hidden-->
-							<!--可以通过 id 来找到每个输入标签对应的提示文本框-->
-							<!-- <span class="help-block hidden">一个较长的帮助文本块，超过一行，
-									需要扩展到下一行。本实例中的帮助文本总共有两行。</span> -->
+							method="post">
 							<!-- 
 								1. 查找是否已经存在类名
 								2. 检查类名长度是否合适
@@ -38,11 +33,20 @@
 							<div class="form-group">
 								<label for="firstname" class="col-md-2 control-label">类名</label>
 								<div class="col-md-10">
-									<input type="text" id="className" name="className"
-										value="${form.u_email}" class="form-control" placeholder="类名">
-									<span id="classNameError" class="help-block"></span>
+									<input type="text" id="ctgName" name="ctgName"
+										value="${form.ctgName}" class="form-control" placeholder="类名，2-10个字符之间">
+									<span id="ctgNameError" class="help-block"></span>
 								</div>
 							</div>
+							
+							<div class="form-group">
+								<label for="ctgDesc" class="col-md-2 control-label">描述:</label>
+								<div class="col-md-10">
+								    <textarea name = "ctgDesc" class="form-control" rows="3" value="${form.ctgDesc}"></textarea>
+								    <span id="ctgDescError" class="help-block"></span>
+								</div>
+							</div>
+							
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									<button id="submitBtn" type="submit"
@@ -63,6 +67,6 @@
 	<jsp:include page="../components/footer.jsp">
 		<jsp:param value="${categorys}" name="categorys" />
 	</jsp:include>
-
+<script type="text/javascript" src = "../resource/js/ctg/ctg.js"></script>
 </body>
 </html>

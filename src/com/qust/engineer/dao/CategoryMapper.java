@@ -1,5 +1,6 @@
 package com.qust.engineer.dao;
 
+import org.apache.ibatis.annotations.Select;
 import com.qust.engineer.pojo.Category;
 
 public interface CategoryMapper {
@@ -14,4 +15,8 @@ public interface CategoryMapper {
     int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
+    
+    @Select("SELECT * FROM tbl_category WHERE ctg_name = #{ctg_name}")
+    int selectByCtgName(String ctgName);
+    
 }

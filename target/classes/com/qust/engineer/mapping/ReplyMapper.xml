@@ -2,92 +2,92 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qust.engineer.dao.ReplyMapper" >
   <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Reply" >
-    <id column="acr_id" property="acrId" jdbcType="INTEGER" />
-    <result column="acr_content" property="acrContent" jdbcType="VARCHAR" />
+    <id column="r_id" property="rId" jdbcType="INTEGER" />
+    <result column="r_content" property="rContent" jdbcType="VARCHAR" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
-    <result column="ac_id" property="acId" jdbcType="INTEGER" />
-    <result column="acr_time" property="acrTime" jdbcType="TIMESTAMP" />
+    <result column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="r_time" property="rTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    acr_id, acr_content, u_id, ac_id, acr_time
+    r_id, r_content, u_id, c_id, r_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from tbl_ac_reply
-    where acr_id = #{acrId,jdbcType=INTEGER}
+    from tbl_reply
+    where r_id = #{rId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from tbl_ac_reply
-    where acr_id = #{acrId,jdbcType=INTEGER}
+    delete from tbl_reply
+    where r_id = #{rId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qust.engineer.pojo.Reply" >
-    insert into tbl_ac_reply (acr_id, acr_content, u_id, 
-      ac_id, acr_time)
-    values (#{acrId,jdbcType=INTEGER}, #{acrContent,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}, 
-      #{acId,jdbcType=INTEGER}, #{acrTime,jdbcType=TIMESTAMP})
+    insert into tbl_reply (r_id, r_content, u_id, 
+      c_id, r_time)
+    values (#{rId,jdbcType=INTEGER}, #{rContent,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}, 
+      #{cId,jdbcType=INTEGER}, #{rTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Reply" >
-    insert into tbl_ac_reply
+    insert into tbl_reply
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="acrId != null" >
-        acr_id,
+      <if test="rId != null" >
+        r_id,
       </if>
-      <if test="acrContent != null" >
-        acr_content,
+      <if test="rContent != null" >
+        r_content,
       </if>
       <if test="uId != null" >
         u_id,
       </if>
-      <if test="acId != null" >
-        ac_id,
+      <if test="cId != null" >
+        c_id,
       </if>
-      <if test="acrTime != null" >
-        acr_time,
+      <if test="rTime != null" >
+        r_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="acrId != null" >
-        #{acrId,jdbcType=INTEGER},
+      <if test="rId != null" >
+        #{rId,jdbcType=INTEGER},
       </if>
-      <if test="acrContent != null" >
-        #{acrContent,jdbcType=VARCHAR},
+      <if test="rContent != null" >
+        #{rContent,jdbcType=VARCHAR},
       </if>
       <if test="uId != null" >
         #{uId,jdbcType=INTEGER},
       </if>
-      <if test="acId != null" >
-        #{acId,jdbcType=INTEGER},
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
       </if>
-      <if test="acrTime != null" >
-        #{acrTime,jdbcType=TIMESTAMP},
+      <if test="rTime != null" >
+        #{rTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Reply" >
-    update tbl_ac_reply
+    update tbl_reply
     <set >
-      <if test="acrContent != null" >
-        acr_content = #{acrContent,jdbcType=VARCHAR},
+      <if test="rContent != null" >
+        r_content = #{rContent,jdbcType=VARCHAR},
       </if>
       <if test="uId != null" >
         u_id = #{uId,jdbcType=INTEGER},
       </if>
-      <if test="acId != null" >
-        ac_id = #{acId,jdbcType=INTEGER},
+      <if test="cId != null" >
+        c_id = #{cId,jdbcType=INTEGER},
       </if>
-      <if test="acrTime != null" >
-        acr_time = #{acrTime,jdbcType=TIMESTAMP},
+      <if test="rTime != null" >
+        r_time = #{rTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where acr_id = #{acrId,jdbcType=INTEGER}
+    where r_id = #{rId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Reply" >
-    update tbl_ac_reply
-    set acr_content = #{acrContent,jdbcType=VARCHAR},
+    update tbl_reply
+    set r_content = #{rContent,jdbcType=VARCHAR},
       u_id = #{uId,jdbcType=INTEGER},
-      ac_id = #{acId,jdbcType=INTEGER},
-      acr_time = #{acrTime,jdbcType=TIMESTAMP}
-    where acr_id = #{acrId,jdbcType=INTEGER}
+      c_id = #{cId,jdbcType=INTEGER},
+      r_time = #{rTime,jdbcType=TIMESTAMP}
+    where r_id = #{rId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -17,7 +17,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
-    // ç®€å•çš„sql è¯­å¥å¯ä»¥ä½¿ç”¨æ³¨è§£æ¥å®ç°
+    // ¼òµ¥µÄsql Óï¾ä¿ÉÒÔÊ¹ÓÃ×¢½âÀ´ÊµÏÖ
     //@Select("select count(*) from tbl_user WHERE u_email = #{email}")
     int selectByEmail(String email);
 //    @Select("select count(*) from tbl_user WHERE u_email = #{uEmail} AND u_pwd = #{uPwd}")

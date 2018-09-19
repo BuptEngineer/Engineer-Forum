@@ -8,8 +8,18 @@ public class Category {
     private Integer pctgId;
 
     private String ctgDesc;
+    
+    
 
-    public Integer getCtgId() {
+    public Category(String ctgName, String ctgDesc) {
+		super();
+		this.ctgId = null;
+		this.ctgName = ctgName;
+		this.ctgDesc = ctgDesc;
+		this.pctgId = null;
+	}
+
+	public Integer getCtgId() {
         return ctgId;
     }
 

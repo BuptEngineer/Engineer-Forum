@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>添加帖子</title>
+
 </head>
 <body>
 	<jsp:include page="../components/navbar.jsp">
@@ -23,7 +24,7 @@
 						<div class="clearfix" style="margin-bottom: 0%;"></div>
 
 						<form id="addCtg-form" class="form-horizontal col-md-offset-2 col-md-8"
-							action="loginVerification" method="post">
+							action="addPost" method="post">
 							<!-- 当出错时，为 form-group div 添加 has-error class，并且添加 下面的 span 元素 -->
 							<!--当需要提示的时候，class 去掉 hidden-->
 							<!--可以通过 id 来找到每个输入标签对应的提示文本框-->

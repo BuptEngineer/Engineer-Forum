@@ -24,3 +24,12 @@
 * night
 	* nearly complete login and register
 	* There are some security problems, which are worthy to discuss in future.
+
+## 08/22/2018
+* 晚上
+	* 增加添加分类功能
+		* 暂时设定分类只有一级
+	* 先用 ajax 判断类名是否合理
+		* 是否超过长度
+		* 是否有特殊字符
+		* 是否已经存在

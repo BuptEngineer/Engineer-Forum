@@ -3,30 +3,30 @@ package com.qust.engineer.pojo;
 import java.util.Date;
 
 public class Reply {
-    private Integer acrId;
+    private Integer rId;
 
-    private String acrContent;
+    private String rContent;
 
     private Integer uId;
 
-    private Integer acId;
+    private Integer cId;
 
-    private Date acrTime;
+    private Date rTime;
 
-    public Integer getAcrId() {
-        return acrId;
+    public Integer getrId() {
+        return rId;
     }
 
-    public void setAcrId(Integer acrId) {
-        this.acrId = acrId;
+    public void setrId(Integer rId) {
+        this.rId = rId;
     }
 
-    public String getAcrContent() {
-        return acrContent;
+    public String getrContent() {
+        return rContent;
     }
 
-    public void setAcrContent(String acrContent) {
-        this.acrContent = acrContent == null ? null : acrContent.trim();
+    public void setrContent(String rContent) {
+        this.rContent = rContent == null ? null : rContent.trim();
     }
 
     public Integer getuId() {
@@ -37,19 +37,19 @@ public class Reply {
         this.uId = uId;
     }
 
-    public Integer getAcId() {
-        return acId;
+    public Integer getcId() {
+        return cId;
     }
 
-    public void setAcId(Integer acId) {
-        this.acId = acId;
+    public void setcId(Integer cId) {
+        this.cId = cId;
     }
 
-    public Date getAcrTime() {
-        return acrTime;
+    public Date getrTime() {
+        return rTime;
     }
 
-    public void setAcrTime(Date acrTime) {
-        this.acrTime = acrTime;
+    public void setrTime(Date rTime) {
+        this.rTime = rTime;
     }
 }

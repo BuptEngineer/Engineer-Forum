@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qust.engineer.dao.PostMapper" >
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Post" >
+    <id column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_desc" property="pDesc" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="ctg_id" property="ctgId" jdbcType="INTEGER" />
+    <result column="p_time" property="pTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    p_id, p_name, p_desc, u_id, ctg_id, p_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_post
+    where p_id = #{pId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbl_post
+    where p_id = #{pId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.engineer.pojo.Post" >
+    insert into tbl_post (p_id, p_name, p_desc, 
+      u_id, ctg_id, p_time
+      )
+    values (#{pId,jdbcType=INTEGER}, #{pName,jdbcType=VARCHAR}, #{pDesc,jdbcType=VARCHAR}, 
+      #{uId,jdbcType=INTEGER}, #{ctgId,jdbcType=INTEGER}, #{pTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Post" >
+    insert into tbl_post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="pDesc != null" >
+        p_desc,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="ctgId != null" >
+        ctg_id,
+      </if>
+      <if test="pTime != null" >
+        p_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pDesc != null" >
+        #{pDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgId != null" >
+        #{ctgId,jdbcType=INTEGER},
+      </if>
+      <if test="pTime != null" >
+        #{pTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qust.engineer.pojo.Post" >
+    update tbl_post
+    <set >
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pDesc != null" >
+        p_desc = #{pDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="ctgId != null" >
+        ctg_id = #{ctgId,jdbcType=INTEGER},
+      </if>
+      <if test="pTime != null" >
+        p_time = #{pTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qust.engineer.pojo.Post" >
+    update tbl_post
+    set p_name = #{pName,jdbcType=VARCHAR},
+      p_desc = #{pDesc,jdbcType=VARCHAR},
+      u_id = #{uId,jdbcType=INTEGER},
+      ctg_id = #{ctgId,jdbcType=INTEGER},
+      p_time = #{pTime,jdbcType=TIMESTAMP}
+    where p_id = #{pId,jdbcType=INTEGER}
+  </update>
+</mapper>

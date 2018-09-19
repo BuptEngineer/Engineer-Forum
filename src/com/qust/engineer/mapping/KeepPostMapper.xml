@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qust.engineer.dao.KeepPostMapper" >
+  <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.KeepPostKey" >
+    <id column="p_id" property="pId" jdbcType="INTEGER" />
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.qust.engineer.pojo.KeepPostKey" >
+    delete from tbl_keep_post
+    where p_id = #{pId,jdbcType=INTEGER}
+      and u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qust.engineer.pojo.KeepPostKey" >
+    insert into tbl_keep_post (p_id, u_id)
+    values (#{pId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qust.engineer.pojo.KeepPostKey" >
+    insert into tbl_keep_post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

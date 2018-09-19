@@ -3,38 +3,38 @@ package com.qust.engineer.pojo;
 import java.util.Date;
 
 public class Comment {
-    private Integer acId;
+    private Integer cId;
 
-    private String acContent;
+    private String cContent;
 
-    private Date acTime;
+    private Date cTime;
 
     private Integer uId;
 
-    private Integer aId;
+    private Integer pId;
 
-    public Integer getAcId() {
-        return acId;
+    public Integer getcId() {
+        return cId;
     }
 
-    public void setAcId(Integer acId) {
-        this.acId = acId;
+    public void setcId(Integer cId) {
+        this.cId = cId;
     }
 
-    public String getAcContent() {
-        return acContent;
+    public String getcContent() {
+        return cContent;
     }
 
-    public void setAcContent(String acContent) {
-        this.acContent = acContent == null ? null : acContent.trim();
+    public void setcContent(String cContent) {
+        this.cContent = cContent == null ? null : cContent.trim();
     }
 
-    public Date getAcTime() {
-        return acTime;
+    public Date getcTime() {
+        return cTime;
     }
 
-    public void setAcTime(Date acTime) {
-        this.acTime = acTime;
+    public void setcTime(Date cTime) {
+        this.cTime = cTime;
     }
 
     public Integer getuId() {
@@ -45,11 +45,11 @@ public class Comment {
         this.uId = uId;
     }
 
-    public Integer getaId() {
-        return aId;
+    public Integer getpId() {
+        return pId;
     }
 
-    public void setaId(Integer aId) {
-        this.aId = aId;
+    public void setpId(Integer pId) {
+        this.pId = pId;
     }
 }
