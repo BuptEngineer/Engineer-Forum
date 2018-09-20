@@ -84,11 +84,12 @@ function validateEmail() {
 		},// 请求的方法，及传递的参数
 		type : "post",
 		dataType : "json",
+		contentType : 'application/json;charset=utf-8', //设置请求头信息
 		async : false,// 是否异步请求，若是，则函数不等服务器返回就直接向下进行
 		cache : false,
 		success : function(result) {
-			if (!result) {// 返回""，则邮箱已经被注册
-				$("#" + id + "Error").text("该邮箱已被注册！");
+			if (result != "") {// 返回""，则邮箱已经被注册
+				$("#" + id + "Error").text(result);
 				showError($("#" + id + "Error"));
 				return false;
 			}

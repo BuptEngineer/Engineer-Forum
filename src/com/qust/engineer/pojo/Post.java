@@ -14,6 +14,10 @@ public class Post {
     private Integer ctgId;
 
     private Date pTime;
+    
+    public Post() {
+    	
+    }
 
     public Integer getpId() {
         return pId;

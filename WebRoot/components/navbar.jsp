@@ -43,7 +43,7 @@
 					<!-- class="active" -->
 					<li ><a	href="<c:url value='/'/>">最近</a></li>
 					<!-- 只有登录用户可见 -->
-					<li><a href="<c:url value='/posts/add'/>">发布新帖</a></li>
+					<li><a href="<c:url value='/posts/addPost'/>">发布新帖</a></li>
 					
 					<li class="dropdown">
 			                <!--二级列表的标题--> <a href="#" class="dropdown-toggle"

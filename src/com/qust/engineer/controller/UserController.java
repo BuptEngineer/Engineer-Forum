@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qust.engineer.dao.UserMapper;
+import com.qust.engineer.pojo.Msg;
 import com.qust.engineer.pojo.User;
 import com.qust.engineer.utils.VerifyCodeUtils;
 
@@ -51,8 +52,8 @@ public class UserController {
     	int n = userMapper.selectByEmailPwd(user);
     	if(n == 1){
 	    	HttpSession session = request.getSession();
-	    	user.setuName(userMapper.selectNameByEmail(user.getuEmail()));
-	    	user.setuPwd(""); // 娓呴櫎瀵嗙爜
+	    	user.setuPwd("");
+	    	user = (userMapper.selectNameByEmail(user.getuEmail()));
 	    	session.setAttribute("session_user", user);
     	}else{
     		request.setAttribute("msg", "wrong email or wrong password");
@@ -71,20 +72,19 @@ public class UserController {
     
     @RequestMapping("/register")
     public String register(HttpServletRequest request, Model model){
-    	
         return "register";
     }
     
     
     @RequestMapping(value = "/ajaxValidateEmail",method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
-    public String ajaxValidateEmail(HttpServletRequest request){    	
+    public String ajaxValidateEmail(HttpServletRequest request){
     	String email = (String)request.getParameter("u_email");
     	System.out.println(email);
     	if(userMapper.selectByEmail(email) > 0)
-    		return "";
+    		return "邮箱已经被注册";
     	else
-    		return "true";
+    		return "";
     }
     
     /**

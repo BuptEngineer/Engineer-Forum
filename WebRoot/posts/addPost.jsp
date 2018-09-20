@@ -23,8 +23,7 @@
 						<!-- 调节间距 -->
 						<div class="clearfix" style="margin-bottom: 0%;"></div>
 
-						<form id="addCtg-form" class="form-horizontal col-md-offset-2 col-md-8"
-							action="addPost" method="post">
+						<form id="addCtg-form" class="form-horizontal col-md-offset-2 col-md-8">
 							<!-- 当出错时，为 form-group div 添加 has-error class，并且添加 下面的 span 元素 -->
 							<!--当需要提示的时候，class 去掉 hidden-->
 							<!--可以通过 id 来找到每个输入标签对应的提示文本框-->
@@ -34,19 +33,17 @@
 								<label for="class" class="col-md-2 control-label">分类</label>
 								<div class="col-md-10">
 									<!-- <label for="name">选择列表</label> -->
-									    <select class="form-control">
-									      <option>c++</option>
-									      <option>java</option>
-									      <option>Android</option>
-									      <option>JavaScript</option>
-									      <option>服务器</option>
+									    <select class="form-control" id = "ctgId">
+									      <c:forEach var = "ctg" items="${ctgs}">
+									      	<option value = "${ctg.ctgId}"><c:out value="${ctg.ctgName}"/></option>
+									      </c:forEach>
 									    </select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="firstname" class="col-md-2 control-label">主题</label>
 								<div class="col-md-10">
-									<input type="text" id="className" name="title"
+									<input type="text" id="pName" name="title"
 										value="${form.u_email}" class="form-control" placeholder="主题">
 									<span id="titleError" class="help-block"></span>
 								</div>
@@ -54,14 +51,14 @@
 							<div class="form-group">
 								<label for="firstname" class="col-md-2 control-label">内容</label>
 								<div class="col-md-10">
-								    <textarea class="form-control" rows="3"></textarea>
+								    <textarea class="form-control" rows="3" id = "pDesc"></textarea>
 								    <span id="contentError" class="help-block"></span>
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<button id="submitBtn" type="submit"
+									<button id="submitBtn" type="button"
 										class="btn btn-primary btn-lg btn-block">添加</button>
 								</div>
 							</div>
@@ -76,6 +73,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src = "../resource/js/post/addPost.js"></script>
 	<jsp:include page="../components/footer.jsp">
 	<jsp:param value="${categorys}" name="categorys" />
 </jsp:include>

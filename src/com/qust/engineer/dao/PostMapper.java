@@ -1,5 +1,9 @@
 package com.qust.engineer.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
 import com.qust.engineer.pojo.Post;
 
 public interface PostMapper {
@@ -14,4 +18,7 @@ public interface PostMapper {
     int updateByPrimaryKeySelective(Post record);
 
     int updateByPrimaryKey(Post record);
+    
+    @Select("select * from tbl_user")
+    List<Post> selectAllPost();
 }

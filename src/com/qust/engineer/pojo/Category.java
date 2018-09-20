@@ -9,7 +9,9 @@ public class Category {
 
     private String ctgDesc;
 
-    
+    public Category() {
+    	
+    }
     public Category(String ctgName, String ctgDesc) {
 		super();
 		this.ctgName = ctgName;

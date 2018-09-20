@@ -19,6 +19,9 @@ public class User {
 
     private String uActncode;
 
+    public User() {
+    	
+    }
     public Integer getuId() {
         return uId;
     }

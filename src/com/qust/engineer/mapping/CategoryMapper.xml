@@ -16,6 +16,12 @@
     from tbl_category
     where ctg_id = #{ctgId,jdbcType=INTEGER}
   </select>
+
+
+  	 <select id="selectAllCtg" resultMap="BaseResultMap">
+	 SELECT * FROM tbl_category
+	</select>
+	
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tbl_category
     where ctg_id = #{ctgId,jdbcType=INTEGER}
