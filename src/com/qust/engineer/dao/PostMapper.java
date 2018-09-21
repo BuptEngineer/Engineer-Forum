@@ -19,6 +19,8 @@ public interface PostMapper {
 
     int updateByPrimaryKey(Post record);
     
+    List<Post> selectByTitle(String key);
+    
     @Select("select * from tbl_user")
     List<Post> selectAllPost();
 }

@@ -5,7 +5,7 @@ USE db_experience;
 
 -- 用户表
 CREATE TABLE `tbl_user`(
-	u_id INT(11) NOT NULL AUTO_INCREMENT,/* 公告id(默认自增长),*/
+	u_id INT(11) NOT NULL AUTO_INCREMENT,/* 用户id(默认自增长) 1-100是超级管理员,100-500是普通管理员,500之后是一般用户*/
 	u_email VARCHAR(30) NOT NULL,-- 注册邮箱
 	u_name VARCHAR(30) DEFAULT NULL,-- 昵称
 	`u_pwd` VARCHAR(30) DEFAULT NULL,-- 密码
@@ -14,6 +14,10 @@ CREATE TABLE `tbl_user`(
 	u_img VARCHAR(100) DEFAULT NULL,  -- 图像路径
 	`u_status` TINYINT(1) DEFAULT 0,-- 邮箱是否激活,0表示未激活，1表示已激活
 	u_actnCode CHAR(64) DEFAULT NULL,-- 邮箱激活码
+	u_date DATETIME DEFAULT CURRENT_TIMESTAMP,--注册时间,默认是当前时间
+	u_online BOOLEAN DEFAULT TRUE,--是否在线,默认在线 
+	u_growthValue INT(11) DEFAULT 0,--成长值,依赖于登录次数和发帖回帖频率等,可以此来进行活跃度排名
+	u_vip BOOLEAN DEFAULT FALSE,--是否是vip用户
 	PRIMARY KEY (u_id),-- 主键
 	UNIQUE KEY u_email(u_email)-- 唯一约束
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -29,17 +33,6 @@ CREATE TABLE tbl_category(
 	CONSTRAINT `FK_category_category` FOREIGN KEY (`pctg_id`) REFERENCES `tbl_category` (`ctg_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
-/* 收藏帖子 */
-CREATE TABLE tbl_keep_post(
-	p_id INT(11) NOT NULL,/* 外键，路线 */
-	u_id INT(11) NOT NULL,/* 外键，哪个用户收藏了该帖子 */
-	PRIMARY KEY(p_id,u_id),
-	CONSTRAINT `FK_fr_user` FOREIGN KEY (`u_id`) REFERENCES `tbl_user` (`u_id`),
-	CONSTRAINT `FK_fr_route` FOREIGN KEY (`p_id`) REFERENCES `tbl_post` (`p_id`)
-)ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
 /* 帖子 */
 CREATE TABLE tbl_post(
 	p_id INT(11) NOT NULL AUTO_INCREMENT,
@@ -53,6 +46,14 @@ CREATE TABLE tbl_post(
 	CONSTRAINT `FK_post_category` FOREIGN KEY (`ctg_id`) REFERENCES `tbl_category` (`ctg_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+/* 收藏帖子 */
+CREATE TABLE tbl_keep_post(
+	p_id INT(11) NOT NULL,/* 外键，路线 */
+	u_id INT(11) NOT NULL,/* 外键，哪个用户收藏了该帖子 */
+	PRIMARY KEY(p_id,u_id),
+	CONSTRAINT `FK_fr_user` FOREIGN KEY (`u_id`) REFERENCES `tbl_user` (`u_id`),
+	CONSTRAINT `FK_fr_route` FOREIGN KEY (`p_id`) REFERENCES `tbl_post` (`p_id`)
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 /* 对回答的评论表 */
 CREATE TABLE tbl_comment(
@@ -92,13 +93,3 @@ CREATE TABLE tbl_letter(
 	CONSTRAINT `FK_ut_user_f` FOREIGN KEY (`from_u_id`) REFERENCES `tbl_user` (`u_id`),
 	CONSTRAINT `FK_ut_user_t` FOREIGN KEY (`to_u_id`) REFERENCES `tbl_user` (`u_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
-/* 后台管理员 */
-CREATE TABLE `tbl_admin`(
-	`adm_id` INT  AUTO_INCREMENT,-- 排用来序，自增长
-	`adm_name` VARCHAR(30) DEFAULT NULL,
-	`adm_pwd` VARCHAR(30) DEFAULT NULL,
-	`adm_issuper` TINYINT(1) DEFAULT 0,-- 是否超级管理员，只有超级管理员才能添加管理员
-	PRIMARY KEY (`adm_id`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
