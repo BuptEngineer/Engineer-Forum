@@ -1,8 +1,11 @@
 package com.qust.engineer.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +29,17 @@ public class UserInfoController {
 		String username=new String(name.getBytes("iso-8859-1"),"utf8");
 		User user=userMapper.selectByName(username);
 		model.addAttribute("checkUser", user);
-		//获取活跃度
-		int growth=user.getuGrowthValue();
 		List<User> users=userMapper.selectAll();
 		Collections.sort(users, new MyComparator());
 		for(int i=0;i<users.size();i++){
-			if(users.get(i).getuId()==growth){
+			if(users.get(i).getuId()==user.getuId()){
 				model.addAttribute("active", i+1);
 				break;
 			}
 		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String date = dateFormat.format(user.getuDate());
+		model.addAttribute("uDate", date);
 		return "personal";
 	}
 	
@@ -43,7 +47,7 @@ public class UserInfoController {
 		@Override
 		public int compare(User o1, User o2) {
 			// TODO Auto-generated method stub
-			return o1.getuGrowthValue()-o2.getuGrowthValue();
+			return o2.getuGrowth()-o1.getuGrowth();
 		}
 	}
 }

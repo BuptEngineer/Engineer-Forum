@@ -18,10 +18,10 @@ public class UserQuitController{
 	@RequestMapping("/quit")
 	public String quit(HttpServletRequest request){
 		//获取当前用户的名称
-		User  username=(User) request.getSession().getAttribute("session_user");
+		User  user=(User) request.getSession().getAttribute("session_user");
 		//通过用户id进行更新用户表
-		username.setuOnline(false);
-		userMapper.updateByPrimaryKey(username);
+		user.setuOnline(false);
+		userMapper.updateByPrimaryKeySelective(user);
 		//清除session用户信息
 		request.getSession().removeAttribute("session_user");
 		return "../index";

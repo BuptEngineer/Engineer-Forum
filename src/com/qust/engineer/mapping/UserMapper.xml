@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qust.engineer.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.User" >
@@ -11,9 +11,14 @@
     <result column="u_img" property="uImg" jdbcType="VARCHAR" />
     <result column="u_status" property="uStatus" jdbcType="BIT" />
     <result column="u_actnCode" property="uActncode" jdbcType="CHAR" />
+    <result column="u_date" property="uDate" jdbcType="TIMESTAMP" />
+    <result column="u_online" property="uOnline" jdbcType="BIT" />
+    <result column="u_growth" property="uGrowth" jdbcType="INTEGER" />
+    <result column="u_vip" property="uVip" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    u_id, u_email, u_name, u_pwd, u_sex, u_desc, u_img, u_status, u_actnCode
+    u_id, u_email, u_name, u_pwd, u_sex, u_desc, u_img, u_status, u_actnCode, u_date, 
+    u_online, u_growth, u_vip
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,10 +33,12 @@
   <insert id="insert" parameterType="com.qust.engineer.pojo.User" >
     insert into tbl_user (u_id, u_email, u_name, 
       u_pwd, u_sex, u_desc, u_img, 
-      u_status, u_actnCode)
+      u_status, u_actnCode, u_date, 
+      u_online, u_growth, u_vip)
     values (#{uId,jdbcType=INTEGER}, #{uEmail,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, 
       #{uPwd,jdbcType=VARCHAR}, #{uSex,jdbcType=CHAR}, #{uDesc,jdbcType=VARCHAR}, #{uImg,jdbcType=VARCHAR}, 
-      #{uStatus,jdbcType=BIT}, #{uActncode,jdbcType=CHAR})
+      #{uStatus,jdbcType=BIT}, #{uActncode,jdbcType=CHAR}, #{uDate,jdbcType=TIMESTAMP}, 
+      #{uOnline,jdbcType=BIT}, #{uGrowth,jdbcType=INTEGER}, #{uVip,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.qust.engineer.pojo.User" >
     insert into tbl_user
@@ -63,6 +70,18 @@
       <if test="uActncode != null" >
         u_actnCode,
       </if>
+      <if test="uDate != null" >
+        u_date,
+      </if>
+      <if test="uOnline != null" >
+        u_online,
+      </if>
+      <if test="uGrowth != null" >
+        u_growth,
+      </if>
+      <if test="uVip != null" >
+        u_vip,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="uId != null" >
@@ -91,6 +110,18 @@
       </if>
       <if test="uActncode != null" >
         #{uActncode,jdbcType=CHAR},
+      </if>
+      <if test="uDate != null" >
+        #{uDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uOnline != null" >
+        #{uOnline,jdbcType=BIT},
+      </if>
+      <if test="uGrowth != null" >
+        #{uGrowth,jdbcType=INTEGER},
+      </if>
+      <if test="uVip != null" >
+        #{uVip,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -121,14 +152,17 @@
       <if test="uActncode != null" >
         u_actnCode = #{uActncode,jdbcType=CHAR},
       </if>
+      <if test="uDate != null" >
+        u_date = #{uDate,jdbcType=TIMESTAMP},
+      </if>
       <if test="uOnline != null" >
         u_online = #{uOnline,jdbcType=BIT},
       </if>
-      <if test="uVip != null" >
-        u_vip = #{uOnline,jdbcType=BIT},
+      <if test="uGrowth != null" >
+        u_growth = #{uGrowth,jdbcType=INTEGER},
       </if>
-      <if test="uGrowthValue != null" >
-        u_growthValue = #{uGrowthValue,jdbcType=INTEGER},
+      <if test="uVip != null" >
+        u_vip = #{uVip,jdbcType=BIT},
       </if>
     </set>
     where u_id = #{uId,jdbcType=INTEGER}
@@ -142,8 +176,11 @@
       u_desc = #{uDesc,jdbcType=VARCHAR},
       u_img = #{uImg,jdbcType=VARCHAR},
       u_status = #{uStatus,jdbcType=BIT},
-      u_actnCode = #{uActncode,jdbcType=CHAR}
+      u_actnCode = #{uActncode,jdbcType=CHAR},
+      u_date = #{uDate,jdbcType=TIMESTAMP},
+      u_online = #{uOnline,jdbcType=BIT},
+      u_growth = #{uGrowth,jdbcType=INTEGER},
+      u_vip = #{uVip,jdbcType=BIT}
     where u_id = #{uId,jdbcType=INTEGER}
   </update>
-  
 </mapper>

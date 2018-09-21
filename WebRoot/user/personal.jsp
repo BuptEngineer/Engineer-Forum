@@ -31,13 +31,13 @@
 						<div class="col-md-10" style="border-left: 1px solid #ccc;">
 							<div class="clearfix" style="margin-bottom: 4%;"></div>
 							<p class="text-left text-muted">Engineer 编号 ${checkUser.uId }， 加入于
-								${checkUser.uDate }</p>
-							<p class="text-muted">活跃度排名：${active }</p>
+								${uDate}</p>
+							<p class="text-muted">活跃度排名：${active}</p>
 						</div>
 					</div>
 				</div>
 				<!-- 回复-开始 -->
-				<div class="panel panel-default ">
+				<div class="panel panel-default">
 					<div class="panel-body">
 						<ul id="myTab" class="nav nav-tabs">
 							<li class="active"><a href="#home" data-toggle="tab"> 设置

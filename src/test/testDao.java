@@ -34,14 +34,23 @@ public class testDao{
     
     @Test
     public void testUserMapper() {
-//        User record = new User();
-//        record.setuEmail("1");
-//        record.setuPwd("1");
-//        assert 1 == userMapper.selectByEmailPwd(record);
-        
-        assertNotNull("selectByName:", userMapper.selectByName("2"));
-        
+        assertNotNull("selectByName:", userMapper.selectByName("1"));
+        User record = new User();
+        record.setuId(1);
+        record.setuOnline(false);
+        userMapper.updateByPrimaryKeySelective(record);
+        record = userMapper.selectByName("梅林");
+        assertNotNull("growth:", record.getuName());
         assertNotNull("users:", userMapper.selectAll());
+        assertNotNull("date:", record.getuDate());
+//        record.setuName("insert");
+//        record.setuEmail("e");
+//        record.setuId(10);
+//        userMapper.insert(record);
+//        record.setuName("insertS");
+//        record.setuId(20);
+//        record.setuEmail("e1");
+//        userMapper.insertSelective(record);
     }
     
     

@@ -20,18 +20,15 @@ public class User {
     private Boolean uStatus;
 
     private String uActncode;
-    
-	private Boolean uOnline;
-	
-	private Date uDate;
-	
-	private int uGrowthValue;
-	
-	private boolean uVip;
 
-    public User() {
-    	
-    }
+    private Date uDate;
+
+    private Boolean uOnline;
+
+    private Integer uGrowth;
+
+    private Boolean uVip;
+
     public Integer getuId() {
         return uId;
     }
@@ -103,34 +100,36 @@ public class User {
     public void setuActncode(String uActncode) {
         this.uActncode = uActncode == null ? null : uActncode.trim();
     }
-    
-	public boolean isuOnline() {
-		return uOnline;
-	}
-	
-	public void setuOnline(boolean uOnline) {
-		this.uOnline = uOnline;
-	}
-	
-	public int getuGrowthValue() {
-		return uGrowthValue;
-	}
-	
-	public void setuGrowthValue(int uGrowthValue) {
-		this.uGrowthValue = uGrowthValue;
-	}
-	
-	public boolean isuVip() {
-		return uVip;
-	}
-	
-	public void setuVip(boolean uVip) {
-		this.uVip = uVip;
-	}
-	public Date getuDate() {
-		return uDate;
-	}
-	public void setuDate(Date uDate) {
-		this.uDate = uDate;
-	}
+
+    public Date getuDate() {
+        return uDate;
+    }
+
+    public void setuDate(Date uDate) {
+        this.uDate = uDate;
+    }
+
+    public Boolean getuOnline() {
+        return uOnline;
+    }
+
+    public void setuOnline(Boolean uOnline) {
+        this.uOnline = uOnline;
+    }
+
+    public Integer getuGrowth() {
+        return uGrowth;
+    }
+
+    public void setuGrowth(Integer uGrowth) {
+        this.uGrowth = uGrowth;
+    }
+
+    public Boolean getuVip() {
+        return uVip;
+    }
+
+    public void setuVip(Boolean uVip) {
+        this.uVip = uVip;
+    }
 }

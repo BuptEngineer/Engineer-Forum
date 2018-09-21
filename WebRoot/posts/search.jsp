@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p>${p.pDesc }</p>
 						<p>
 						标签：<a href="#">${categoriesLink[loop.count-1].ctgName }</a> | 
-						作者：<a href="#">${usersLink[loop.count-1].uName }</a> | 上次回复时间：<a class = "text-muted">2
+						作者：<a href="<c:url value='/user/personal'/>?uname=${usersLink[loop.count-1].uName }">${usersLink[loop.count-1].uName }</a> | 上次回复时间：<a class = "text-muted">2
 							分钟前</a> | 回复数：<span class="badge">150</span>
 						</p>
 					</div>

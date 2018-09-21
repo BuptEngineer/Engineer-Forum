@@ -36,20 +36,17 @@ public class UserController {
     public String login(){
         return "login";
     }
-//    @RequestMapping("/personal")
-//    public String personal(){
-//        return "personal";
-//    }
-
     
     @RequestMapping("/loginVerification")
     public String loginVerification(HttpServletRequest request, User user){
     	int n = userMapper.selectByEmailPwd(user);
     	if(n == 1){
 	    	HttpSession session = request.getSession();
-	    	user.setuPwd("");
-	    	user = userMapper.selectNameByEmail(user.getuEmail());
-	    	session.setAttribute("session_user", user);
+	    	User sessionUser = userMapper.selectByEmail(user.getuEmail());
+	    	sessionUser.setuOnline(true);
+	    	sessionUser.setuGrowth(sessionUser.getuGrowth() + 1);
+	    	userMapper.updateByPrimaryKeySelective(sessionUser);
+	    	session.setAttribute("session_user", sessionUser);
     	}else{
     		request.setAttribute("msg", "wrong email or wrong password");
     		return "login";
@@ -59,7 +56,7 @@ public class UserController {
     
     @RequestMapping("/registerVerification")
     public String registerVerification(HttpServletRequest request, User user){
-    	userMapper.insert(user);
+    	userMapper.insertSelective(user);
     	HttpSession session = request.getSession();
     	session.setAttribute("session_user", user);
         return "redirect:/"; 
