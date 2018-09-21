@@ -18,6 +18,12 @@ public class User {
     private Boolean uStatus;
 
     private String uActncode;
+    
+	private boolean uOnline;
+	
+	private int uGrowthValue;
+	
+	private boolean uVip;
 
     public User() {
     	
@@ -93,4 +99,28 @@ public class User {
     public void setuActncode(String uActncode) {
         this.uActncode = uActncode == null ? null : uActncode.trim();
     }
+    
+	public boolean isuOnline() {
+		return uOnline;
+	}
+	
+	public void setuOnline(boolean uOnline) {
+		this.uOnline = uOnline;
+	}
+	
+	public int getuGrowthValue() {
+		return uGrowthValue;
+	}
+	
+	public void setuGrowthValue(int uGrowthValue) {
+		this.uGrowthValue = uGrowthValue;
+	}
+	
+	public boolean isuVip() {
+		return uVip;
+	}
+	
+	public void setuVip(boolean uVip) {
+		this.uVip = uVip;
+	}
 }
