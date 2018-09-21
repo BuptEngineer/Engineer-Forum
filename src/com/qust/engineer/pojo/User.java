@@ -21,7 +21,7 @@ public class User {
 
     private String uActncode;
     
-	private boolean uOnline;
+	private Boolean uOnline;
 	
 	private Date uDate;
 	

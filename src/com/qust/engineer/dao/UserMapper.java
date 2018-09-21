@@ -28,7 +28,9 @@ public interface UserMapper {
     @Select("SELECT count(*) FROM tbl_user where u_email = #{email}")
     int selectByEmail(String email);
     
-    User selectByName(String username);//待实现
+    @Select("SELECT u_id, u_name,u_email,u_sex,u_desc,u_img,u_online,u_date,u_growthValue,u_vip FROM tbl_user where u_name = #{username}")
+    User selectByName(String username);
     
-    List<User> selectAll();//待实现
+    @Select("SELECT u_id, u_name,u_email,u_sex,u_desc,u_img,u_online,u_date,u_growthValue,u_vip FROM tbl_user")
+    List<User> selectAll();
 }

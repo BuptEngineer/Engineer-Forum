@@ -40,12 +40,7 @@ public class UserController {
     public String personal(){
         return "personal";
     }
-    @RequestMapping("/quit")
-    public String quit(HttpServletRequest request){
-    	HttpSession session = request.getSession();
-    	session.setAttribute("session_user", null);
-        return "redirect:/";
-    }
+
     
     @RequestMapping("/loginVerification")
     public String loginVerification(HttpServletRequest request, User user){
