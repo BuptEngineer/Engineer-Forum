@@ -1,5 +1,7 @@
 package com.qust.engineer.pojo;
 
+import java.util.Date;
+
 public class User {
     private Integer uId;
 
@@ -20,6 +22,8 @@ public class User {
     private String uActncode;
     
 	private boolean uOnline;
+	
+	private Date uDate;
 	
 	private int uGrowthValue;
 	
@@ -122,5 +126,11 @@ public class User {
 	
 	public void setuVip(boolean uVip) {
 		this.uVip = uVip;
+	}
+	public Date getuDate() {
+		return uDate;
+	}
+	public void setuDate(Date uDate) {
+		this.uDate = uDate;
 	}
 }

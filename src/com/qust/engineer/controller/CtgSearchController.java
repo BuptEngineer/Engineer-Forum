@@ -11,11 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.qust.engineer.dao.AdminMapper;
 import com.qust.engineer.dao.CategoryMapper;
 import com.qust.engineer.dao.PostMapper;
 import com.qust.engineer.dao.UserMapper;
-import com.qust.engineer.pojo.Admin;
 import com.qust.engineer.pojo.Category;
 import com.qust.engineer.pojo.Post;
 import com.qust.engineer.pojo.User;

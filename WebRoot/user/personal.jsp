@@ -16,16 +16,23 @@
 				<div class="panel panel-default ">
 					<div class="panel-body">
 						<div class="col-md-2">
-							<h3 class="text-left">shihunywu</h3>
+							<h3 class="text-left">${checkUser.uName }</h3>
 							<p class="text-left">
-								<a href="#">在线</a>
+								<a href="#">
+									<c:if test="${checkUser.uOnline ==true}">
+										在线
+									</c:if>
+									<c:if test="${checkUser.uOnline ==false}">
+										离线
+									</c:if>
+								</a>
 							</p>
 						</div>
 						<div class="col-md-10" style="border-left: 1px solid #ccc;">
 							<div class="clearfix" style="margin-bottom: 4%;"></div>
-							<p class="text-left text-muted">Engineer 第 3 号会员， 加入于
-								2018-08-06 15:11:53 +08:00</p>
-							<p class="text-muted">活跃度排名：1</p>
+							<p class="text-left text-muted">Engineer 编号 ${checkUser.uId }， 加入于
+								${checkUser.uDate }</p>
+							<p class="text-muted">活跃度排名：${active }</p>
 						</div>
 					</div>
 				</div>

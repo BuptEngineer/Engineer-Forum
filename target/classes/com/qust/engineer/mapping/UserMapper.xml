@@ -136,4 +136,5 @@
       u_actnCode = #{uActncode,jdbcType=CHAR}
     where u_id = #{uId,jdbcType=INTEGER}
   </update>
+  
 </mapper>
