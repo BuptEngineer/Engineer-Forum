@@ -18,7 +18,7 @@
     from tbl_post
     where p_id = #{pId,jdbcType=INTEGER}
   </select>
-  <select id="selectByTitle" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  <select id="selectByTitle" resultMap="BaseResultMap" parameterType="java.lang.String">
   	select * from tbl_post where p_name like concat('%',#{pName},'%')
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

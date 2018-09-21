@@ -75,9 +75,10 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<!-- 添加一个搜索框 -->
-						<form class="navbar-form navbar-left" role="search">
+						<form class="navbar-form navbar-left" role="search" 
+							name="searchForm" action="<c:url value='/posts/search'/>" onsubmit="return validate(this)">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="关键字">
+								<input name="keyword" type="text" class="form-control" placeholder="关键字">
 							</div>
 							<button type="submit" class="btn btn-default">搜索</button>
 						</form>
@@ -97,5 +98,23 @@
 		</div>
 	</nav>
 	<!-- 导航栏--end -->
+	<script type="text/javascript">
+	function validate(form){
+		var key=form.keyword;
+		if(key.value.length==0){
+			alert("你还没有输入内容,试试输入一些字符来查询");
+			return false;
+		}
+		if(key.value.length>5){
+			alert("输入的关键字长度过长，你应该尝试将内容控制在5个字符以内")
+			return false;
+		}
+		var regex=/^(\w*([\u4e00-\u9fa5])*)+$/;
+		if(!regex.test(key.value)){
+			alert("输入的关键字包含特殊字符，内容只可以包含中文、英文、数字")
+			return false;
+		}
+	}
+</script>sss
 </body>
 </html>

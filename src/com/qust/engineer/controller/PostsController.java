@@ -49,11 +49,11 @@ public class PostsController {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("session_user");
 		if(user == null) {
-			return "ÄúÃ»ÓĞµÇÂ¼£¬ÇëÏÈµÇÂ¼£¬ http://localhost:8080/Engineer-Growth-Route/user/login";
+			return "æ‚¨æ²¡æœ‰ç™»å½•ï¼Œè¯·å…ˆç™»å½•ï¼Œ http://localhost:8080/Engineer-Growth-Route/user/login";
 		}
 		post.setuId(user.getuId());
 		postMapper.insert(post);
-		return "Ìí¼Ó³É¹¦";
+		return "æ·»åŠ æˆåŠŸ";
     }
 	
 	@RequestMapping("/show") // the second filter key of url

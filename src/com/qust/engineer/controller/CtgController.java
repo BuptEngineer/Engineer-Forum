@@ -30,13 +30,13 @@ public class CtgController {
 	public String addCtg(HttpServletRequest request){
 		ctgMapper.insert(new Category((String)request.getParameter("ctgName"),
 								(String)request.getParameter("ctgDesc")));
-		return "ÀàÌí¼Ó³É¹¦";
+		return "ç±»æ·»åŠ æˆåŠŸ";
 	}
 	
 	@RequestMapping(value = "ajaxValidateCtgName", method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
-	@ResponseBody  // ·µ»ØÏûÏ¢Ö÷Ìå
+	@ResponseBody  // è¿”å›æ¶ˆæ¯ä¸»ä½“
 	public String ajaxValidateClassName(HttpServletRequest request ) {
-		// ½ÓÊÕµ½ category£¬ÅĞ¶ÏÊÇ·ñÒÑ¾­´æÔÚÓÚÊı¾İ¿âÖĞ
+		// æ¥æ”¶åˆ° categoryï¼Œåˆ¤æ–­æ˜¯å¦å·²ç»å­˜åœ¨äºæ•°æ®åº“ä¸­
 		return ctgMapper.selectByCtgName((String)request.getParameter("ctgName") ) > 0 ? "true":"";
 		
 	}
