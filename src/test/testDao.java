@@ -10,8 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.qust.engineer.dao.AdminMapper;
 import com.qust.engineer.dao.CategoryMapper;
 import com.qust.engineer.dao.PostMapper;
 import com.qust.engineer.dao.UserMapper;
@@ -41,7 +39,7 @@ public class testDao{
 //        record.setuPwd("1");
 //        assert 1 == userMapper.selectByEmailPwd(record);
         
-        assert 1 == userMapper.selectByEmail("1");
+        assertNotNull("selectByName:", userMapper.selectByName("2"));
         
         assertNotNull("users:", userMapper.selectAll());
     }
@@ -60,7 +58,7 @@ public class testDao{
     @Test
     public void testCtgMapper() {
 //    	System.out.println(categoryMapper.insert(new Category("程序员", "程序员之间交流的家园")));
-    	assert 7 == categoryMapper.selectByCtgName("程序员");
+//    	assert 7 == categoryMapper.selectByCtgName("程序员");
     	List<Category>  ret = categoryMapper.selectAllCtg();
     	for (Category category : ret) {
     		assertNotNull("exists:", category.getCtgName());

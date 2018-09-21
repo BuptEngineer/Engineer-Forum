@@ -25,8 +25,8 @@ public interface UserMapper {
     @Select("SELECT u_id, u_name, u_email FROM tbl_user where u_email = #{email}")
     User selectNameByEmail(String email);
     
-    @Select("SELECT count(*) FROM tbl_user where u_email = #{email}")
-    int selectByEmail(String email);
+    @Select("SELECT u_id, u_name,u_email,u_sex,u_desc,u_img,u_online,u_date,u_growthValue,u_vip FROM tbl_user where u_email = #{email}")
+    User selectByEmail(String email);
     
     @Select("SELECT u_id, u_name,u_email,u_sex,u_desc,u_img,u_online,u_date,u_growthValue,u_vip FROM tbl_user where u_name = #{username}")
     User selectByName(String username);

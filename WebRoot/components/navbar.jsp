@@ -89,7 +89,7 @@
 							<li><a href="<c:url value='/user/register'/>">注册</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="<c:url value='/user/personal'/>">${session_user.uName }</a></li>
+							<li><a href="<c:url value='/user/personal'/>?uname=${session_user.uName}">${session_user.uName }</a></li>
 							<li><a href = "<c:url value = '/user/quit'/>"> 退出 </a></li>
 						</c:otherwise>
 					</c:choose>
@@ -115,6 +115,6 @@
 			return false;
 		}
 	}
-</script>sss
+</script>
 </body>
 </html>

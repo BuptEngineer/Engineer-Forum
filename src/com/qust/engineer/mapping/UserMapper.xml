@@ -121,6 +121,15 @@
       <if test="uActncode != null" >
         u_actnCode = #{uActncode,jdbcType=CHAR},
       </if>
+      <if test="uOnline != null" >
+        u_online = #{uOnline,jdbcType=BIT},
+      </if>
+      <if test="uVip != null" >
+        u_vip = #{uOnline,jdbcType=BIT},
+      </if>
+      <if test="uGrowthValue != null" >
+        u_growthValue = #{uGrowthValue,jdbcType=INTEGER},
+      </if>
     </set>
     where u_id = #{uId,jdbcType=INTEGER}
   </update>

@@ -23,7 +23,7 @@ public class UserInfoController {
 	@RequestMapping("/personal")
 	public String checkInfo(@RequestParam("uname") String name,Model model) throws UnsupportedEncodingException{
 		//依据传进来的用户名查找
-		String username=new String(name.getBytes("IS0-8859-1"),"utf8");
+		String username=new String(name.getBytes("iso-8859-1"),"utf8");
 		User user=userMapper.selectByName(username);
 		model.addAttribute("checkUser", user);
 		//获取活跃度

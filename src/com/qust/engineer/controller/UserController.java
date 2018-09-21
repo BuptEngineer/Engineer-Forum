@@ -36,10 +36,10 @@ public class UserController {
     public String login(){
         return "login";
     }
-    @RequestMapping("/personal")
-    public String personal(){
-        return "personal";
-    }
+//    @RequestMapping("/personal")
+//    public String personal(){
+//        return "personal";
+//    }
 
     
     @RequestMapping("/loginVerification")
@@ -48,7 +48,7 @@ public class UserController {
     	if(n == 1){
 	    	HttpSession session = request.getSession();
 	    	user.setuPwd("");
-	    	user = (userMapper.selectNameByEmail(user.getuEmail()));
+	    	user = userMapper.selectNameByEmail(user.getuEmail());
 	    	session.setAttribute("session_user", user);
     	}else{
     		request.setAttribute("msg", "wrong email or wrong password");
@@ -76,7 +76,7 @@ public class UserController {
     public String ajaxValidateEmail(HttpServletRequest request){
     	String email = (String)request.getParameter("u_email");
     	System.out.println(email);
-    	if(userMapper.selectByEmail(email) > 0)
+    	if(userMapper.selectByEmail(email) != null)
     		return "邮箱已经被注册";
     	else
     		return "";

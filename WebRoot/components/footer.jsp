@@ -19,11 +19,10 @@
 		<div class="row-fluid">
 			<div class="col-md-6">
 				<div class="span6">
-					<img src="<c:url value='/jsps/mainPage/img/favicon.png'/>">
+					<img src="<c:url value='/resource/imgs/favicon.png'/>" width = 5%, height = 5%>
 					<dl>
 						<dt>Engineer</dt>
 						<dd>工程师之路，改变你的未来</dd>
-
 					</dl>
 				</div>
 			</div>
