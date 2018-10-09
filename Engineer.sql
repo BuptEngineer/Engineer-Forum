@@ -14,10 +14,10 @@ CREATE TABLE `tbl_user`(
 	u_img VARCHAR(100) DEFAULT NULL,  -- 图像路径
 	`u_status` TINYINT(1) DEFAULT 0,-- 邮箱是否激活,0表示未激活，1表示已激活
 	u_actnCode CHAR(64) DEFAULT NULL,-- 邮箱激活码
-	u_date DATETIME DEFAULT CURRENT_TIMESTAMP, #注册时间,默认是当前时间
-	u_online BOOLEAN DEFAULT TRUE,#是否在线,默认在线 
-	u_growth INT(11) DEFAULT 0,#成长值,依赖于登录次数和发帖回帖频率等,可以此来进行活跃度排名
-	u_vip BOOLEAN DEFAULT FALSE,#是否是vip用户
+	u_date DATETIME DEFAULT NULL, /*注册时间,默认是当前时间*/
+	u_online BOOLEAN DEFAULT TRUE,/*是否在线,默认在线*/ 
+	u_growth INT(11) DEFAULT 0,/*成长值,依赖于登录次数和发帖回帖频率等,可以此来进行活跃度排名*/
+	u_vip BOOLEAN DEFAULT FALSE, /*是否是vip用户*/
 	PRIMARY KEY (u_id),-- 主键
 	UNIQUE KEY u_email(u_email)-- 唯一约束
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
