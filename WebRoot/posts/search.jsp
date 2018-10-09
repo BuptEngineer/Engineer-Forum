@@ -32,12 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="container">
 	<div class="col-md-9">
-	
 		<div class="col-md-12">
 			<c:forEach items="${postsLink }" var="p" varStatus="loop">
 				<div class="thumbnail">
 					<div class="caption">
-						<a href="<c:url value='/posts/show'/>">
+						<a href="<c:url value='/posts/show'/>?id=${p.pId}">
 							<h4>${p.pName }</h4>
 						</a>
 						<p>${p.pDesc }</p>

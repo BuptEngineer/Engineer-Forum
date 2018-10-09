@@ -25,7 +25,7 @@
 							
 							<h2>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h2>
 							<p>
-								作者：<a href="#">babedoll</a> | 上次回复时间：<a class="text-muted">2
+								作者：<a href="#">babedoll</a> | 发帖时间：<a class="text-muted">2
 									分钟前</a>
 							</p>
 							<hr>
@@ -67,7 +67,7 @@
 							<div>
 								<p class="text-left">
 									作者 : <a href="#"><strong>AustinHUANG</strong> </a> | 时间 : <span
-										class="text-muted">20 小时 3 分钟前</span> | <a href="#">回复</a>
+										class="text-muted">20 小时 3 分钟前</span> | <a href="#replyAnchor">回复</a>
 								</p>
 								<p>
 									<!-- 回复内容 -->
@@ -80,7 +80,7 @@
 							<div>
 								<p class="text-left">
 									作者 : <a href="#"><strong>AustinHUANG</strong> </a> | 时间 : <span
-										class="text-muted">20 小时 3 分钟前</span> | <a href="#">回复</a>
+										class="text-muted">20 小时 3 分钟前</span> | <a href="#replyAnchor">回复</a>
 								</p>
 								<p>
 									<!-- 回复内容 -->

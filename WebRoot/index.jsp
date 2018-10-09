@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta charset="utf-8">
 <title>Engineer</title>
 <link rel="shortcut icon"
-	href="<c:url value='/jsps/mainPage/img/favicon.png'/>">
+	href="<c:url value='/resource/imgs/favicon.png'/>">
 <style>
 .img-caption-h3 {
 	/* h3 18.72px, 100 - 18.72 = 81.28 */
@@ -78,3 +78,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <jsp:include page="components/footer.jsp">
 	<jsp:param value="${categorys}" name="categorys" />
 </jsp:include>
+

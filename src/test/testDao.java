@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -61,6 +62,10 @@ public class testDao{
     	post.setpDesc("Android");
     	post.setpName("Android");
     	postMapper.insert(post);
+    	List<Post> lp = postMapper.selectAllPost();
+    	for (Post post2 : lp) {
+			System.out.println(post2.toString());
+		}
     }
     
     

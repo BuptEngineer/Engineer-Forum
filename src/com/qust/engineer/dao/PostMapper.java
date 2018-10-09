@@ -21,6 +21,9 @@ public interface PostMapper {
     
     List<Post> selectByTitle(String key);
     
-    @Select("select * from tbl_user")
+    @Select("select * from tbl_post")
     List<Post> selectAllPost();
+    
+    @Select("select * from tbl_post ORDER BY p_time")
+    List<Post> selectNewPost();
 }

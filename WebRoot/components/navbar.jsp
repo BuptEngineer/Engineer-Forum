@@ -41,7 +41,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="<c:url value='/'/>">首页</a></li>
 					<!-- class="active" -->
-					<li ><a	href="<c:url value='/'/>">最近</a></li>
+					<li ><a	href="<c:url value='/posts/newest'/>">最近</a></li>
 					<!-- 只有登录用户可见 -->
 					<li><a href="<c:url value='/posts/addPost'/>">发布新帖</a></li>
 					

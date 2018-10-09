@@ -126,7 +126,8 @@
 		<!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
+	
 	<!-- the configuration for providing access to ".png" -->
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
@@ -169,9 +170,12 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.map</url-pattern>
 	</servlet-mapping>
+	
+	
 	<welcome-file-list>
-		<welcome-file>/index.jsp</welcome-file>
+		<welcome-file>/</welcome-file>
 	</welcome-file-list>
+	
 	<!-- <error-page> <error-code>404</error-code> <location>/WebRoot/jsps/404page/404.html</location> 
 		表示当系统发生404就是不存在请求地址的错误的时候，页面跳转到404.html页面。 </error-page> <error-page> <error-code>500</error-code> 
 		<location>/jsps/404page/404.html</location> 表示当系统发生500也就是操作异常错误的时候，页面跳转到error.jsp页面。 

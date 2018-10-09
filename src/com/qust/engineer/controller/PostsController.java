@@ -1,5 +1,7 @@
 package com.qust.engineer.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qust.engineer.dao.CategoryMapper;
 import com.qust.engineer.dao.PostMapper;
+import com.qust.engineer.dao.UserMapper;
 import com.qust.engineer.pojo.Category;
 import com.qust.engineer.pojo.Post;
 import com.qust.engineer.pojo.User;
@@ -25,7 +28,8 @@ import com.qust.engineer.pojo.User;
 public class PostsController {
 	@Autowired
 	private PostMapper postMapper;
-	
+	@Autowired
+	private UserMapper userMapper;	
 	@Autowired
 	CategoryMapper ctgMapper;
 	
@@ -56,8 +60,33 @@ public class PostsController {
 		return "添加成功";
     }
 	
-	@RequestMapping("/show") // the second filter key of url
+	
+	@RequestMapping("/show") // show single post
     public String showPost(HttpServletRequest request, Model model){
+		// 帖子id，发帖人id，帖子内容
+		// mybatis 联合查询
+		// 评论id，评论人id，评论回复人名，评论回复人id，评论内容
         return "show"; // 
     }
+	
+	
+	@RequestMapping("/newest") // show single post
+    public String showNewPosts(HttpServletRequest request, Model model){
+		List<Post> postsLinked=postMapper.selectNewPost();
+		List<Category> categoriesLinked=new ArrayList<Category>();
+		List<User> usersLinked=new ArrayList<>();
+		for(int i=0;i<postsLinked.size();i++){
+			Category category=ctgMapper.selectByPrimaryKey(postsLinked.get(i).getCtgId());
+			categoriesLinked.add(category);
+			User admin=userMapper.selectByPrimaryKey(postsLinked.get(i).getuId());
+			usersLinked.add(admin);
+		}
+		model.addAttribute("categoriesLink",categoriesLinked);
+		model.addAttribute("usersLink",usersLinked);
+		model.addAttribute("postsLink", postsLinked);
+        return "search"; // 
+    }
+	
+	
+	
 }
