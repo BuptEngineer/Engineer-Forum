@@ -93,3 +93,12 @@ CREATE TABLE tbl_letter(
 	CONSTRAINT `FK_ut_user_f` FOREIGN KEY (`from_u_id`) REFERENCES `tbl_user` (`u_id`),
 	CONSTRAINT `FK_ut_user_t` FOREIGN KEY (`to_u_id`) REFERENCES `tbl_user` (`u_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+insert  into `tbl_user`(`u_id`,`u_email`,`u_name`,`u_pwd`,`u_sex`,`u_desc`,`u_img`,`u_status`,`u_actnCode`,`u_date`,`u_online`,`u_growth`,`u_vip`) values (1,'1','1','1',NULL,NULL,NULL,0,NULL,'2018-09-21 19:08:48',0,0,NULL),(2,'2','3',NULL,NULL,NULL,NULL,0,NULL,'2018-09-21 19:08:48',1,0,0),(20,'e1','insertS',NULL,'u',NULL,NULL,0,NULL,'2018-09-21 19:20:55',1,0,0),(21,'s@q.com','梅林','123123','u',NULL,NULL,0,NULL,'2018-09-21 19:22:17',1,4,0);
+
+
+insert  into `tbl_category`(`ctg_id`,`ctg_name`,`pctg_id`,`ctg_desc`) values (1,'程序员',NULL,'程序员之间交流的家园'),(6,'Android',NULL,'Android');
+
+
+insert  into `tbl_post`(`p_id`,`p_name`,`p_desc`,`u_id`,`ctg_id`,`p_time`) values (5,'Android','Android',NULL,1,NULL),(6,'Android','Android',NULL,1,NULL),(7,'Android','Android',NULL,1,NULL),(8,'Android','Android',NULL,1,NULL),(9,'Android','Android',NULL,1,NULL),(10,'Android','Android',NULL,1,NULL),(11,'Android','Android',NULL,1,NULL),(12,'Android','Android',NULL,1,NULL),(13,'Android','Android',NULL,1,NULL),(14,'Android','Android',NULL,1,NULL),(15,'Android','Android',NULL,1,NULL),(16,'Android','Android',NULL,1,NULL),(17,'Android','Android',NULL,1,NULL),(18,'234','123',21,1,NULL),(19,'234','今天真的是太忙了',21,1,NULL);
+

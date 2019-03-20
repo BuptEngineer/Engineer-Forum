@@ -26,7 +26,8 @@ public class UserInfoController {
 	@RequestMapping("/personal")
 	public String checkInfo(@RequestParam("uname") String name,Model model) throws UnsupportedEncodingException{
 		//依据传进来的用户名查找
-		String username=new String(name.getBytes("iso-8859-1"),"utf8");
+//		String username=new String(name.getBytes("iso-8859-1"),"utf8");
+		String username = name;
 		User user=userMapper.selectByName(username);
 		model.addAttribute("checkUser", user);
 		List<User> users=userMapper.selectAll();
@@ -42,6 +43,9 @@ public class UserInfoController {
 		model.addAttribute("uDate", date);
 		return "personal";
 	}
+	
+	
+	
 	
 	private class MyComparator implements Comparator<User>{
 		@Override

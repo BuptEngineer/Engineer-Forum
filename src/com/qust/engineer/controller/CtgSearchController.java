@@ -32,16 +32,6 @@ public class CtgSearchController {
 	public String SearchPostsAccordingTitle(HttpServletRequest request,Model model) throws UnsupportedEncodingException{
 		String keyword=new String(request.getParameter("keyword").getBytes("iso-8859-1"), "utf-8");
 		List<Post> postsLinked=postMapper.selectByTitle(keyword);
-		List<Category> categoriesLinked=new ArrayList<Category>();
-		List<User> usersLinked=new ArrayList<>();
-		for(int i=0;i<postsLinked.size();i++){
-			Category category=catetoryMapper.selectByPrimaryKey(postsLinked.get(i).getCtgId());
-			categoriesLinked.add(category);
-			User admin=userMapper.selectByPrimaryKey(postsLinked.get(i).getuId());
-			usersLinked.add(admin);
-		}
-		model.addAttribute("categoriesLink",categoriesLinked);
-		model.addAttribute("usersLink",usersLinked);
 		model.addAttribute("postsLink", postsLinked);
 		return "search";
 	}

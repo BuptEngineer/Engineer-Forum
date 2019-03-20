@@ -30,17 +30,7 @@ public class IndexController {
 	
 	@RequestMapping({"/"}) // 首页帖子应该有排序算法
 	public String SearchPostsAccordingTitle(HttpServletRequest request,Model model) throws UnsupportedEncodingException{
-		List<Post> postsLinked=postMapper.selectAllPost();
-		List<Category> categoriesLinked=new ArrayList<Category>();
-		List<User> usersLinked=new ArrayList<>();
-		for(int i=0;i<postsLinked.size();i++){
-			Category category=ctgMapper.selectByPrimaryKey(postsLinked.get(i).getCtgId());
-			categoriesLinked.add(category);
-			User admin=userMapper.selectByPrimaryKey(postsLinked.get(i).getuId());
-			usersLinked.add(admin);
-		}
-		model.addAttribute("categoriesLink",categoriesLinked);
-		model.addAttribute("usersLink",usersLinked);
+		List<Post> postsLinked=postMapper.selectByTitle("");
 		model.addAttribute("postsLink", postsLinked);
 		return "posts/search";
 	}
