@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 引入映射器 -->
 <mapper namespace="com.qust.engineer.dao.CategoryMapper" >
+
+
   <resultMap id="BaseResultMap" type="com.qust.engineer.pojo.Category" >
     <id column="ctg_id" property="ctgId" jdbcType="INTEGER" />
     <result column="ctg_name" property="ctgName" jdbcType="VARCHAR" />

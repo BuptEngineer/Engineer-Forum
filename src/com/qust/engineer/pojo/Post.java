@@ -10,13 +10,33 @@ public class Post {
     private String pDesc;
 
     private Integer uId;
+    
+    private User user;
 
     private Integer ctgId;
+    
+    private Category category;
 
     private Date pTime;
     
     public Post() {
     	
+    }
+    
+    public User getUser() {
+    	return this.user;
+    }
+    
+    public void setUser(User user) {
+    	this.user = user;
+    }
+    
+    public Category getCategory() {
+    	return this.category;
+    }
+    
+    public void setCategory(Category category) {
+    	this.category = category;
     }
 
     public Integer getpId() {

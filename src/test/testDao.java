@@ -35,15 +35,15 @@ public class testDao{
     
     @Test
     public void testUserMapper() {
-        assertNotNull("selectByName:", userMapper.selectByName("1"));
-        User record = new User();
-        record.setuId(1);
-        record.setuOnline(false);
-        userMapper.updateByPrimaryKeySelective(record);
-        record = userMapper.selectByName("梅林");
-        assertNotNull("growth:", record.getuName());
-        assertNotNull("users:", userMapper.selectAll());
-        assertNotNull("date:", record.getuDate());
+//        assertNotNull("selectByName:", userMapper.selectByName("1"));
+//        User record = new User();
+//        record.setuId(1);
+//        record.setuOnline(false);
+//        userMapper.updateByPrimaryKeySelective(record);
+//        record = userMapper.selectByName("梅林");
+//        assertNotNull("growth:", record.getuName());
+//        assertNotNull("users:", userMapper.selectAll());
+//        assertNotNull("date:", record.getuDate());
 //        record.setuName("insert");
 //        record.setuEmail("e");
 //        record.setuId(10);
@@ -62,9 +62,10 @@ public class testDao{
     	post.setpDesc("Android");
     	post.setpName("Android");
     	postMapper.insert(post);
-    	List<Post> lp = postMapper.selectAllPost();
+
+    	List<Post> lp = postMapper.selectByTitle("");
     	for (Post post2 : lp) {
-			System.out.println(post2.toString());
+			System.out.println(post2.getUser().getuName() + post2.getUser().getuId());
 		}
     }
     
@@ -73,10 +74,10 @@ public class testDao{
     public void testCtgMapper() {
 //    	System.out.println(categoryMapper.insert(new Category("程序员", "程序员之间交流的家园")));
 //    	assert 7 == categoryMapper.selectByCtgName("程序员");
-    	List<Category>  ret = categoryMapper.selectAllCtg();
-    	for (Category category : ret) {
-    		assertNotNull("exists:", category.getCtgName());
-		}
+//    	List<Category>  ret = categoryMapper.selectAllCtg();
+//    	for (Category category : ret) {
+//    		assertNotNull("exists:", category.getCtgName());
+//		}
     }
     
 }

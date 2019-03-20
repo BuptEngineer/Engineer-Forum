@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="container">
 	<div class="col-md-9">
 		<div class="col-md-12">
+		<!-- 返回内容有： pid, pname, pdesc, ctgname, ctgid, uname,uid  -->
 			<c:forEach items="${postsLink }" var="p" varStatus="loop">
 				<div class="thumbnail">
 					<div class="caption">
@@ -41,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</a>
 						<p>${p.pDesc }</p>
 						<p>
-						标签：<a href="#">${categoriesLink[loop.count-1].ctgName }</a> | 
-						作者：<a href="<c:url value='/user/personal'/>?uname=${usersLink[loop.count-1].uName }">${usersLink[loop.count-1].uName }</a> | 上次回复时间：<a class = "text-muted">2
+						标签：<a href="#">${p.category.ctgName}</a> | 
+						作者：<a href="<c:url value='/user/personal'/>?uname=${p.user.uName }">${p.user.uName  }</a> | 上次回复时间：<a class = "text-muted">2
 							分钟前</a> | 回复数：<span class="badge">150</span>
 						</p>
 					</div>
