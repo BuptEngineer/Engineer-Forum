@@ -22,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 </style>
 <script src="resource/js/lib/jquery-1.5.1.js"></script>
-<script src="resource/js/post/page.js"></script>
 <script type="text/javascript">
 	//使用ajax访问数据库进行分页刷新
 	$(document).ready(function(){
@@ -32,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 function query(page){
 		$.ajax({
 			type:"get",
-			url:"${pageContext.request.contextPath}/page?page="+page,
+			url:"${pageContext.request.contextPath}/page?page="+page+"\&key="+document.getElementById('requestArgs').innerHTML,
 			contentType:"application/json;charset=utf-8",
 			success:function(data){
 				var content="";
@@ -102,19 +101,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="container">
 	<div class="col-md-9">
 		<div class="col-md-12" id="ajaxForPage">
-			<!-- <div class="thumbnail">
-				<div class="caption ">
-					<a href="posts/show"><h4>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h4></a>
-					<p>
-						按照正常的操作习惯，不是应该在最右侧吗? <a href="#">...更多</a>
-					</p>
-					<p>
-						标签：<a href="#">程序员</a> | 作者：<a href="#">babedoll</a> | 上次回复时间：<a class = "text-muted">2
-							分钟前</a> | 回复数：<span class="badge">150</span>
-					</p>
+			<div class="thumbnail">
+					<div class="caption ">
+						<a href="posts/show"><h4>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h4></a>
+						<p>
+							按照正常的操作习惯，不是应该在最右侧吗? <a href="#">...更多</a>
+						</p>
+						<p>
+							标签：<a href="#">程序员</a> | 作者：<a href="#">babedoll</a> | 上次回复时间：<a class = "text-muted">2
+								分钟前</a> | 回复数：<span class="badge">150</span>
+						</p>
+					</div>
 				</div>
-			</div>
-			
 			<div class="thumbnail">
 				<div class="caption ">
 					<a href="#"><h4>产品经理总喜欢把 Table 的 [操作栏] 设计在最左侧，是出于什么心态(´_ゝ`)</h4></a>
@@ -127,10 +125,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							分钟前</a> | 回复数：<span class="badge">150</span>
 					</p>
 				</div>
-			</div> -->
+			</div>
 		</div>
 		<!--.... more-->
-		<!-- 添加导航栏 -->
+		<!-- 添加导航页数-->
 		<div id="page" align="center"></div>
 	</div>
 
@@ -143,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="clearfix" style="margin-bottom: 10px;"></div>
 <!-- 清除浮动 -->
-
+<div id="requestArgs" hidden=""><%=request.getParameter("key")==null?"":request.getParameter("key") %></div><!-- 隐藏属性 -->
 <!-- 抄 https://www.csdn.net/ 的首页就行 -->
 <!-- 图从 http://science.sciencemag.org/ 找就行-->
 

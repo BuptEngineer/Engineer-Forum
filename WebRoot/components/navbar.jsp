@@ -76,11 +76,12 @@
 					<li>
 						<!-- 添加一个搜索框 -->
 						<form class="navbar-form navbar-left" role="search" 
-							name="searchForm" action="<c:url value='/posts/search'/>" onsubmit="return validate(this)">
+							name="searchForm" id="form">
 							<div class="form-group">
-								<input name="keyword" type="text" class="form-control" placeholder="关键字">
+								<input name="key" type="text" class="form-control" placeholder="关键字" onkeyup="completion()" list="comp">
+								<datalist id="comp"></datalist>
 							</div>
-							<button type="submit" class="btn btn-default">搜索</button>
+							<button type="submit" class="btn btn-default" onclick="validateAndQuery()">搜索</button>
 						</form>
 					</li>
 					<c:choose>
@@ -99,14 +100,15 @@
 	</nav>
 	<!-- 导航栏--end -->
 	<script type="text/javascript">
-	function validate(form){
-		var key=form.keyword;
-		if(key.value.length==0){
+	function validateAndQuery(){
+		var form=document.getElementById("form");
+		var key=form.key;
+		/* if(key.value.length==0){
 			alert("你还没有输入内容,试试输入一些字符来查询");
 			return false;
-		}
-		if(key.value.length>5){
-			alert("输入的关键字长度过长，你应该尝试将内容控制在5个字符以内")
+		} */
+		if(key.value.length>15){
+			alert("输入的关键字长度过长，你应该尝试将内容控制在15个字符以内")
 			return false;
 		}
 		var regex=/^(\w*([\u4e00-\u9fa5])*)+$/;
@@ -114,6 +116,27 @@
 			alert("输入的关键字包含特殊字符，内容只可以包含中文、英文、数字")
 			return false;
 		}
+		//开始查询
+		query(1);
+	}
+	
+	function completion(){
+		var word=document.getElementsByClassName('form-control')[0].value;
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/completion?word="+word,
+			contentType:"application/json;charset=utf-8",
+			success:function(data){
+				var obj=document.getElementById('comp');
+				content="";
+				for(var i=0;i<data.length;i++)
+					content+="<option value="+data[i]+" />";
+				obj.innerHTML=content;
+			},
+			error:function(data){
+				alert("补全出现错误,请与管理员联系");
+			}
+		})
 	}
 </script>
 </body>

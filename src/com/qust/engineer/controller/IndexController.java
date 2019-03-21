@@ -18,6 +18,7 @@ import com.qust.engineer.dao.CategoryMapper;
 import com.qust.engineer.dao.PostMapper;
 import com.qust.engineer.dao.UserMapper;
 import com.qust.engineer.pojo.Post;
+import com.qust.engineer.pojo.TrieTree;
 
 @Controller
 public class IndexController {
@@ -27,14 +28,30 @@ public class IndexController {
 	private UserMapper userMapper;	
 	@Autowired
 	CategoryMapper ctgMapper;
+	private static TrieTree trieTree;
 	
 	@ResponseBody
 	@RequestMapping({"/page"}) // 首页帖子应该有排序算法
-	public PageInfo<Post> SearchPostsAccordingTitle(String page) throws UnsupportedEncodingException{
-		int pageNum=Integer.parseInt(page);
+	public PageInfo<Post> SearchPostsAccordingTitle(String page,String key) throws UnsupportedEncodingException{
+		int pageNum=1;
+		if(page!=null) 
+			pageNum=Integer.parseInt(page);
+		String keyword=key==null?"":key;
 		PageHelper.startPage(pageNum, 2);
-		List<Post> postsLinked=postMapper.selectByTitle("");
+		List<Post> postsLinked=postMapper.selectByTitle(keyword);
+		if(trieTree==null){//第一次时候载入内存
+			trieTree=new TrieTree();
+			for(Post p:postsLinked){
+				trieTree.insert(p.getpName());
+			}
+		}
 		PageInfo<Post> pageInfo=new PageInfo<>(postsLinked,5);//连续显示5页
 		return pageInfo;
+	}
+	
+	@RequestMapping("/completion")
+	@ResponseBody
+	public List<String> completion(String word){
+		return trieTree.query(word);
 	}
 }

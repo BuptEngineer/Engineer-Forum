@@ -24,7 +24,6 @@ public class CtgController {
         return "addctg";
     }
 	
-	
 	@RequestMapping(value = "/addCtg", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String addCtg(HttpServletRequest request){

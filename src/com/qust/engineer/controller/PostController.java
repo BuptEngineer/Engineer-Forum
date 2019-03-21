@@ -20,7 +20,7 @@ import com.qust.engineer.pojo.User;
 
 @Controller
 @RequestMapping("/posts")
-public class CtgSearchController {
+public class PostController {
 	@Autowired
 	private PostMapper postMapper;
 	@Autowired
