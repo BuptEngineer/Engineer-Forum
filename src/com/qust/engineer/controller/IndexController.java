@@ -39,14 +39,19 @@ public class IndexController {
 		String keyword=key==null?"":key;
 		PageHelper.startPage(pageNum, 5);
 		List<Post> postsLinked=postMapper.selectByTitle(keyword);
-		if(trieTree==null){//第一次时候载入内存
-			trieTree=new TrieTree();
-			for(Post p:postsLinked){
-				trieTree.insert(p.getpName());
-			}
-		}
 		PageInfo<Post> pageInfo=new PageInfo<>(postsLinked,5);//连续显示5页
 		return pageInfo;
+	}
+	
+	@RequestMapping("/init")
+	public void init() {
+		if(trieTree==null){//第一次时候载入内存
+			trieTree=new TrieTree();
+		}
+		List<Post> postsLinked=postMapper.selectByTitle("");
+		for(Post p:postsLinked){
+			trieTree.insert(p.getpName());
+		}
 	}
 	
 	@RequestMapping("/completion")
