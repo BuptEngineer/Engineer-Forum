@@ -28,7 +28,7 @@ public class IndexController {
 	private UserMapper userMapper;	
 	@Autowired
 	CategoryMapper ctgMapper;
-	private static TrieTree trieTree;
+	private TrieTree trieTree;
 	
 	@ResponseBody
 	@RequestMapping({"/page"}) // 首页帖子应该有排序算法
