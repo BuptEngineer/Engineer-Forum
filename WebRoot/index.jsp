@@ -103,6 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="container">
 	<div class="col-md-9">
 		<div class="col-md-12" id="ajaxForPage">
+			<!-- 
 			<div class="thumbnail">
 					<div class="caption ">
 						<a href="posts/show"><h4>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h4></a>
@@ -128,12 +129,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</p>
 				</div>
 			</div>
+			-->
 		</div>
-		<!--.... more-->
-		<!-- 添加导航页数-->
 		<div id="page" align="center"></div>
 	</div>
-
 	<div class="col-md-3">
 	<!-- right -->
 		<jsp:include page="components/right.jsp">

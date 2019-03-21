@@ -28,7 +28,7 @@ public class IndexController {
 	private UserMapper userMapper;	
 	@Autowired
 	CategoryMapper ctgMapper;
-	private static TrieTree trieTree;
+	private TrieTree trieTree;
 	
 	@ResponseBody
 	@RequestMapping({"/page"}) // 首页帖子应该有排序算法
@@ -41,9 +41,9 @@ public class IndexController {
 		List<Post> postsLinked=postMapper.selectByTitle(keyword);
 		if(trieTree==null){//第一次时候载入内存
 			trieTree=new TrieTree();
-			for(Post p:postsLinked){
-				trieTree.insert(p.getpName());
-			}
+		}
+		for(Post p:postsLinked){
+			trieTree.insert(p.getpName());
 		}
 		PageInfo<Post> pageInfo=new PageInfo<>(postsLinked,5);//连续显示5页
 		return pageInfo;
