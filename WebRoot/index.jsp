@@ -26,6 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	//使用ajax访问数据库进行分页刷新
 	$(document).ready(function(){
 		query(1);
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/init",
+		})
 	});
 	
 	 function query(page){
