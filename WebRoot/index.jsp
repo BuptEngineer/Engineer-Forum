@@ -34,6 +34,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			url:"${pageContext.request.contextPath}/page?page="+page+"\&key="+document.getElementById('requestArgs').innerHTML,
 			contentType:"application/json;charset=utf-8",
 			success:function(data){
+				if(data.list.length==0)
+					return;
 				var content="";
 				for(var i=0;i<data.list.length;i++){
 					content+="<div class=\"thumbnail\">"+

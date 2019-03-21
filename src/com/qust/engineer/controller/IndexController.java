@@ -51,7 +51,7 @@ public class IndexController {
 	
 	@RequestMapping("/completion")
 	@ResponseBody
-	public List<String> completion(String word){
-		return trieTree.query(word);
+	public List<String> completion(String word,Boolean insert){
+		return trieTree.query(word,insert);
 	}
 }

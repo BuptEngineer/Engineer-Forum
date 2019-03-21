@@ -89,12 +89,13 @@ public class TrieTree implements Serializable{
 		}
 	}
 	
-	public List<String> query(String word) {
+	public List<String> query(String word,Boolean insert) {
 		TrieNode current=root;
 		for(int i=0;i<word.length();i++){
 			current=current.find(word.charAt(i));
 			if(current==null){
-				insert(word);
+				if(insert)
+					insert(word);
 				return null;
 			}
 		}

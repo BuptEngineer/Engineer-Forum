@@ -78,7 +78,7 @@
 						<form class="navbar-form navbar-left" role="search" 
 							name="searchForm" id="form">
 							<div class="form-group">
-								<input name="key" type="text" class="form-control" placeholder="关键字" onkeyup="completion()" list="comp">
+								<input name="key" type="text" class="form-control" placeholder="关键字" onkeyup="completion()" list="comp" autocomplete="off">
 								<datalist id="comp"></datalist>
 							</div>
 							<button type="submit" class="btn btn-default" onclick="validateAndQuery()">搜索</button>
@@ -116,6 +116,17 @@
 			alert("输入的关键字包含特殊字符，内容只可以包含中文、英文、数字")
 			return false;
 		}
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/completion?word="+key.value+"&insert=true",
+			contentType:"application/json;charset=utf-8",
+			success:function(data){
+				
+			},
+			error:function(data){
+				alert("补全数据库出错，请与管理员联系");
+			}
+		})
 		//开始查询
 		query(1);
 	}
@@ -124,7 +135,7 @@
 		var word=document.getElementsByClassName('form-control')[0].value;
 		$.ajax({
 			type:"get",
-			url:"${pageContext.request.contextPath}/completion?word="+word,
+			url:"${pageContext.request.contextPath}/completion?word="+word+"&insert=false",
 			contentType:"application/json;charset=utf-8",
 			success:function(data){
 				var obj=document.getElementById('comp');
