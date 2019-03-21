@@ -21,6 +21,75 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	color: white;
 }
 </style>
+<script src="resource/js/lib/jquery-1.5.1.js"></script>
+<script src="resource/js/post/page.js"></script>
+<script type="text/javascript">
+	//使用ajax访问数据库进行分页刷新
+	$(document).ready(function(){
+		query(1);
+	});
+	
+	 function query(page){
+		$.ajax({
+			type:"get",
+			url:"${pageContext.request.contextPath}/page?page="+page,
+			contentType:"application/json;charset=utf-8",
+			success:function(data){
+				var content="";
+				for(var i=0;i<data.list.length;i++){
+					content+="<div class=\"thumbnail\">"+
+						"<div class=\"caption\">"+
+						"<a href=\"<c:url value='/posts/show'/>?id="+data.list[i].pId+"\">"+
+						"<h4>"+data.list[i].pName+"</h4>"+
+						"</a>"+
+						"<p>"+data.list[i].pDesc+"</p>"+
+						"<p>"+
+						"标签：<a href=\"#\">"+data.list[i].category.ctgName+"</a> | "+
+						"作者：<a href=\"<c:url value='/user/personal'/>?uname="+data.list[i].user.uName+"\">"+data.list[i].user.uName+"</a> | 上次回复时间：<a class = \"text-muted\">2"+
+						"分钟前</a> | 回复数：<span class=\"badge\">150</span>"+
+						"</p>"+
+						"</div>"+
+						"</div>";
+				}
+				document.getElementById('ajaxForPage').innerHTML=content;
+				var nag="<ul class=\"pagination  pagination-lg\">";//页数导航
+				if(data.pageNum>1){
+					nag+="<li onclick='query(1)'><a href='javascript:void(0);'>First</a></li>";
+				}else{
+					nag+="<li onclick='query(1)' class=\"disabled\"><a href='javascript:void(0);'>First</a></li>";
+				}
+				
+				if(data.navigateFirstPage>1){
+					nag+="<li onclick='query("+data.prePage+")'><a href='javascript:void(0);'>...</a></li>";
+				}
+				
+				for(var i=0;i<data.navigatepageNums.length;i++){
+					if(data.navigatepageNums[i]==data.pageNum)
+						nag+="<li class=\"active\" onclick='query("+data.navigatepageNums[i]+")'><a href='javascript:void(0);'>"+data.navigatepageNums[i]+"</a></li>";
+					else
+						nag+="<li onclick='query("+data.navigatepageNums[i]+")'><a href='javascript:void(0);'>"+data.navigatepageNums[i]+"</a></li>";	
+				}
+				
+				if(data.navigateLastPage<data.pages){
+					nag+="<li onclick='query("+data.nextPage+")'><a href='javascript:void(0);'>...</a></li>";
+				}
+				
+				if(data.pageNum<data.lastPage){
+					nag+="<li onclick='query("+data.lastPage+")'><a href='javascript:void(0);'>Last</a></li>";
+				}else{
+					nag+="<li onclick='query("+data.lastPage+")' class='disabled'><a href='javascript:void(0);'>Last</a></li>";
+				}
+				
+				nag+="</ul>";
+				document.getElementById('page').innerHTML=nag;
+			},
+			error:function(data){
+				alert("Ajax获取数据出现错误,请检查是否存在未注册的用户发布过帖子或者数据库配置是否正常,可以与管理员联系尝试解决");
+				//跳转到404页面
+			}
+		})
+	}
+</script>
 </head>
 
 <jsp:include page="components/navbar.jsp">
@@ -32,8 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="container">
 	<div class="col-md-9">
-		<div class="col-md-12">
-			<div class="thumbnail">
+		<div class="col-md-12" id="ajaxForPage">
+			<!-- <div class="thumbnail">
 				<div class="caption ">
 					<a href="posts/show"><h4>什么都懂但是都不精通真的有前途吗(´_ゝ`)</h4></a>
 					<p>
@@ -58,10 +127,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							分钟前</a> | 回复数：<span class="badge">150</span>
 					</p>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<!--.... more-->
+		<!-- 添加导航栏 -->
+		<div id="page" align="center"></div>
 	</div>
+
 	<div class="col-md-3">
 	<!-- right -->
 		<jsp:include page="components/right.jsp">

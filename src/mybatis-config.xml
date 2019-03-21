@@ -9,5 +9,8 @@
         <!-- 自动驼峰 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
- 
+ 	
+ 	<plugins>
+ 		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+ 	</plugins>
 </configuration>
