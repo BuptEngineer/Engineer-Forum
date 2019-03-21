@@ -1,6 +1,7 @@
 package com.qust.engineer.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Post {
     private Integer pId;
@@ -18,6 +19,9 @@ public class Post {
     private Category category;
 
     private Date pTime;
+    
+    
+    private List<Reply> replyList;
     
     public Post() {
     	

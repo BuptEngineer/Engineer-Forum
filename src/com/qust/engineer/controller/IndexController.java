@@ -37,7 +37,7 @@ public class IndexController {
 		if(page!=null) 
 			pageNum=Integer.parseInt(page);
 		String keyword=key==null?"":key;
-		PageHelper.startPage(pageNum, 2);
+		PageHelper.startPage(pageNum, 5);
 		List<Post> postsLinked=postMapper.selectByTitle(keyword);
 		if(trieTree==null){//第一次时候载入内存
 			trieTree=new TrieTree();

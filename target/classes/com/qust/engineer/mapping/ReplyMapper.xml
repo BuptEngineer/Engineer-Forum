@@ -5,11 +5,12 @@
     <id column="r_id" property="rId" jdbcType="INTEGER" />
     <result column="r_content" property="rContent" jdbcType="VARCHAR" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
-    <result column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="rp_id" property="rpId" jdbcType="INTEGER" />
     <result column="r_time" property="rTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    r_id, r_content, u_id, c_id, r_time
+    r_id, r_content, u_id, p_id, r_time, rp_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +24,9 @@
   </delete>
   <insert id="insert" parameterType="com.qust.engineer.pojo.Reply" >
     insert into tbl_reply (r_id, r_content, u_id, 
-      c_id, r_time)
+      p_id, rp_id, r_time)
     values (#{rId,jdbcType=INTEGER}, #{rContent,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}, 
-      #{cId,jdbcType=INTEGER}, #{rTime,jdbcType=TIMESTAMP})
+      #{pId,jdbcType=INTEGER},#{rpId,jdbcType=INTEGER}, #{rTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.qust.engineer.pojo.Reply" >
     insert into tbl_reply
@@ -39,8 +40,11 @@
       <if test="uId != null" >
         u_id,
       </if>
-      <if test="cId != null" >
-        c_id,
+      <if test="pId != null" >
+        p_id,
+      </if>
+      <if test="rpId != null" >
+        rp_id,
       </if>
       <if test="rTime != null" >
         r_time,
@@ -56,8 +60,11 @@
       <if test="uId != null" >
         #{uId,jdbcType=INTEGER},
       </if>
-      <if test="cId != null" >
-        #{cId,jdbcType=INTEGER},
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="rpId != null" >
+        #{rpId,jdbcType=INTEGER},
       </if>
       <if test="rTime != null" >
         #{rTime,jdbcType=TIMESTAMP},
@@ -73,8 +80,11 @@
       <if test="uId != null" >
         u_id = #{uId,jdbcType=INTEGER},
       </if>
-      <if test="cId != null" >
-        c_id = #{cId,jdbcType=INTEGER},
+      <if test="pId != null" >
+        p_id = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="rpId != null" >
+        rp_id = #{rpId,jdbcType=INTEGER},
       </if>
       <if test="rTime != null" >
         r_time = #{rTime,jdbcType=TIMESTAMP},
@@ -86,7 +96,8 @@
     update tbl_reply
     set r_content = #{rContent,jdbcType=VARCHAR},
       u_id = #{uId,jdbcType=INTEGER},
-      c_id = #{cId,jdbcType=INTEGER},
+      p_id = #{pId,jdbcType=INTEGER},
+      rp_id = #{rpId,jdbcType=INTEGER},
       r_time = #{rTime,jdbcType=TIMESTAMP}
     where r_id = #{rId,jdbcType=INTEGER}
   </update>
