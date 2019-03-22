@@ -22,9 +22,35 @@
 		select="com.qust.engineer.dao.CategoryMapper.selectByPrimaryKey"/>
   </resultMap>
   
+  
+  <resultMap type="com.qust.engineer.pojo.Post" id="showcaseMap">
+  	<id column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_desc" property="pDesc" jdbcType="VARCHAR" />
+    <result column="p_time" property="pTime" jdbcType="TIMESTAMP" />
+    <association property= "user" column = "u_id"
+		select="com.qust.engineer.dao.UserMapper.selectByPrimaryKey"/>
+	<association property= "category" column = "ctg_id"
+		select="com.qust.engineer.dao.CategoryMapper.selectByPrimaryKey"/>
+	<collection property="replyList" column="p_id" 
+	select= "com.qust.engineer.dao.ReplyMapper.selectByPostId"/>
+  </resultMap>
+  
+
+  
   <sql id="Base_Column_List" >
     p_id, p_name, p_desc, u_id, ctg_id, p_time
   </sql>
+  
+  
+    <select id="selectByPrimaryKeyRetrunShowcase" resultMap="showcaseMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_post
+    where p_id = #{pId,jdbcType=INTEGER}
+  </select>
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

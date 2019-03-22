@@ -13,9 +13,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.qust.engineer.dao.CategoryMapper;
 import com.qust.engineer.dao.PostMapper;
+import com.qust.engineer.dao.ReplyMapper;
 import com.qust.engineer.dao.UserMapper;
 import com.qust.engineer.pojo.Category;
 import com.qust.engineer.pojo.Post;
+import com.qust.engineer.pojo.Reply;
 import com.qust.engineer.pojo.User;
  
 
@@ -30,11 +32,29 @@ public class testDao{
     public CategoryMapper categoryMapper;
     
     @Resource
+    public ReplyMapper replyMapper;
+    
+    @Resource
     public PostMapper postMapper;
+    
+    @Test
+    public void testReplyMapper() {
+//    	List<Reply> replyList = replyMapper.selectByPostId(18);
+//    	for (Reply reply : replyList) {
+//			System.out.println(reply.getrContent());
+//			System.out.println(reply.getUser().getuName());
+//		}
+    }
 
     
     @Test
     public void testUserMapper() {
+    	Post post = postMapper.selectByPrimaryKeyRetrunShowcase(18);
+    	List<Reply> replyList = post.getReplyList();
+    	System.out.println("长度为：" + replyList.size());
+    	for (Reply reply : replyList) {
+			System.out.println(reply.getrContent());
+		}
 //        assertNotNull("selectByName:", userMapper.selectByName("1"));
 //        User record = new User();
 //        record.setuId(1);
@@ -57,16 +77,16 @@ public class testDao{
     
     @Test
     public void testPostMapper() {
-    	Post post = new Post();
-    	post.setCtgId(1);
-    	post.setpDesc("Android");
-    	post.setpName("Android");
-    	postMapper.insert(post);
-
-    	List<Post> lp = postMapper.selectByTitle("");
-    	for (Post post2 : lp) {
-			System.out.println(post2.getUser().getuName() + post2.getUser().getuId());
-		}
+//    	Post post = new Post();
+//    	post.setCtgId(1);
+//    	post.setpDesc("Android");
+//    	post.setpName("Android");
+//    	postMapper.insert(post);
+//
+//    	List<Post> lp = postMapper.selectByTitle("");
+//    	for (Post post2 : lp) {
+//			System.out.println(post2.getUser().getuName() + post2.getUser().getuId());
+//		}
     }
     
     

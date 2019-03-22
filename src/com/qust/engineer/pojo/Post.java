@@ -23,6 +23,14 @@ public class Post {
     
     private List<Reply> replyList;
     
+    public List<Reply> getReplyList(){
+    	return this.replyList;
+    }
+    
+    public void setReplyList(List<Reply> replyList) {
+    	this.replyList = replyList;
+    }
+    
     public Post() {
     	
     }

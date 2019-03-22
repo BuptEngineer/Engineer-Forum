@@ -62,10 +62,13 @@ public class PostsController {
 	
 	
 	@RequestMapping("/show") // show single post
-    public String showPost(HttpServletRequest request, Model model){
+    public String showPost(HttpServletRequest request, Model model) throws UnsupportedEncodingException{
 		// 帖子id，发帖人id，帖子内容
 		// mybatis 联合查询
 		// 评论id，评论人id，评论回复人名，评论回复人id，评论内容
+		String pid=new String(request.getParameter("id").getBytes("iso-8859-1"), "utf-8");
+		Post post = postMapper.selectByPrimaryKeyRetrunShowcase(Integer.valueOf(pid));
+		model.addAttribute("post", post);
         return "show"; // 
     }
 	

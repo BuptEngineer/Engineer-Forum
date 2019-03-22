@@ -1,5 +1,7 @@
 package com.qust.engineer.dao;
 
+import java.util.List;
+
 import com.qust.engineer.pojo.Reply;
 
 public interface ReplyMapper {
@@ -14,4 +16,6 @@ public interface ReplyMapper {
     int updateByPrimaryKeySelective(Reply record);
 
     int updateByPrimaryKey(Reply record);
+    
+    List<Reply> selectByPostId(Integer pId);
 }

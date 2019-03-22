@@ -12,6 +12,23 @@
   <sql id="Base_Column_List" >
     r_id, r_content, u_id, p_id, r_time, rp_id
   </sql>
+  <resultMap id="BaseResultMapWithUser" type="com.qust.engineer.pojo.Reply" >
+    <id column="r_id" property="rId" jdbcType="INTEGER" />
+    <result column="r_content" property="rContent" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="p_id" property="pId" jdbcType="INTEGER" />
+    <result column="rp_id" property="rpId" jdbcType="INTEGER" />
+    <result column="r_time" property="rTime" jdbcType="TIMESTAMP" />
+    <association property= "user" column = "u_id"
+		select="com.qust.engineer.dao.UserMapper.selectByPrimaryKey"/>
+  </resultMap>
+  <select id = "selectByPostId" resultMap = "BaseResultMapWithUser" parameterType="java.lang.Integer">
+  select
+  <include refid="Base_Column_List" />
+    from tbl_reply
+    where p_id = #{pId,jdbcType=INTEGER}
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

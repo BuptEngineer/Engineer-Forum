@@ -21,6 +21,8 @@ public interface PostMapper {
     
     List<Post> selectByTitle(String key);
     
+    Post selectByPrimaryKeyRetrunShowcase(Integer pId);
+    
     
     @Select("select * from tbl_post")
     List<Post> selectAllPost();
