@@ -8,11 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>添加帖子</title>
 </head>
-	<%
-		Date d = new Date();
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String now = df.format(d);
-	%>
 <body>
 	<jsp:include page="../components/navbar.jsp">
 		<jsp:param value="${categorys}" name="categorys" />
