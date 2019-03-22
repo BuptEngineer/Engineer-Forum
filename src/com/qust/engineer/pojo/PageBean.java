@@ -1,4 +1,4 @@
-package com.qust.engineer.utils;
+package com.qust.engineer.pojo;
 
 import java.util.List;
 

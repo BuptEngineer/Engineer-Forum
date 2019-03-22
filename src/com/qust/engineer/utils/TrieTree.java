@@ -1,4 +1,4 @@
-package com.qust.engineer.pojo;
+package com.qust.engineer.utils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
