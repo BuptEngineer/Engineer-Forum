@@ -39,6 +39,7 @@
 			          <url>http://localhost:8081/manager/text</url>
 			          <server>TomcatServer</server>
 			          <warSourceDirectory>WebRoot</warSourceDirectory>
+					  <update>true</update>
 			          <path>/engineer</path>
 			        </configuration>
 			</plugin>
